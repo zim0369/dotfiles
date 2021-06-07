@@ -1,0 +1,115 @@
+env:
+  TERM: xterm-256color
+window:
+  padding:
+    x: 3
+    y: 3
+  dynamic_padding: false
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+scrolling:
+  history: 5000
+font:
+  normal:
+    family: Source Code Pro
+    style: Medium
+  bold:
+    family: Source Code Pro
+    style: Bold
+  italic:
+    family: Source Code Pro
+    style: Italic
+  bold_italic:
+    family: Source Code Pro
+    style: Bold Italic
+  size: 7.5
+  offset:
+    x: 0
+    y: 1
+draw_bold_text_with_bright_colors: true
+colors:
+  primary:
+    background: "#000000"
+    foreground: "#ffffff"
+  normal:
+    black: "#000000"
+    red: "#cd0000"
+    green: "#00cd00"
+    yellow: "#cdcd00"
+    blue: "#0000ee"
+    magenta: "#cd00cd"
+    cyan: "#00cdcd"
+    white: "#e5e5e5"
+  bright:
+    black: "#7f7f7f"
+    red: "#ff0000"
+    green: "#00ff00"
+    yellow: "#ffff00"
+    blue: "#5c5cff"
+    magenta: "#ff00ff"
+    cyan: "#00ffff"
+    white: "#ffffff"
+background_opacity: 1
+shell:
+  program: /usr/bin/zsh
+key_bindings:
+  - key: V
+    mods: Control|Shift
+    action: Paste
+  - key: P
+    mods: Super
+    action: Paste
+  - key: C
+    mods: Control|Shift
+    action: Copy
+  - key: Insert
+    mods: Shift
+    action: PasteSelection
+  - key: Key0
+    mods: Control
+    action: ResetFontSize
+  - key: Equals
+    mods: Control
+    action: IncreaseFontSize
+  - key: Plus
+    mods: Control
+    action: IncreaseFontSize
+  - key: Minus
+    mods: Control
+    action: DecreaseFontSize
+  - key: Minus
+    mods: Control
+    action: DecreaseFontSize
+  - key: F11
+    mods: None
+    action: ToggleFullscreen
+  - key: Paste
+    mods: None
+    action: Paste
+  - key: Copy
+    mods: None
+    action: Copy
+  - key: L
+    mods: Control
+    action: ClearLogNotice
+  - key: L
+    mods: Control
+    chars: "\f"
+  - key: PageUp
+    mods: None
+    action: ScrollPageUp
+    mode: ~Alt
+  - key: PageDown
+    mods: None
+    action: ScrollPageDown
+    mode: ~Alt
+  - key: Home
+    mods: Shift
+    action: ScrollToTop
+    mode: ~Alt
+  - key: End
+    mods: Shift
+    action: ScrollToBottom
+    mode: ~Alt
