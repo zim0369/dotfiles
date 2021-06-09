@@ -120,7 +120,8 @@ source $ZSH/oh-my-zsh.sh
  alias k="tmux list-sessions -F '#{session_attached} #{session_id}' | \
       awk '/^0/{print $2}' | \
         xargs -n 1 tmux kill-session -t"
- alias ks="tmux kill-server" 
+ alias ks="tmux kill-session" 
+ alias ksv="tmux kill-session" 
  alias pacman="sudo pacman" 
  alias p="cd ~/Work/practice" 
 

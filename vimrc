@@ -85,8 +85,8 @@ noremap O O <Esc>
 " ================ Indentation ======================
 
 set autoindent
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap <F11> :set invpaste paste?<CR>
+set pastetoggle=<F11>
 set showmode 
 set smartindent
 filetype indent on 
