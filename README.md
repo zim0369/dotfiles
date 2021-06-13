@@ -1,6 +1,6 @@
 Please read the instructions and install the following packages before using any of the configs to avoid a bad experience :
 
-i3 : scrot(screenshots), polybar(statusbar), picom(compositor), feh(backgrounds), libinput-gestures(optional), i3lock, pulseaudio.
+i3 : scrot(screenshots), polybar(statusbar), picom(compositor), feh(backgrounds), libinput-gestures(optional), i3lock, pulseaudio(audio), rofi(app menu),...
 
 ranger : fzf(fuzzyfinder), mlocate(fuzzyfinder), findutils(fuzzyfinder), dragon-drag-and-drop(available in the aur), cmus(music on console), ueberzug(images), ... 
 		 Use C-x -> Dragon drag and drop 
