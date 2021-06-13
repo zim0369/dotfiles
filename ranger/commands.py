@@ -60,10 +60,11 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+    
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-######################### MY CONFIG #################################
-# https://github.com/ranger/ranger/wiki/Integrating-File-Search-with-fzf
-# Now, simply bind this function to a key, by adding this to your ~/.config/ranger/rc.conf: map <C-f> fzf_select
+# fuzzyfinder
+ 
 class fzf_select(Command):
     """
     :fzf_select

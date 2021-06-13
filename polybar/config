@@ -20,8 +20,7 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #000
+background = #90000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #ffffff
@@ -46,7 +45,7 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = #f00
 
-border-size = 2
+border-size = 0
 border-color = #66ff00
 
 padding-left = 0
@@ -55,15 +54,15 @@ padding-right = 3
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Noto Sans CJK JP:size=9:style=Bold;3
+ font-0 = Noto Sans CJK JP:size=9:style=Bold;3
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = FontAwesome 5 Free Solid:pixelsize=12;2
+ font-2 = FontAwesome 5 Free Solid:pixelsize=12;2
 font-3 = Noto Sans CJK JP:size=9:style=Regular;3
-font-4 = Inter:size=9:style=Italic;3
+ font-4 = Inter:size=9:style=Italic;3
 font-5 = Noto Sans CJK JP:size=12:style=Bold;3
-font-6 = Inter:size=12:style=Bold;3
+ font-6 = Inter:size=12:style=Bold;3
 font-7 = Inter:size=09:style=Bold;3
-font-8 = Noto Sans CJK JP:size=12:style=Bold;3
+ font-8 = Noto Sans CJK JP:size=12:style=Bold;3
 font-9 = Inter:size=12:style=Bold;3
  
 
@@ -107,14 +106,13 @@ format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
-label-layout =
-;label-layout-underline = ${colors.secondary}
+label-layout = 
 
 label-indicator-padding = 130
 label-indicator-font = 6
 label-indicator-margin = 1
 label-indicator-background = #66ff00 
-label-indicator-foreground = #292c3e
+label-indicator-foreground = #66ff00
 
 [module/filesystem]
 type = internal/fs
@@ -137,7 +135,7 @@ wrapping-scroll = false
 
 label-mode-padding = 10
 label-mode-font = 6
-label-mode-foreground = #000
+label-mode-foreground = #ff0000
 label-mode-background = #66ff00
 
 ; focused = Active workspace on focused monitor

@@ -8,11 +8,13 @@ floating_modifier $mod
 font pango:Terminus Bold Semi-Condensed 9
  
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id libinput-gestures
+# exec --no-startup-id libinput-gestures
 exec_always --no-startup-id ~/.config/polybar/launch.sh 
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id feh --randomize --bg-scale ~/Media/Pictures/backgrounds/*
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id feh --randomize --bg-scale ~/Media/pictures/*/*
+# exec --no-startup-id feh --bg-scale ~/Downloads/nightly/bk.png
+exec_always --no-startup-id ~/.config/i3/scripts/alternating_layouts.py 
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -23,9 +25,11 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
  
 bindsym $mod+x exec "rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
-bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Return exec st -f "Hack : size=11.5" -e tmux
 bindsym $mod+b exec brave-nightly
-bindsym $mod+c exec feh --randomize --bg-scale ~/Media/Pictures/backgrounds/*
+bindsym $mod+shift+b exec brave
+bindsym Caps_Lock exec polybar-msg cmd show 
+bindsym $mod+c exec feh --randomize --bg-scale ~/Media/pictures/*/*
 bindsym $mod+o exec ~/.config/picom/picom-toggle.sh
 bindsym $mod+q kill
 
@@ -116,7 +120,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+set $resize `                                                       
+mode "$resize" {
         bindsym h resize shrink width 9 px
         bindsym j resize grow height 9 px
         bindsym k resize shrink height 9 px
@@ -132,12 +137,13 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r exec polybar-msg cmd show ; mode "$resize"                                             
 
 # =================== windows ===========================
 title_align center 
-default_border pixel 2
-client.focused	#66ff00	#000000	#66ff00 #66ff00 #66ff00
+default_border pixel 1
+client.focused	        #00ffff	#000000	#00ffff #00ffff #00ffff
+client.focused_inactive	#000000	#000000	#00ffff #000000 #000000
 
 # ==================== MY Config =========================
 
@@ -153,14 +159,14 @@ bindsym XF86PowerOff exec polybar-msg cmd show ; mode "$mode_system"
 set $Locker i3lock --color=000000 && sleep 1
 
 # set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
-set $mode_system _ x                                                                                                                                                                          _
+set $mode_system `                                                   
 mode "$mode_system" {
     bindsym k exec --no-startup-id $Locker, mode "default"
     bindsym l exec --no-startup-id i3-msg exit
-    bindsym u exec --no-startup-id i3lock --color=000000 &&  systemctl suspend 
-    bindsym h exec --no-startup-id i3lock --color=000000  && systemctl  hibernate
-    bindsym r exec --no-startup-id systemctl reboot
-    bindsym s exec --no-startup-id systemctl poweroff
+    bindsym u exec --no-startup-id i3lock --color=000000 &&  loginctl suspend 
+    bindsym h exec --no-startup-id i3lock --color=000000  && loginctl  hibernate
+    bindsym r exec --no-startup-id loginctl reboot
+    bindsym s exec --no-startup-id loginctl poweroff
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

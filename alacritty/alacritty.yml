@@ -82,9 +82,6 @@ key_bindings:
   - key: Minus
     mods: Control
     action: DecreaseFontSize
-  - key: F11
-    mods: None
-    action: ToggleFullscreen
   - key: Paste
     mods: None
     action: Paste
