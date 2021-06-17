@@ -111,8 +111,8 @@ label-layout =
 label-indicator-padding = 130
 label-indicator-font = 6
 label-indicator-margin = 1
-label-indicator-background = #66ff00 
-label-indicator-foreground = #66ff00
+label-indicator-background = #00ffff 
+label-indicator-foreground = #00ffff
 
 [module/filesystem]
 type = internal/fs
@@ -136,7 +136,7 @@ wrapping-scroll = false
 label-mode-padding = 10
 label-mode-font = 6
 label-mode-foreground = #ff0000
-label-mode-background = #66ff00
+label-mode-background = #00ffff
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%

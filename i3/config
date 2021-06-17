@@ -24,7 +24,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
  
-bindsym $mod+x exec "rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
+bindsym $mod+x exec "rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
 bindsym $mod+Return exec st -f "Hack : size=11.5" -e tmux
 bindsym $mod+b exec brave-nightly
 bindsym $mod+shift+b exec brave
@@ -148,10 +148,10 @@ client.focused_inactive	#000000	#000000	#00ffff #000000 #000000
 # ==================== MY Config =========================
 
 # Multi-screen screenshots with scrot
- bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/Pictures/screenshots && mv $f ~/Media/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/Pictures/screenshots/`ls -1 -t ~/Media/Pictures/screenshots | head -1`' # All screens
+ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/pictures/screenshots && mv $f ~/Media/pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/pictures/screenshots/`ls -1 -t ~/Media/pictures/screenshots | head -1`' # All screens
 
 # OSX-like area selection screenshots
- bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/Pictures/screenshots && mv $f ~/Media/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/Pictures/screenshots/`ls -1 -t ~/Media/Pictures/screenshots | head -1`' # Area selection
+ bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/pictures/screenshots && mv $f ~/Media/pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/pictures/screenshots/`ls -1 -t ~/Media/pictures/screenshots | head -1`' # Area selection
 
 # ====================== Power Options =====================
 bindsym XF86PowerOff exec polybar-msg cmd show ; mode "$mode_system"

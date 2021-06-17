@@ -30,7 +30,7 @@ set nowb
 " set timeoutlen=0
 set notimeout ttimeout ttimeoutlen=40 
 set mouse=a
-set scrolloff=9 
+set scrolloff=18 
 set cursorline
 " The alacritty/tmux cursor style overrides the below property 
 " hi Cursor ctermbg=43 ctermfg=16 
@@ -85,7 +85,7 @@ noremap O O <Esc>
 " ================ Indentation ======================
 
 set autoindent
-nnoremap <F11> :set invpaste paste?<CR>
+nnoremap <F11> :set invpaste paste? <bar> :set nohlsearch<CR>
 set pastetoggle=<F11>
 set showmode 
 set smartindent
