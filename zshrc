@@ -121,9 +121,8 @@ source $ZSH/oh-my-zsh.sh
       awk '/^0/{print $2}' | \
         xargs -n 1 tmux kill-session -t"
  alias ks="tmux kill-session" 
- alias ksv="tmux kill-session" 
+ alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
- alias p="cd ~/Work/practice" 
 
  alias fm='ranger' 
  alias dm="dmenu_run"
