@@ -8,28 +8,26 @@ floating_modifier $mod
 font pango:Terminus Bold Semi-Condensed 9
  
 exec_always --no-startup-id nm-applet
-# exec --no-startup-id libinput-gestures
 exec_always --no-startup-id ~/.config/polybar/launch.sh 
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+    #exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id feh --randomize --bg-scale ~/Media/pictures/*/*
-# exec --no-startup-id feh --bg-scale ~/Downloads/nightly/bk.png
+exec --no-startup-id feh --bg-fill ~/pictures/back.png
 exec_always --no-startup-id ~/.config/i3/scripts/alternating_layouts.py 
 
 set $refresh_i3status killall -SIGUSR1 i3status
+ 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+ 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
  
 bindsym $mod+x exec "rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
-bindsym $mod+Return exec st -f "Hack : size=11.5" -e tmux
-bindsym $mod+b exec brave-nightly
-bindsym $mod+shift+b exec brave
+bindsym $mod+Return exec st -f "Hack : size=12" -e tmux
+bindsym $mod+b exec chromium
 bindsym Caps_Lock exec polybar-msg cmd show 
-bindsym $mod+c exec feh --randomize --bg-scale ~/Media/pictures/*/*
 bindsym $mod+o exec ~/.config/picom/picom-toggle.sh
 bindsym $mod+q kill
 
@@ -148,10 +146,10 @@ client.focused_inactive	#000000	#000000	#00ffff #000000 #000000
 # ==================== MY Config =========================
 
 # Multi-screen screenshots with scrot
- bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/pictures/screenshots && mv $f ~/Media/pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/pictures/screenshots/`ls -1 -t ~/Media/pictures/screenshots | head -1`' # All screens
+ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/screenshots && mv $f ~/screenshots && xclip -selection clipboard -t image/png -i ~/screenshots/`ls -1 -t ~/screenshots | head -1`' # All screens
 
 # OSX-like area selection screenshots
- bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Media/pictures/screenshots && mv $f ~/Media/pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Media/pictures/screenshots/`ls -1 -t ~/Media/pictures/screenshots | head -1`' # Area selection
+ bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/screenshots && mv $f ~/screenshots && xclip -selection clipboard -t image/png -i ~/screenshots/`ls -1 -t ~/screenshots | head -1`' # Area selection
 
 # ====================== Power Options =====================
 bindsym XF86PowerOff exec polybar-msg cmd show ; mode "$mode_system"

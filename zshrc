@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/zim/.oh-my-zsh"
+export TERM='xterm-256color' 
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -123,6 +124,9 @@ source $ZSH/oh-my-zsh.sh
  alias ks="tmux kill-session" 
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
+ alias torr='transmission-cli -w ~/torrents -D -u 30' 
+ alias atorr='aria2c -u 30 -d ~/torrents '
+ alias ytd='youtube-dl -f 140 ' 
 
  alias fm='ranger' 
  alias dm="dmenu_run"
