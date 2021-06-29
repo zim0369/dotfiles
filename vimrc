@@ -7,12 +7,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
  
 " vim find/replace highlight
- Plug 'osyo-manga/vim-over'
- Plug 'markonm/traces.vim'
+Plug 'osyo-manga/vim-over'
+Plug 'markonm/traces.vim'
+
+" YouCompleteMe 
+Plug 'ycm-core/YouCompleteMe'
 
 " easy motion
 Plug 'easymotion/vim-easymotion'
-
+ 
 call plug#end()			
   
 
@@ -20,6 +23,7 @@ call plug#end()
 " ================ File management ==================
 let mapleader="," 
 
+set rnu 
 set clipboard=unnamedplus
  
 " Turn off swap files
@@ -31,6 +35,7 @@ set nowb
 set notimeout ttimeout ttimeoutlen=40 
 set mouse=a
 set scrolloff=18 
+hi normal ctermbg=234
 set cursorline
 " The alacritty/tmux cursor style overrides the below property 
 " hi Cursor ctermbg=43 ctermfg=16 
@@ -157,6 +162,16 @@ let g:NERDTreeQuitOnOpen = 1
 " show nerd tree always on the right instead on the left
 let g:NERDTreeWinPos = "right"
 
+" Autocomplete popup
+inoremap <expr> <Up> pumvisible() ? "<C-p>" : "<Up>"
+nnoremap <silent> <C-p> :FZF -m<CR> 
+
+" ultisnips 
+set completeopt+=popup 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+ 
 " ========= template / compile / run ===============
 
 nnoremap <F8> :!cp ~/Work/templates/template.%:e %<Enter> 
