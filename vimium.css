@@ -10,7 +10,7 @@ div > .vimiumHintMarker span {
 color: #00ffff !important;
 font-weight: bold !important;
 font-size: 12px !important;
-font-family: Avenir; 
+font-family: sans; 
 }
 
 div > .vimiumHintMarker > .matchingCharacter {
@@ -71,7 +71,7 @@ color: #969696;
   }
   
   #vomnibar li {
-    border-bottom: 1px solid #00ffff;
+    border-bottom: 1px solid #1f1f1f;
     line-height: 1.1em;
     padding: 3px 6px;
     font-size: 18px;

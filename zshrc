@@ -118,16 +118,16 @@ source $ZSH/oh-my-zsh.sh
  alias ll="ls -la" 
  alias c="clear && echo" 
  alias cl="clear" 
- alias k="tmux list-sessions -F '#{session_attached} #{session_id}' | \
-      awk '/^0/{print $2}' | \
-        xargs -n 1 tmux kill-session -t"
+# alias k="tmux list-sessions -F '#{session_attached} #{session_id}' | \
+#      awk '/^0/{print $2}' | \
+#        xargs -n 1 tmux kill-session -t"
  alias ks="tmux kill-session" 
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
  alias torr='transmission-cli -w ~/torrents -D -u 30' 
  alias atorr='aria2c -u 30 -d ~/torrents '
  alias ytd='youtube-dl -f 140 ' 
- alias bak='rsync -rva movies music pictures downloads screenshots series .backup/ '
+ alias bak='rsync -rva ~/movies ~/music ~/pictures ~/downloads ~/screenshots ~/series ~/.backup/ '
 
  alias fm='ranger' 
  alias dm="dmenu_run"

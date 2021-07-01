@@ -5,16 +5,28 @@ call plug#begin('~/.vim/plugged')
  
 " nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" minimap
+Plug 'wfxr/minimap.vim'
  
 " vim find/replace highlight
 Plug 'osyo-manga/vim-over'
 Plug 'markonm/traces.vim'
 
-" YouCompleteMe 
-Plug 'ycm-core/YouCompleteMe'
-
 " easy motion
 Plug 'easymotion/vim-easymotion'
+
+" Ultisnips 
+Plug 'SirVer/ultisnips' 
+ 
+" ReactSnippets 
+Plug 'epilande/vim-react-snippets' 
+Plug 'epilande/vim-es2015-snippets' 
+
+"Autopairs
+Plug 'alvan/vim-closetag' 
+Plug 'tpope/vim-surround' 
+Plug 'jiangmiao/auto-pairs' 
  
 call plug#end()			
   
@@ -24,7 +36,6 @@ call plug#end()
 let mapleader="," 
 
 set rnu 
-set clipboard=unnamedplus
  
 " Turn off swap files
 set noswapfile
@@ -37,9 +48,12 @@ set mouse=a
 set scrolloff=18 
 hi normal ctermbg=234
 set cursorline
+" You can turn on the cursorcolumn as well by uncommenting the line below 
+" set cursorcolumn
 " The alacritty/tmux cursor style overrides the below property 
 " hi Cursor ctermbg=43 ctermfg=16 
 hi CursorLine ctermbg=17 gui=NONE term=NONE cterm=NONE
+hi CursorColumn ctermbg=17 gui=NONE term=NONE cterm=NONE
 autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=None
 autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=17
 "use guifg and guibg instead of ctermfg and ctermbg in gvim 
@@ -48,6 +62,7 @@ hi SpellCap ctermfg='white' ctermbg=22
 hi SignColumn ctermfg='white' ctermbg=16
 hi Visual  ctermfg=16 ctermbg=14 
 hi Search ctermfg=16 ctermbg=3 
+hi MinimapCurrentLine ctermfg=Red
  
 " Don't know which color this handles
 " hi IncSearch ctermfg=16 ctermbg=4 
@@ -83,6 +98,16 @@ nnoremap K 6k
 vnoremap J 6j
 vnoremap K 6k
 
+" nohl
+nnoremap <leader>h :nohlsearch<CR>
+
+" paste mode 
+" nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
+nnoremap <leader>p "+P
+ 
+" Copy from vim
+vnoremap <leader>y "+y
+
 " stay in normal mode after inserting a new line
 noremap o o <Esc>
 noremap O O <Esc>
@@ -90,8 +115,6 @@ noremap O O <Esc>
 " ================ Indentation ======================
 
 set autoindent
-nnoremap <F11> :set invpaste paste? <bar> :set nohlsearch<CR>
-set pastetoggle=<F11>
 set showmode 
 set smartindent
 filetype indent on 
@@ -103,7 +126,8 @@ set expandtab
 " ================ Number column ====================
 
 " To toggle numbering
- nmap <silent> <F10> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+ nmap <leader>i :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+ nmap <leader>m :MinimapToggle <CR> 
 
 " ================ Searching ========================
 
@@ -119,19 +143,10 @@ set smartcase
 " Highlight search results
 set hlsearch
 
-" toggle search highlighting
-" nnoremap <F3> :set hlsearch!<CR>
-
-" get rid of stuff highlighted before
-" map <esc> :noh<cr>
-
 " ================ Performance ======================
 
 " fix slow scrolling that occurs when using mouse and relative numbers
 set lazyredraw
-" vim timeout (forgot why I need this or if I do at all)
-" set ttyfast
-" set ttimeoutlen=10
 
 " ================ Misc =============================
 
@@ -156,11 +171,14 @@ set backspace=indent,eol,start
 
 " ================ Plugins ==========================
 
-" quit nerd tree on file open
+" Nerdtree stuff 
 let g:NERDTreeQuitOnOpen = 1
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 
 " show nerd tree always on the right instead on the left
 let g:NERDTreeWinPos = "right"
+ 
 
 " Autocomplete popup
 inoremap <expr> <Up> pumvisible() ? "<C-p>" : "<Up>"
@@ -171,13 +189,64 @@ set completeopt+=popup
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" vim closetags
+  
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
  
+" Minimap 
+let g:minimap_width = 4
+let g:minimap_highlight = 'MinimapCurrentLine'
+let g:minimap_left = 1
+
+
 " ========= template / compile / run ===============
 
-nnoremap <F8> :!cp ~/Work/templates/template.%:e %<Enter> 
+nnoremap <leader>t :!cp ~/templates/template.%:e %<Enter> 
  
-"f9 to run current filetype
-map <F9> :call CompileRunGcc()<CR>
+"shortcut to run current filetype
+map <leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 exec "w"
 if &filetype == 'c'
@@ -198,15 +267,10 @@ exec "!clear && time python3 %"
 elseif &filetype == 'javascript'
 exec "!clear && time node %"
 elseif &filetype == 'html'
-exec "!brave-nightly % &"
+exec "!brave % &"
 elseif &filetype == 'go'
 exec "!go build %<"
 exec "!clear && time go run %"
 endif
 endfunc
 
-" Nerdtree stuff 
-" nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-y> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
