@@ -121,7 +121,8 @@ source $ZSH/oh-my-zsh.sh
 # alias k="tmux list-sessions -F '#{session_attached} #{session_id}' | \
 #      awk '/^0/{print $2}' | \
 #        xargs -n 1 tmux kill-session -t"
- alias ks="tmux kill-session" 
+ alias ts='tmux list-sessions' 
+ alias ks="tmux kill-session -t" 
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
  alias torr='transmission-cli -w ~/torrents -D -u 30' 

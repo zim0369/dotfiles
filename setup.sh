@@ -1,7 +1,3 @@
-
-git clone https://github.com/zim0369/dotfiles /home/$USER/dotfiles
-cd ~/dotfiles 
-echo "inside the repo" 
 cp -rd alacritty ~/.config/
 cp -rd i3 ~/.config/
 cp -rd picom ~/.config/

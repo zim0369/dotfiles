@@ -27,7 +27,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
 bindsym $mod+x exec "rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
 bindsym $mod+Return exec st -f "Hack : size=12" -e tmux
 bindsym $mod+shift+Return exec alacritty -e tmux 
-bindsym $mod+b exec brave
+bindsym $mod+b exec google-chrome-stable
 bindsym Caps_Lock exec polybar-msg cmd show 
 bindsym $mod+o exec ~/.config/picom/picom-toggle.sh
 bindsym $mod+q kill
