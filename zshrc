@@ -125,6 +125,7 @@ source $ZSH/oh-my-zsh.sh
  alias ks="tmux kill-session -t" 
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
+ alias rofi="rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000' &"
  alias torr='transmission-cli -w ~/torrents -D -u 30' 
  alias atorr='aria2c -u 30 -d ~/torrents '
  alias ytd='youtube-dl -f 140 ' 

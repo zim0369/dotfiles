@@ -1,7 +1,8 @@
-az: https://www.amazon.com/s/?field-keywords=%s      Amazon
+a: https://www.amazon.com/s/?field-keywords=%s      Amazon
 ai: https://www.amazon.in/s/?field-keywords=%s       Amazon India
 b: https://search.brave.com/search?q=%s              Brave
 d: https://duckduckgo.com/?q=%s                      DuckDuckGo
+f: https://www.flipkart.com/search?q=%s               Flipkart
 g: https://www.google.com/search?q=%s                Google
 p: https://pirate-bays.net/search/?q=%s              Piratebay
 x: https://searx.info/search?q=%s                    Searx

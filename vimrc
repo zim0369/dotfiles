@@ -43,6 +43,7 @@ let mapleader=","
 set rnu 
  
 colorscheme monokai-phoenix
+" colorscheme Tomorrow
  
 " Turn off swap files
 set noswapfile
@@ -59,6 +60,7 @@ set cursorline
 " set cursorcolumn
 " The alacritty/tmux cursor style overrides the below property 
 " hi Cursor ctermbg=43 ctermfg=16 
+" dark=235 light=157
 hi CursorLine ctermbg=235 gui=NONE term=NONE cterm=NONE
 hi CursorColumn ctermbg=17 gui=NONE term=NONE cterm=NONE
 autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=None
