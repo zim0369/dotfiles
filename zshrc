@@ -31,7 +31,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=3
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -126,6 +126,7 @@ source $ZSH/oh-my-zsh.sh
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
  alias rofi="rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000' &"
+ alias ungoogled-chromium='exec /opt/ungoogled-chromium_91.0.4472.114-1.1.AppImage' 
  alias torr='transmission-cli -w ~/torrents -D -u 30' 
  alias atorr='aria2c -u 30 -d ~/torrents '
  alias ytd='youtube-dl -f 140 ' 
