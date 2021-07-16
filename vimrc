@@ -121,8 +121,8 @@ nnoremap <leader>p "+P
 vnoremap <leader>y "+y
 
 " stay in normal mode after inserting a new line
-noremap o o <Esc>
-noremap O O <Esc>
+noremap o o<Esc>
+noremap O O<Esc>
 
 " ================ Indentation ======================
 
