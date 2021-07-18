@@ -4,13 +4,13 @@
 call plug#begin('~/.vim/plugged')
  
 " vim colorschemes
-Plug 'flazz/vim-colorschemes' 
+Plug 'flazz/vim-colorschemes'
  
-" i3 config highlight 
-Plug 'mboughaba/i3config.vim'
+" i3 config highlight (In Case you use i3)
+" Plug 'mboughaba/i3config.vim'
  
-" vim-devicons 
-Plug 'ryanoasis/vim-devicons'  
+" vim-devicons (Icons for my sweet nerdtree)
+Plug 'ryanoasis/vim-devicons'
 
 " vim find/replace highlight
 Plug 'osyo-manga/vim-over'
@@ -22,13 +22,17 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
-"Autopairs
-Plug 'alvan/vim-closetag' 
-Plug 'tpope/vim-surround' 
+"Autopairs (Use coc-pairs)
+
+" Controlling pairs
+Plug 'tpope/vim-surround'
+
+" Auto-closing tags
+Plug 'alvan/vim-closetag'
  
-" ReactSnippets 
-Plug 'epilande/vim-react-snippets' 
-Plug 'epilande/vim-es2015-snippets' 
+" ReactSnippets
+" Plug 'epilande/vim-react-snippets' 
+" Plug 'epilande/vim-es2015-snippets' 
 
 " coc nvim 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -101,8 +105,15 @@ set encoding=UTF-8
 " ================ Key-bindings ================
   
 " clipboard 
-"  
-imap ;; <Esc>
+" paste mode 
+" nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
+nnoremap <leader>p "+P
+ 
+" Copy from vim
+vnoremap <leader>y "+y
+
+" Swaped escape and caps lock so I don't need to use the mapping below 
+" imap ;; <Esc>
 
 " fast scrolling
 nnoremap J 6j
@@ -112,13 +123,6 @@ vnoremap K 6k
 
 " nohl
 nnoremap <leader>h :nohlsearch<CR>
-
-" paste mode 
-" nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
-nnoremap <leader>p "+P
- 
-" Copy from vim
-vnoremap <leader>y "+y
 
 " stay in normal mode after inserting a new line
 noremap o o<Esc>

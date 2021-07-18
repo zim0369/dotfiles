@@ -11,6 +11,8 @@ window:
     general: Alacritty
 scrolling:
   history: 5000
+  multiplier: 3
+  auto_scroll: false
 font:
   normal:
     family: Source Code Pro
@@ -30,41 +32,41 @@ font:
     y: 1
 draw_bold_text_with_bright_colors: true
 colors:
-  name: FarSide
-  author: Baskerville
+  name: 3024 (dark)
+  author: Chris Kempson
   primary:
-    background: "#000000"
-    foreground: "#919191"
+    background: "#090300"
+    foreground: "#a5a2a2"
   cursor:
-    text: "#000000"
-    cursor: "#919191"
+    text: "#090300"
+    cursor: "#a5a2a2"
   normal:
-    black: "#303030"
-    red: "#a43261"
-    green: "#006ca5"
-    yellow: "#007086"
-    blue: "#6751a6"
-    magenta: "#913e88"
-    cyan: "#0061b1"
-    white: "#c6c6c6"
+    black: "#090300"
+    red: "#db2d20"
+    green: "#01a252"
+    yellow: "#fded02"
+    blue: "#01a0e4"
+    magenta: "#a16a94"
+    cyan: "#b5e4f4"
+    white: "#a5a2a2"
   bright:
-    black: "#5e5e5e"
-    red: "#ff9fc9"
-    green: "#3bd6ff"
-    yellow: "#00ddf4"
-    blue: "#d5b8ff"
-    magenta: "#ffa7f6"
-    cyan: "#93c9ff"
-    white: "#ffffff"
+    black: "#5c5855"
+    red: "#db2d20"
+    green: "#01a252"
+    yellow: "#fded02"
+    blue: "#01a0e4"
+    magenta: "#a16a94"
+    cyan: "#b5e4f4"
+    white: "#f7f7f7"
 background_opacity: 1
 shell:
-  program: /usr/bin/zsh
+  program: /usr/bin/bash
 key_bindings:
   - key: V
     mods: Control|Shift
     action: Paste
   - key: P
-    mods: Super
+    mods: Alt
     action: Paste
   - key: C
     mods: Control|Shift
@@ -101,17 +103,23 @@ key_bindings:
     chars: "\f"
   - key: PageUp
     mods: None
-    action: ScrollPageUp
+    action: ScrollHalfPageUp
     mode: ~Alt
   - key: PageDown
     mods: None
-    action: ScrollPageDown
+    action: ScrollHalfPageDown
     mode: ~Alt
-  - key: Home
-    mods: Shift
+  - key: PageUp
+    mods: Alt
     action: ScrollToTop
     mode: ~Alt
-  - key: End
-    mods: Shift
+  - key: PageDown
+    mods: Alt
     action: ScrollToBottom
     mode: ~Alt
+  - key: J
+    mods: Alt
+    action: ScrollLineDown
+  - key: K
+    mods: Alt
+    action: ScrollLineUp
