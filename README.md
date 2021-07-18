@@ -1,3 +1,5 @@
+I DON'T USE I3 ANYMORE, INSTEAD I'M USING DWM NOW SO PROLLY WOULDN'T MAINTAIN THE I3 STUFF AND MY XINITRC HAS ALSO EVOLVED A LOT(BE CAREFUL WITH THE SETXKBMAP IN MY XINITRC).
+
 Please read the instructions and install the following packages before using any of the configs to avoid a bad experience :
 
 i3 : scrot(screenshots), polybar(statusbar), picom(compositor), feh(backgrounds), libinput-gestures(optional), i3lock, pulseaudio(audio), rofi(app menu),...
