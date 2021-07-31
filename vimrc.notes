@@ -1,0 +1,180 @@
+
+
+
+call plug#begin('~/.vim/plugged')
+ 
+" vim colorschemes
+Plug 'flazz/vim-colorschemes'
+
+" css color value color preview
+Plug 'ap/vim-css-color'
+ 
+" vim-devicons (Icons for my sweet nerdtree)
+Plug 'ryanoasis/vim-devicons'
+
+" vim find/replace highlight
+Plug 'osyo-manga/vim-over'
+Plug 'markonm/traces.vim'
+  
+" nerd tree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" easy motion
+Plug 'easymotion/vim-easymotion'
+
+"Autopairs (auto-pairs to insert and vim-surround to modify)
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'tpope/vim-surround'
+ 
+call plug#end()			
+
+
+
+" ================ File management ==================
+let mapleader="," 
+
+set rnu 
+ 
+colorscheme monokai-phoenix
+ 
+" Turn off swap files
+set noswapfile
+set nobackup
+set nowb
+ 
+" set timeoutlen=0
+set notimeout ttimeout ttimeoutlen=40 
+set mouse=a
+set scrolloff=18 
+"hi normal ctermbg=234 (Don't know what this does)
+set cursorline
+set cursorcolumn
+
+"spell check
+set spell
+set spelllang=en_us
+
+hi Cursor ctermbg=43 ctermfg=16 
+hi CursorLine ctermbg=235 term=NONE cterm=NONE
+hi CursorColumn ctermbg=17 term=NONE cterm=NONE
+autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=None
+autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=235
+" hi SpellBad ctermfg=009 ctermbg=011 
+" hi SpellCap ctermfg=15 ctermbg=33
+" hi SignColumn ctermfg='white' ctermbg=16
+hi Visual  ctermfg=16 ctermbg=14 
+hi Search ctermfg=16 ctermbg=3 
+ 
+" reload files changed outside vim
+set autoread
+" Triger `autoread` when files changes on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
+" ================ Folds ============================
+
+" ================ Encoding =========================
+"
+set encoding=UTF-8
+
+" ================ Key-bindings ================
+  
+" nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
+nnoremap <leader>p "+P
+ 
+" Copy from vim
+vnoremap <leader>y "+y
+
+" fast scrolling
+nnoremap J 6j
+nnoremap K 6k
+vnoremap J 6j
+vnoremap K 6k
+
+" nohl
+" nnoremap <leader>h :nohlsearch<CR>
+nnoremap <silent><expr> <Leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+
+
+" stay in normal mode after inserting a new line
+noremap o o<Esc>
+noremap O O<Esc>
+
+" ================ Indentation ======================
+
+set autoindent
+set showmode 
+set smartindent
+filetype indent on 
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set expandtab
+
+" ================ Number column ====================
+
+" To toggle numbering
+ nmap <leader>i :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+
+" ================ Searching ========================
+
+" Ignorecase when searching
+set ignorecase
+
+" incremental search - Vim starts searching when we start typing
+set incsearch
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" ================ Performance ======================
+
+" fix slow scrolling that occurs when using mouse and relative numbers
+set lazyredraw
+
+" ================ Misc =============================
+
+filetype plugin on
+syntax on 
+
+" Spelling 
+nn <leader>s :setlocal spell! spell?<CR>
+
+" highlight matching braces
+set showmatch
+
+" How many tenths of a second to blink when matching brackets
+set mat=0
+
+" Use tab completion everywhere 
+set wildmenu
+
+" disable wrapping of long lines into multiple lines
+" set nowrap
+
+" history
+set history=1000
+
+" on some systems the backspace does not work as expected.
+" this fixes the problem
+set backspace=indent,eol,start
+
+" set signcolumn=yes
+
+" ================ Plugins ==========================
+
+" Nerdtree stuff 
+let g:NERDTreeQuitOnOpen = 1
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+
+" show nerd tree always on the right instead on the left
+let g:NERDTreeWinPos = "right"
+ 
+" ================================================================

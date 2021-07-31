@@ -26,41 +26,39 @@ font:
   bold_italic:
     family: Source Code Pro
     style: Bold Italic
-  size: 7.5
+  size: 8.5
   offset:
     x: 0
     y: 1
 draw_bold_text_with_bright_colors: true
 colors:
-  name: 3024 (dark)
-  author: Chris Kempson
   primary:
-    background: "#090300"
-    foreground: "#a5a2a2"
+    background: "#292C3E"
+    foreground: "#EBEBEB"
   cursor:
-    text: "#090300"
-    cursor: "#a5a2a2"
+    text: "#FF261E"
+    cursor: "#FF261E"
   normal:
-    black: "#090300"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#a5a2a2"
+    black: "#0d0d0d"
+    red: "#FF301B"
+    green: "#A0E521"
+    yellow: "#FFC620"
+    blue: "#1BA6FA"
+    magenta: "#8763B8"
+    cyan: "#21DEEF"
+    white: "#EBEBEB"
   bright:
-    black: "#5c5855"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#f7f7f7"
+    black: "#6D7070"
+    red: "#FF4352"
+    green: "#B8E466"
+    yellow: "#FFD750"
+    blue: "#1BA6FA"
+    magenta: "#A578EA"
+    cyan: "#73FBF1"
+    white: "#FEFEF8"
 background_opacity: 1
 shell:
-  program: /usr/bin/bash
+  program: /bin/bash
 key_bindings:
   - key: V
     mods: Control|Shift
@@ -70,6 +68,9 @@ key_bindings:
     action: Paste
   - key: C
     mods: Control|Shift
+    action: Copy
+  - key: Y
+    mods: Alt
     action: Copy
   - key: Insert
     mods: Shift

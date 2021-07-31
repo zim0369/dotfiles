@@ -1,14 +1,14 @@
 # ~/.bashrc
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-PS1='[\u@\h \W]\$ '
-
-# Using ble.sh with bash instead of running heavy zsh with even heavier oh my zsh ( You can find ble.sh on github)
-source ~/.local/share/blesh/ble.sh
+# Bash Prompt
+# PS1="\[\e[2;33m\]\[\e[2;40m\] \W  \n"
+PS1="\w -> " # Minimalism
 
 # VI MODE
 set -o vi
+
+# ble.sh
+source ~/.local/share/blesh/ble.sh
 
 alias ls='ls --color=auto'
 # Example aliases
@@ -25,6 +25,7 @@ alias ls='ls --color=auto'
  alias l="ls" 
  alias ll="ls -la" 
  alias cl="clear" 
+
  alias ts='tmux list-sessions' 
  alias ks="tmux kill-session -t" 
  alias ksv="tmux kill-server" 
@@ -35,3 +36,4 @@ alias ls='ls --color=auto'
  alias atorr='aria2c -u 30 -d ~/torrents '
  alias bak='rsync -rva ~/movies ~/music ~/pictures ~/downloads ~/screenshots ~/series ~/.backup/ '
  alias fm='ranger' 
+ alias suspend='systemctl suspend && slock'

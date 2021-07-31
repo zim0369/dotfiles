@@ -5,6 +5,9 @@ call plug#begin('~/.vim/plugged')
  
 " vim colorschemes
 Plug 'flazz/vim-colorschemes'
+
+" css color value color preview
+Plug 'ap/vim-css-color'
  
 " i3 config highlight (In Case you use i3)
 " Plug 'mboughaba/i3config.vim'
