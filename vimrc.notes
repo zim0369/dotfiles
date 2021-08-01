@@ -6,26 +6,18 @@ call plug#begin('~/.vim/plugged')
 " vim colorschemes
 Plug 'flazz/vim-colorschemes'
 
-" css color value color preview
-Plug 'ap/vim-css-color'
- 
 " vim-devicons (Icons for my sweet nerdtree)
 Plug 'ryanoasis/vim-devicons'
 
-" vim find/replace highlight
-Plug 'osyo-manga/vim-over'
-Plug 'markonm/traces.vim'
-  
 " nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
-"Autopairs (auto-pairs to insert and vim-surround to modify)
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'tpope/vim-surround'
- 
+" vim wiki to make notes
+Plug 'vimwiki/vimwiki'
+
 call plug#end()			
 
 
@@ -59,8 +51,8 @@ hi CursorLine ctermbg=235 term=NONE cterm=NONE
 hi CursorColumn ctermbg=17 term=NONE cterm=NONE
 autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=None
 autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=235
-" hi SpellBad ctermfg=009 ctermbg=011 
-" hi SpellCap ctermfg=15 ctermbg=33
+autocmd BufEnter * hi SpellBad cterm=None ctermfg=None ctermbg=23 
+autocmd BufEnter * hi SpellCap cterm=None ctermfg=None ctermbg=95
 " hi SignColumn ctermfg='white' ctermbg=16
 hi Visual  ctermfg=16 ctermbg=14 
 hi Search ctermfg=16 ctermbg=3 
@@ -81,10 +73,14 @@ autocmd FileChangedShellPost *
 set encoding=UTF-8
 
 " ================ Key-bindings ================
+
+" Spell Correction
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>
   
 " nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
-nnoremap <leader>p "+P
- 
+nnoremap <leader>p "+p
+
 " Copy from vim
 vnoremap <leader>y "+y
 
@@ -140,8 +136,12 @@ set lazyredraw
 
 " ================ Misc =============================
 
+set nocompatible
 filetype plugin on
 syntax on 
+
+" Source vimrc
+map <leader>v :source ~/.vimrc<CR>
 
 " Spelling 
 nn <leader>s :setlocal spell! spell?<CR>
