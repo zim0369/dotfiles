@@ -7,4 +7,5 @@ g:   https://www.google.com/search?q=%s                Google
 p:   https://pirate-bays.net/search/?q=%s              Piratebay
 r:   https://www.reddit.com/search/?q=%s               Reddit
 x:   https://searx.info/search?q=%s                    Searx
-y:   https://www.youtube.com/results?search_query=%s   Youtube
+y:   https://invidious.fdn.fr/search?q=%s              Youtube
+
