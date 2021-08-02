@@ -51,8 +51,8 @@ hi CursorLine ctermbg=235 term=NONE cterm=NONE
 hi CursorColumn ctermbg=17 term=NONE cterm=NONE
 autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=None
 autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=235
-autocmd BufEnter * hi SpellBad cterm=None ctermfg=None ctermbg=23 
-autocmd BufEnter * hi SpellCap cterm=None ctermfg=None ctermbg=95
+autocmd VimEnter * hi SpellBad cterm=None ctermfg=None ctermbg=23 
+autocmd VimEnter * hi SpellCap cterm=None ctermfg=None ctermbg=95
 " hi SignColumn ctermfg='white' ctermbg=16
 hi Visual  ctermfg=16 ctermbg=14 
 hi Search ctermfg=16 ctermbg=3 
@@ -75,8 +75,8 @@ set encoding=UTF-8
 " ================ Key-bindings ================
 
 " Spell Correction
-imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
-nmap <c-f> [s1z=<c-o>
+imap <leader>l <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <leader>l [s1z=<c-o>
   
 " nnoremap <leader>p :set invpaste paste? <bar> :set nohlsearch<CR>
 nnoremap <leader>p "+p
@@ -89,6 +89,11 @@ nnoremap J 6j
 nnoremap K 6k
 vnoremap J 6j
 vnoremap K 6k
+" fast scrolling
+nnoremap H 3h
+nnoremap L 3l
+vnoremap H 3h
+vnoremap L 3l
 
 " nohl
 " nnoremap <leader>h :nohlsearch<CR>

@@ -4,8 +4,8 @@ b:   https://search.brave.com/search?q=%s              Brave
 d:   https://duckduckgo.com/?q=%s                      DuckDuckGo
 f:   https://www.flipkart.com/search?q=%s              Flipkart
 g:   https://www.google.com/search?q=%s                Google
+m:   https://www.merriam-webster.com/dictionary/%s     Merriam
 p:   https://pirate-bays.net/search/?q=%s              Piratebay
 r:   https://www.reddit.com/search/?q=%s               Reddit
 x:   https://searx.info/search?q=%s                    Searx
 y:   https://invidious.fdn.fr/search?q=%s              Youtube
-
