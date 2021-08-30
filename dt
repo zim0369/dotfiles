@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp ~/.Xresources.dark ~/.Xresources
+xrdb ~/.Xresources
+sed -i 's/set background=light/set background=dark/g' ~/.vimrc
+sed -i 's/calmar256-light/monokai-phoenix/g' ~/.vimrc
+

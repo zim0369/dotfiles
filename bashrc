@@ -1,8 +1,10 @@
 # ~/.bashrc
 
+export LANG=en_US.UTF-8
+
 # Bash Prompt
-# PS1="\[\e[1;35m\]\[\e[2;40m\] \w   "
-PS1="\[\e[1;33m\]\w   "
+# PS1="\[\e[1;35m\]\[\e[2;40m\]   [\w] \n  "
+PS1="\[\e[1;33m\]   [\w] \n  "
 
 # VI MODE
 set -o vi

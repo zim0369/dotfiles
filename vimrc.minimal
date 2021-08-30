@@ -2,11 +2,8 @@
 
 call plug#begin('~/.vim/plugged')
 
-" vim colorschemes
+" colorschemes
 Plug 'flazz/vim-colorschemes'
- 
-" vim-devicons (Icons for my sweet nerdtree)
-Plug 'ryanoasis/vim-devicons'
 
 " nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -17,6 +14,9 @@ Plug 'easymotion/vim-easymotion'
 " rustfmt
 Plug 'rust-lang/rust.vim'
 
+" vim-devicons (Icons for my sweet nerdtree)
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()			
 
 
@@ -25,9 +25,10 @@ let mapleader=","
 
 " ====================== Plugin-settings ==========================
 "
-"                           Colorscheme
+"                           COLORSCHEMES
 colorscheme monokai-phoenix
-
+"
+"
 "                           NERDTREE
 let g:NERDTreeQuitOnOpen = 1
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -94,6 +95,9 @@ vnoremap L 3l
 
 " numbering
 set rnu 
+
+" background
+set background=dark
  
 " Cursors
 set cursorline
@@ -169,23 +173,23 @@ set lazyredraw
 
 " ========================= Highlighting  ============================
 
- hi Cursor ctermbg=219 ctermfg=16 
- hi CursorLine ctermbg=237 term=NONE cterm=NONE
- hi CursorColumn ctermbg=236 term=NONE cterm=NONE
- hi Visual  ctermfg=None ctermbg=239
- hi Search ctermfg=16 ctermbg=51
- hi SignColumn ctermfg=9 ctermbg=16
- hi LineNr ctermfg=143 ctermbg=none
-
- " autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=237
- " autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=237
- " autocmd VimEnter * hi SpellBad cterm=None ctermfg=16 ctermbg=159 
- " autocmd VimEnter * hi SpellCap cterm=None ctermfg=16 ctermbg=147
- 
- hi EasyMotionTarget ctermbg=16 ctermfg=47
- hi EasyMotionShade  ctermbg=none ctermfg=253
- hi EasyMotionTarget2First ctermbg=16 ctermfg=47
- hi EasyMotionTarget2Second ctermbg=16 ctermfg=47
+" hi Cursor ctermbg=219 ctermfg=16 
+" hi CursorLine ctermbg=236 term=NONE cterm=NONE
+" hi CursorColumn ctermbg=236 term=NONE cterm=NONE
+" hi Visual  ctermfg=None ctermbg=239
+" hi Search ctermfg=16 ctermbg=51
+" hi SignColumn ctermfg=9 ctermbg=16
+" hi LineNr ctermfg=143 ctermbg=none
+"
+" " autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=237
+" " autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=237
+" " autocmd VimEnter * hi SpellBad cterm=None ctermfg=16 ctermbg=159 
+" " autocmd VimEnter * hi SpellCap cterm=None ctermfg=16 ctermbg=147
+" 
+" hi EasyMotionTarget ctermbg=16 ctermfg=47
+" hi EasyMotionShade  ctermbg=none ctermfg=253
+" hi EasyMotionTarget2First ctermbg=16 ctermfg=47
+" hi EasyMotionTarget2Second ctermbg=16 ctermfg=47
  
 " ================ Folds ============================
 
