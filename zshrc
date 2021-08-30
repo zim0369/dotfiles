@@ -123,6 +123,7 @@ source $ZSH/oh-my-zsh.sh
 #        xargs -n 1 tmux kill-session -t"
  alias ts='tmux list-sessions' 
  alias ks="tmux kill-session -t" 
+ alias kds="tmux list-sessions -F '#{session_attached} #{session_id}' | awk '/^0/{print $2}' | xargs -n 1 tmux kill-session -t"
  alias ksv="tmux kill-server" 
  alias pacman="sudo pacman" 
  alias rofi="rofi -icon-theme 'Papirus' -show-icons -font 'hack 11' -modi window,drun,run -show drun -sidebar-mode -terminal st -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000' &"

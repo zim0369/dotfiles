@@ -1,0 +1,9 @@
+coding and building
+bittorrent client
+shell (dump ble.sh, ohmyzsh, fish once and for all )
+terminal emulator
+OS ( bootloader, kernel ...)
+
+====> FUTURE IDEAS
+A pen with the tip which actually is a chainsaw - A great scissor alternative.
+A meds box with a digital screen that shows the time and date of when it was last opened - In case you forget whether if you had your meds or nah.

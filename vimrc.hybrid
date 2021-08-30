@@ -1,11 +1,10 @@
 
 
-
 call plug#begin('~/.vim/plugged')
- 
-" vim colorschemes
-" Plug 'flazz/vim-colorschemes'
 
+" vim colorschemes
+Plug 'flazz/vim-colorschemes'
+ 
 " vim-devicons (Icons for my sweet nerdtree)
 Plug 'ryanoasis/vim-devicons'
 
@@ -15,8 +14,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
-" vim wiki to make notes
-Plug 'vimwiki/vimwiki'
+" rustfmt
+Plug 'rust-lang/rust.vim'
 
 call plug#end()			
 
@@ -25,6 +24,9 @@ call plug#end()
 let mapleader="," 
 
 " ====================== Plugin-settings ==========================
+"
+"                           Colorscheme
+colorscheme monokai-phoenix
 
 "                           NERDTREE
 let g:NERDTreeQuitOnOpen = 1
@@ -36,14 +38,19 @@ let g:NERDTreeWinPos = "right"
 
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
- 
-"                       VIM COLORSCHEMES
-" colorscheme Atelier_DuneLight
 
+"                             RUST
+" auto format rust code 
+let g:rustfmt_autosave = 1
+ 
 " ======================= Key-bindings ==========================
 
 " Spell-check
-nn <leader>s :setlocal spell! spell?<CR>
+" nn <leader>s :setlocal spell! spell?<CR>
+
+" Spell Correction
+" imap <leader>l <c-g>u<Esc>[s1z=`]a<c-g>u
+" nmap <leader>l [s1z=<c-o>
 
 " Copy pasting (Using gvim to use inbuilt clipboards)
 nnoremap <leader>p "+p
@@ -51,10 +58,6 @@ vnoremap <leader>y "+y
 
 " Source vimrc
 map <leader>v :source ~/.vimrc<CR>
-
-" Spell Correction
-imap <leader>l <c-g>u<Esc>[s1z=`]a<c-g>u
-nmap <leader>l [s1z=<c-o>
 
 " To toggle numbering
  nmap <leader>i :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
@@ -89,9 +92,6 @@ vnoremap L 3l
 
 " ============================ Switches/Misc =============================
 
-" Background color
-set background=light
-
 " numbering
 set rnu 
  
@@ -109,8 +109,8 @@ filetype plugin on
 syntax on 
 
 " Spelling 
-set spell
-set spelllang=en_us
+" set spell
+" set spelllang=en_us
 
 " highlight matching braces
 set showmatch
@@ -169,16 +169,23 @@ set lazyredraw
 
 " ========================= Highlighting  ============================
 
-hi Cursor ctermbg=219 ctermfg=16 
-hi CursorLine ctermbg=229 term=NONE cterm=NONE
-hi CursorColumn ctermbg=229 term=NONE cterm=NONE
-autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=229
-autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=229
-autocmd VimEnter * hi SpellBad cterm=None ctermfg=None ctermbg=158 
-autocmd VimEnter * hi SpellCap cterm=None ctermfg=None ctermbg=147
-" hi SignColumn ctermfg='white' ctermbg=16
-hi Visual  ctermfg=None ctermbg=228
-hi Search ctermfg=16 ctermbg=84 
+ hi Cursor ctermbg=219 ctermfg=16 
+ hi CursorLine ctermbg=237 term=NONE cterm=NONE
+ hi CursorColumn ctermbg=236 term=NONE cterm=NONE
+ hi Visual  ctermfg=None ctermbg=239
+ hi Search ctermfg=16 ctermbg=51
+ hi SignColumn ctermfg=9 ctermbg=16
+ hi LineNr ctermfg=143 ctermbg=none
+
+ " autocmd InsertEnter * highlight CursorLine ctermfg=None ctermbg=237
+ " autocmd InsertLeave * highlight CursorLine ctermfg=None ctermbg=237
+ " autocmd VimEnter * hi SpellBad cterm=None ctermfg=16 ctermbg=159 
+ " autocmd VimEnter * hi SpellCap cterm=None ctermfg=16 ctermbg=147
+ 
+ hi EasyMotionTarget ctermbg=16 ctermfg=47
+ hi EasyMotionShade  ctermbg=none ctermfg=253
+ hi EasyMotionTarget2First ctermbg=16 ctermfg=47
+ hi EasyMotionTarget2Second ctermbg=16 ctermfg=47
  
 " ================ Folds ============================
 
@@ -197,6 +204,41 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" ========= template / compile / run ===============
 
+nnoremap <leader>t :!cp ~/templates/template.%:e %<Enter> 
+ 
+"shortcut to run current filetype
+map <leader>r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+exec "w"
+if &filetype == 'c'
+exec "!gcc % -o %<"
+exec "!clear && time ./%<"
+elseif &filetype == 'cpp'
+exec "!g++ % -o %<"
+exec "!clear && time ./%<"
+elseif &filetype == 'rust'
+exec "!rustc %"
+exec "!time ./%<"
+elseif &filetype == 'java'
+exec "!javac %"
+exec "!clear && time java -cp %:p:h %:t:r"
+elseif &filetype == 'sh'
+exec "!clear && time bash %"
+elseif &filetype == 'text'
+exec "!clear && echo 'words : ' && wc -w % && echo 'lines : ' && wc -l % && echo 'size : ' && du -h %"
+elseif &filetype == 'python'
+exec "!clear && time python3 %"
+elseif &filetype == 'javascript'
+exec "!clear && time node %"
+elseif &filetype == 'html'
+exec "!chromium % &"
+elseif &filetype == 'go'
+exec "!go build %<"
+exec "!clear && time go run %"
+endif
+endfunc
 
 " ====================================================================
+

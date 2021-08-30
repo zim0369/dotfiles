@@ -57,11 +57,11 @@ setxkbmap -option altwin:swap_alt_win
 # pulseaudio
 pulseaudio --start &
 
-# network-manager-applet
-nm-applet & 
+# networking
+connman-gtk --use-fsid
 
 # statusbar
-/opt/dwm-bar/dwm_bar.sh &
+/opt/bar/dwm_bar.sh &
  
 # background 
 feh --randomize --bg-scale ~/pictures/*
