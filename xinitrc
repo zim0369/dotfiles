@@ -54,21 +54,9 @@ setxkbmap -option caps:swapescape # sudo loadkeys ~/.keystrings (in tty)
 # Change all the alt keys to super and vice-versa
 setxkbmap -option altwin:swap_alt_win
 
-# pulseaudio
+nm-applet &
 pulseaudio --start &
-
-# networking
-connman-gtk --use-fsid
-
-# statusbar
-/opt/bar/dwm_bar.sh &
+feh  --randomize --bg-scale ~/pictures/minimal/archneon.png
+ /opt/bar/dwm_bar.sh &
  
-# background 
-feh --randomize --bg-scale ~/pictures/*
-
-# loop
-while true; do
-	dwm > /dev/null 2>&1
-done
-
-exec dwm
+ exec dwm

@@ -1,0 +1,41 @@
+
+! CLIPBOARD
+URxvt.perl-ext-common:  ...,clipboard,...
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-y: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste
+
+! SCROLLBAR
+! Don not show scrollbar
+URxvt*scrollBar: false
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! FONT
+URxvt.font: xft:Hack Nerd Font Mono:size=10
+
+! THEME
+! Atom One Light theme
+urxvt*background: #f9f9f9
+urxvt*foreground: #383a42
+urxvt*cursorColor: #d0d0d0
+urxvt*color0: #000000
+urxvt*color1: #E45649
+urxvt*color2: #50A14F
+urxvt*color3: #986801
+urxvt*color4: #4078F2
+urxvt*color5: #A626A4
+urxvt*color6: #0184BC
+urxvt*color7: #A0A1A7
+urxvt*color8: #5c6370
+urxvt*color9: #e06c75
+urxvt*color10: #50A14F
+urxvt*color11: #986801
+urxvt*color12: #4078F2
+urxvt*color13: #A626A4
+urxvt*color14: #0184BC
+urxvt*color15: #ffffff
