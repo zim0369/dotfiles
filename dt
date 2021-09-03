@@ -4,6 +4,3 @@ cp /home/zim/.urxvt.dark /home/zim/.Xresources
 xrdb /home/zim/.Xresources
 sed -i 's/set background=light/set background=dark/g' /home/zim/.vimrc
 sed -i 's/quietlight/monokai-phoenix/g' /home/zim/.vimrc
-sed -i 's/set background=light/set background=dark/g' /root/.vimrc
-sed -i 's/quietlight/monokai-phoenix/g' /root/.vimrc
-

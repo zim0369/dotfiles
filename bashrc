@@ -7,7 +7,7 @@ for (( i=1; i<=$LINES; i++ )); do echo; done; clear
 
 # Bash Prompt
 # PS1="\[\e[1;35m\]\[\e[2;40m\]   [\w] \n  "
-PS1="\[\e[1;33m\]   [\w] \n  "
+PS1="\[\e[1;33m\]   [\u@\w] \n  "
 
 # VI MODE
 set -o vi
@@ -47,3 +47,5 @@ alias kds="tmux list-sessions -F '#{session_attached} #{session_id}' | awk '/^0/
  alias suspend='loginctl suspend && slock'
  alias poweroff='loginctl poweroff'
  alias reboot='loginctl reboot'
+ alias wifi="sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf"
+. "$HOME/.cargo/env"
