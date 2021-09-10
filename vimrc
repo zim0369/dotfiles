@@ -3,51 +3,88 @@
 
 call plug#begin('~/.vim/plugged')
 
-" nerd tree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Traces(Real time replace)
+Plug 'markonm/traces.vim'
 
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
-" rustfmt
-Plug 'rust-lang/rust.vim'
+" syntax highlight
+Plug 'sheerun/vim-polyglot'
 
-" vim-devicons (Icons for my sweet nerdtree)
-Plug 'ryanoasis/vim-devicons'
+" Rusted
+Plug 'rust-lang/rust.vim'
+Plug 'preservim/tagbar'
+Plug 'vim-syntastic/syntastic'
+
+" colorscheme
+Plug 'morhetz/gruvbox' "light|dark
+Plug 'ghifarit53/tokyonight-vim' "dark|dark
+Plug 'rafalbromirski/vim-aurora' "dark
 
 call plug#end()			
-
 
 
 "                       LEADER KEY 
 let mapleader="," 
 
 " ====================== Plugin-settings ==========================
-"
-"                           COLORSCHEMES
-colorscheme monokai-phoenix
-"
-"
-"                           NERDTREE
-let g:NERDTreeQuitOnOpen = 1
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
 
-" show nerd tree always on the right instead on the left
-let g:NERDTreeWinPos = "right"
-
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
+"                         vim-plug
+nnoremap <Leader><Leader>p :PlugInstall<CR>
+nnoremap <Leader><Leader>c :PlugClean<CR>
+nnoremap <Leader><Leader>u :PlugUpdate<CR>
+"
+"                          Easymotion
+map <Leader> <Plug>(easymotion-prefix)
+"
 "                             RUST
 " auto format rust code 
 let g:rustfmt_autosave = 1
- 
+nnoremap <C-f> :RustFmt<CR>
+inoremap <C-f> <Esc>:RustFmt<CR>a
+
+"                       Tagbar
+nnoremap tt :TagbarToggle<CR>
+
+"                       Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"                       Colorschemes    
+let g:tokyonight_style = 'night' "night/storm
+let g:tokyonight_enable_italic = 1
+
 " ======================= Key-bindings ==========================
 
+" Write changes
+nnoremap ;; :w<CR>
+inoremap ;; <Esc>:w<CR>a
+
+" Follow
+nnoremap f *
+
+" Splits
+nnoremap mi :vsplit ./ <CR> 
+nnoremap mv :split ./ <CR> 
+
+" viewports 
+nnoremap m <C-w>
+nnoremap me <C-w>=
+nnoremap <C-j> <C-w>-
+inoremap <C-j> <Esc><C-w>-a
+nnoremap <C-k> <C-w>+
+inoremap <C-k> <Esc><C-w>+a
+
 " Copy pasting (Using gvim to use inbuilt clipboards)
-nnoremap <leader>p "+p
-vnoremap <leader>y "+y
+noremap <leader>y "+y
+noremap <leader>p "+p
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " Source vimrc
 map <leader>v :source ~/.vimrc<CR>
@@ -78,10 +115,10 @@ vnoremap J 6j
 vnoremap K 6k
 
 " fast scrolling
-nnoremap H 3h
-nnoremap L 3l
-vnoremap H 3h
-vnoremap L 3l
+nnoremap H 6h
+nnoremap L 6l
+vnoremap H 6h
+vnoremap L 6l
 
 " ============================ Switches/Misc =============================
 
@@ -90,19 +127,21 @@ set rnu
 
 " background
 set background=dark
- 
+
+" 256 colors
+set termguicolors
+
 " Cursors
 set cursorline
 set cursorcolumn
 
-" set timeoutlen=0
 set notimeout ttimeout ttimeoutlen=40 
 set mouse=a
 set scrolloff=18 
 
 set nocompatible
 filetype plugin on
-syntax on 
+syntax enable
 
 " highlight matching braces
 set showmatch
@@ -186,16 +225,19 @@ map <leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 exec "w"
 if &filetype == 'c'
-exec "!gcc % -o %<"
+exec "!clear && gcc % -o %< && echo COMPILED"
 exec "!clear && time ./%<"
 elseif &filetype == 'cpp'
-exec "!g++ % -o %<"
+exec "!clear && g++ % -o %< && echo COMPILED"
 exec "!clear && time ./%<"
+elseif expand('%:t') == 'main.rs'
+exec "!clear && cargo build --manifest-path=%:p:h:h/Cargo.toml && echo COMPILED"
+exec "!time && cargo run --manifest-path=%:p:h:h/Cargo.toml"
 elseif &filetype == 'rust'
-exec "!rustc %"
-exec "!time ./%<"
+exec "!clear && rustc %:p --out-dir=%:p:h && echo COMPILED"
+exec "!time " .expand("%:p:r")
 elseif &filetype == 'java'
-exec "!javac %"
+exec "!clear && javac % && echo COMPILED"
 exec "!clear && time java -cp %:p:h %:t:r"
 elseif &filetype == 'sh'
 exec "!clear && time bash %"
@@ -208,10 +250,12 @@ exec "!clear && time node %"
 elseif &filetype == 'html'
 exec "!chromium % &"
 elseif &filetype == 'go'
-exec "!go build %<"
+exec "!go build %< && echo COMPILED"
 exec "!clear && time go run %"
 endif
 endfunc
 
 " ====================================================================
 
+"                           COLORSCHEMES
+colorscheme tokyonight
