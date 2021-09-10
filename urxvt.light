@@ -16,7 +16,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 ! FONT
-URxvt.font: xft:Hack Nerd Font Mono:size=10
+URxvt.font: xft:Fira Code SemiBold:size=11
 
 ! THEME
 ! Atom One Light theme

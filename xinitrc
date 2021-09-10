@@ -57,5 +57,14 @@ setxkbmap -option altwin:swap_alt_win
 feh --bg-scale ~/pictures/minimal/archneon.png
 /opt/bar/dwm_bar.sh &
 nm-applet &
+amixer set Speaker mute
+
+while true; do
+    # Log stderror to a file 
+    dwm 2> ~/.dwm.log
+    nm-applet &
+    # No error logging
+    #dwm >/dev/null 2>&1
+done
  
  exec dwm
