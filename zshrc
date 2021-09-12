@@ -30,6 +30,7 @@ alias l="ls"
 alias ll="ls -la" 
 alias c="clear" 
 alias v='vim'
+alias sv='sudo vim'
 alias brc="vim ~/.bashrc"
 alias vrc="vim ~/.vimrc"
 alias zrc="vim ~/.zshrc"

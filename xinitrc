@@ -39,25 +39,15 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# start some nice programs
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
-
 # Remap escape key
-setxkbmap -option caps:swapescape # sudo loadkeys ~/.keystrings (in tty)
+# setxkbmap -option caps:swapescape # sudo loadkeys ~/.keystrings (in tty)
 
 # Change all the alt keys to super and vice-versa
-setxkbmap -option altwin:swap_alt_win
+# setxkbmap -option altwin:swap_alt_win
 
 feh --bg-scale ~/pictures/minimal/archneon.png
 /opt/bar/dwm_bar.sh &
 nm-applet &
-amixer set Speaker mute
 
 while true; do
     # Log stderror to a file 
@@ -67,4 +57,4 @@ while true; do
     #dwm >/dev/null 2>&1
 done
  
- exec dwm
+exec dwm
