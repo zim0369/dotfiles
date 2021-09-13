@@ -1,5 +1,0 @@
-# sudo loadkeys ~/.keystrings (to load keys in tty)
-
-# Swapping Caps with escape
-keycode 1 = Caps_Lock
-keycode 58 = Escape

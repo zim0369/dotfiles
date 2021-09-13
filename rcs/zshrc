@@ -19,7 +19,7 @@ bindkey -v
 bindkey '^E' autosuggest-accept
 setopt autocd
 
-HISTFILE=~/.zsh_history.txt
+HISTFILE=~/.zsh_history
 HISTSIZE=3960
 SAVEHIST=3960
 setopt appendhistory

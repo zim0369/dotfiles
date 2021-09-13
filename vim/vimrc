@@ -70,16 +70,20 @@ inoremap ;; <Esc>:w<CR>a
 nnoremap f *
 
 " Splits
-nnoremap mi :vsplit ./ <CR> 
-nnoremap mv :split ./ <CR> 
+nnoremap <C-i> :vsplit ./ <CR> 
+nnoremap <C-o> :split ./ <CR> 
 
 " viewports 
 nnoremap m <C-w>
-nnoremap me <C-w>=
-nnoremap <C-j> <C-w>-
-inoremap <C-j> <Esc><C-w>-a
-nnoremap <C-k> <C-w>+
-inoremap <C-k> <Esc><C-w>+a
+nmap <C-e> m=
+imap <C-e> <Esc>m=a
+nmap <C-j> m-
+imap <C-j> <Esc>m-a
+nmap <C-k> m+
+imap <C-k> <Esc>m+a
+
+" copy the entire file to the clipboard
+nnoremap Y :!xsel -b < %<CR><CR>
 
 " Copy pasting (Using gvim to use inbuilt clipboards)
 noremap <leader>y "+y
@@ -126,7 +130,7 @@ vnoremap L 6l
 set rnu 
 
 " background
-set background=dark
+set background=light
 
 " 256 colors
 set termguicolors
@@ -149,6 +153,9 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=0
 
+" Set recursive search
+set path+=**
+
 " Use tab completion everywhere 
 set wildmenu
 
@@ -165,7 +172,7 @@ set backspace=indent,eol,start
 " encoding
 set encoding=UTF-8
 
-set signcolumn=no
+set signcolumn=number
 
 "                       INDENTATION
 
@@ -258,4 +265,4 @@ endfunc
 " ====================================================================
 
 "                           COLORSCHEMES
-colorscheme tokyonight
+colorscheme gruvbox

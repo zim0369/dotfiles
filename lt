@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cp /home/zim/.urxvt.light /home/zim/.Xresources
-xrdb /home/zim/.Xresources
-sed -i 's/set background=dark/set background=light/g' /home/zim/.vimrc
-sed -i 's/monokai-phoenix/quietlight/g' /home/zim/.vimrc
