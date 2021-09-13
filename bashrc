@@ -35,5 +35,5 @@ alias suspend='systemctl suspend && slock'
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
 
-
 . "$HOME/.cargo/env"
+

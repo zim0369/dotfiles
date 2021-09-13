@@ -39,12 +39,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# Remap escape key
-# setxkbmap -option caps:swapescape # sudo loadkeys ~/.keystrings (in tty)
-
-# Change all the alt keys to super and vice-versa
-# setxkbmap -option altwin:swap_alt_win
-
 feh --bg-scale ~/pictures/minimal/archneon.png
 /opt/bar/dwm_bar.sh &
 nm-applet &

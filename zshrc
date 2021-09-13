@@ -19,7 +19,7 @@ bindkey -v
 bindkey '^E' autosuggest-accept
 setopt autocd
 
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history.txt
 HISTSIZE=3960
 SAVEHIST=3960
 setopt appendhistory
@@ -41,6 +41,7 @@ alias cf="cd /opt/dwm && vim config.def.h"
 alias td="vim ~/.todo.txt" 
 alias pacman="sudo pacman" 
 alias torr='transmission-cli -w ~/torrents -D -u 30' 
+alias dragon='dragon-drag-and-drop'
 
 alias suspend='systemctl suspend && slock'
 alias poweroff='systemctl poweroff'
