@@ -29,18 +29,18 @@ No need to create layers for function/multimedia keys as they're mapped by firmw
 )
 
 (defalias
-ec  (tap-hold 200 esc ctl)    ;; Tap on escape for escape and hold for left ctrl
-num (layer-toggle nums)       ;; enables the number layer 
-sym (layer-toggle syms)       ;; enables the number layer 
-vi  (layer-toggle vim)        ;; enables the number layer 
+ec  (tap-hold 200 esc ctl)          ;; Tap on escape for escape and hold for left ctrl
+num (layer-toggle nums)             ;; enables the number layer 
+sym (layer-toggle syms)             ;; enables the number layer 
+vi  (layer-toggle vim)              ;; enables the number layer 
 prv C-S-tab
 nxt C-tab
 )
 
 (deflayer qwerty ;; The default layer that'd be read when you launch kmonad
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
-  `    1    @prv @nxt @vi  5    6    7    8    @num @sym bspc =    caps
-  tab  q    w    e    r    t    y    u    i    o    p    -    ]    \
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
+  `    1    @prv @nxt @vi  5    6    7    8    @num @sym bspc =    end
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @ec  a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           spc            rmet rctl
