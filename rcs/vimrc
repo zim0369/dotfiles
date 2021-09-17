@@ -9,9 +9,6 @@ Plug 'markonm/traces.vim'
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
-" syntax highlight
-Plug 'sheerun/vim-polyglot'
-
 " Rusted
 Plug 'rust-lang/rust.vim'
 Plug 'preservim/tagbar'
