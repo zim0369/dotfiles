@@ -1,6 +1,5 @@
 
 
-
 call plug#begin('~/.vim/plugged')
 
 " Traces(Real time replace)
@@ -48,6 +47,7 @@ nnoremap tt :TagbarToggle<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -60,8 +60,8 @@ let g:tokyonight_enable_italic = 1
 " ======================= Key-bindings ==========================
 
 " Write changes
-nnoremap ;; :w<CR>
-inoremap ;; <Esc>:w<CR>a
+nnoremap <leader>e :w<CR>
+inoremap <leader>e <Esc>:w<CR>a
 
 " Follow
 nnoremap f *
@@ -85,7 +85,7 @@ nnoremap Y :!xsel -b < %<CR><CR>
 " Copy pasting (Using gvim to use inbuilt clipboards)
 noremap <leader>y "+y
 noremap <leader>p "+p
-autocmd VimLeave * call system("xsel -ib", getreg('+'))
+" autocmd VimLeave * call system("xsel -ib", getreg('+')) "Don't clear clipboard when exiting vim
 
 " Source vimrc
 map <leader>v :source ~/.vimrc<CR>
@@ -127,7 +127,7 @@ vnoremap L 6l
 set rnu 
 
 " background
-set background=light
+set background=dark
 
 " 256 colors
 set termguicolors
@@ -151,7 +151,7 @@ set showmatch
 set mat=0
 
 " Set recursive search
-set path+=**
+" set path+=**
 
 " Use tab completion everywhere 
 set wildmenu
@@ -252,7 +252,7 @@ exec "!clear && time python3 %"
 elseif &filetype == 'javascript'
 exec "!clear && time node %"
 elseif &filetype == 'html'
-exec "!chromium % &"
+exec "!brave % &"
 elseif &filetype == 'go'
 exec "!go build %< && echo COMPILED"
 exec "!clear && time go run %"
@@ -262,4 +262,4 @@ endfunc
 " ====================================================================
 
 "                           COLORSCHEMES
-colorscheme gruvbox
+colorscheme tokyonight
