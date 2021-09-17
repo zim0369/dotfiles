@@ -8,6 +8,35 @@
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _
 )
+
+(deflayer qwerty                            ;; The default layer that'd be read when you launch kmonad
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
+  `    1    2    3    4    5    6    7    8    bspc @tog bspc =    end
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @ec  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet rctl
+)
+
+(deflayer zimq                             ;; The default layer that'd be read when you launch kmonad
+  end   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
+  `     1    2    3    4    5    6    7    8    bspc 0    -    =    9
+  tab   q    w    e    r    t    y    u    i    o    p    ;    [    ]
+  @es   a    s    d    f    g    h    j    k    l    rsft '    ret
+  lctl  z    x    c    v    b    n    m    ,    .    /    \ 
+  caps  lalt lmet           spc            @num rctl
+)
+
+
+(deflayer experimental                      ;; The default layer that'd be read when you launch kmonad
+  0     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
+  `     lctl @prv @nxt @vi  5    6    7    8    9    @num -    =    caps
+  tab   z    u    l    p    y    <    >    f    c    d    [    ]    \
+  @es   a    o    e    i    g    @mt  h    r    t    n    s    ret
+  @sym  q    x    j    b    bspc @bsp m    k    w    v    rctl
+  lctl  lalt lmet           spc            rsft rctl
+)
+
 Always make sure the number of underscores is the same as the number of keys in every layer and in defsrc. 
 No need to create layers for function/multimedia keys as they're mapped by firmware.
 |#
@@ -29,38 +58,37 @@ No need to create layers for function/multimedia keys as they're mapped by firmw
 )
 
 (defalias
-num  (tap-hold 200 spc (layer-toggle nums)) ;; Tap on space for space and hold for nums/syms layer
-ec  (tap-hold 200 esc ctl)                  ;; Tap on escape for escape and hold for left ctrl
+num (layer-toggle nums)
+es  (tap-hold 200 esc sft)                  ;; Tap on escape for escape and hold for left ctrl
 vi  (layer-toggle vim)                      ;; enables the number layer 
-fll (around f lalt)
 prv C-S-tab
 nxt C-tab
-tog f11
+bsp C-bspc
 )
 
-(deflayer qwerty                            ;; The default layer that'd be read when you launch kmonad
-  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
-  `    @tog @prv @nxt @vi  5    6    7    8    9    0    bspc =    end
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @ec  a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lalt lmet           @num            rmet rctl
+(deflayer zimqwert                      ;; The default layer that'd be read when you launch kmonad
+  end   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
+  `     1    2    3    4    5    6    7    8    9    bspc -    =    0
+  tab   q    w    e    r    t    y    y    u    i    o    p    '    \
+  @es   a    s    d    f    g    h    h    j    k    l    lsft ret
+  lctl  z    x    c    v    b    b    n    m    ,    .    ;
+  caps  lalt lmet           spc            @num rctl
 )
 
 (deflayer nums
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    !    @    #    $    \_   =    %    ^    &    *    _    _    _
-  _    1    2    3    4    9    0    5    6    7    8    _    _     
-  _    _    _    -    \(   _    \)   +    _    _    _    _
-  _    _    _              _              _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
+  _     _    @vi  @prv @nxt _    _    _    _    _    _    _    _    _
+  _     3    4    7    8    _    _    _    \(   \)   _    _    _    _
+  _     1    2    5    6    9    0    +    -    \_   _    _    _
+  _     _    [    ]    _    _    _    =    /    ?    _    _
+  _     _    _              _              _    _
 )
 
 (deflayer vim
-  _    _    _    _    _    _    _    _    _    _     _    _    _   _     _    _
-  _    _    _    _    _    _    _    _    _    _     _    _    _   _
-  _    _    _    _    _    _    _    _    _    _     _    _    _   _
-  _    _    _    _    _    _    left down up   right _    _    _
+  _    _    _    _    _    _    _    _    _    _     _    _   _    _     _    _
+  _    _    _    _    _    _    _    _    _    _     _    _   _    _
+  _    _    _    _    _    _    _    _    _    _     _    _   _    _
+  _    _    _    _    _    _    _   left down up   right _   _    
   _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _              _              _    _
 )

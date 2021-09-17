@@ -39,6 +39,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+# setxkbmap -option altwin:swap_lalt_lwin
+# setxkbmap -option caps:swapescape
+
 feh --bg-scale ~/pictures/minimal/archneon.png
 /opt/bar/dwm_bar.sh &
 nm-applet &
