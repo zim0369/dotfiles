@@ -66,7 +66,7 @@ nxt C-tab
 bsp C-bspc
 )
 
-(deflayer zimqwert                      ;; The default layer that'd be read when you launch kmonad
+(deflayer zimqwert                          ;; The default layer that'd be read when you launch kmonad
   end   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt  ins  del
   `     1    2    3    4    5    6    7    8    9    bspc -    =    0
   tab   q    w    e    r    t    y    y    u    i    o    p    '    \
@@ -79,8 +79,8 @@ bsp C-bspc
   _     _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
   _     _    @vi  @prv @nxt _    _    _    _    _    _    _    _    _
   _     3    4    7    8    _    _    _    _    \(   \)   _    _    _
-  _     1    2    5    6    9    0    _    +    -    \_   _    _
-  _     _    [    ]    _    _    _    _    =    ;    :    _
+  _     1    2    5    6    9    0    0    +    -    \_   _    _
+  _     _    _    [    ]    _    _    _    =    :     ;   _
   _     _    _              _              _    _
 )
 
