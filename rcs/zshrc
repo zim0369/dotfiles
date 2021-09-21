@@ -7,6 +7,9 @@ fi
 
 export TERM='xterm-256color' 
 export LANG=en_US.UTF-8
+export DARKO='tokyonight'
+export LIGHTO='gruvbox'
+
 . "$HOME/.cargo/env"
 source /home/zim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

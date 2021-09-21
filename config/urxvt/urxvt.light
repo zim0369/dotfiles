@@ -1,6 +1,6 @@
 
 ! CLIPBOARD
-URxvt.perl-ext-common:  ...,clipboard,...
+URxvt.perl-ext-common:  ...,clipboard,resize-font,...
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-y: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste
@@ -17,6 +17,10 @@ URxvt*scrollTtyKeypress: true
 
 ! FONT
 URxvt.font: xft:Fira Code SemiBold:size=11
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-plus:      resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
 
 ! THEME
 ! Atom One Light theme

@@ -3,4 +3,4 @@
 cp /home/zim/.github/dotfiles/config/urxvt/urxvt.light /home/zim/.Xresources
 xrdb /home/zim/.Xresources
 sed -i 's/set background=dark/set background=light/g' /home/zim/.vimrc
-sed -i 's/colorscheme embark/colorscheme gruvbox/g' /home/zim/.vimrc
+sed -i "s/colorscheme $DARKO/colorscheme $LIGHTO/g" /home/zim/.vimrc
