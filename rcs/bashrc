@@ -1,12 +1,16 @@
 # ~/.bashrc
 
+# global variables
 export LANG=en_US.UTF-8
+export TERM='xterm-256color' 
+export DARKO='tokyonight'
+export LIGHTO='gruvbox'
 
 # URxvt content erased workaround
 for (( i=1; i<=$LINES; i++ )); do echo; done; clear
 
 # Bash Prompt
-PS1="\[\e[1;33m\]   [\u@\w] \n >> "
+PS1="\[\e[1;33m\] [\u@\w]  >> "
 
 # VI MODE
 set -o vi
@@ -20,10 +24,10 @@ alias c="clear"
 alias v='vim'
 alias sv='sudo vim'
 alias brc="vim ~/.bashrc"
-alias vrc="vim ~/.vimrc"
+alias vrc="vim ~/.config/nvim/init.vim"
 alias zrc="vim ~/.zshrc"
 alias sbrc="source ~/.bashrc"
-alias svrc="source ~/.vimrc"
+alias svrc="source ~/.config/nvim/init.vim"
 alias szrc="source ~/.zshrc"
 alias cf="cd /opt/dwm && vim config.def.h"
 alias td="vim ~/.todo.txt" 
@@ -37,3 +41,4 @@ alias reboot='systemctl reboot'
 
 . "$HOME/.cargo/env"
 
+source ~/.local/share/blesh/ble.sh

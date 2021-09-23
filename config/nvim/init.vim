@@ -20,6 +20,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'vim-syntastic/syntastic'
 Plug 'preservim/tagbar'
 
+"                   Graphical
+
+"                   cursorline
+Plug 'miyakogi/conoline.vim'
+
 " colorscheme
 Plug 'rafalbromirski/vim-aurora' "dark
 Plug 'tomasr/molokai' "dark
@@ -111,13 +116,13 @@ nnoremap .. :w<CR>
 nnoremap f *
 
 " viewports 
-nnoremap m <C-w>
-nmap <C-e> m=
-imap <C-e> <Esc>m=a
-nmap <C-s> m-
-imap <C-s> <Esc>m-a
-nmap <C-d> m+
-imap <C-d> <Esc>m+a
+nmap m <C-w>
+nnoremap <C-e> m=
+inoremap <C-e> <Esc>m=a
+nnoremap <C-s> m-
+inoremap <C-s> <Esc>m-a
+nnoremap <C-d> m+
+inoremap <C-d> <Esc>m+a
 
 " move lines
 nnoremap <C-K> <CMD>m .-2<CR>
@@ -143,8 +148,8 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
-" Source vimrc
-nnoremap ., :source ~/.vimrc<CR>
+" Source nvimrc
+nnoremap ., :source ~/.config/nvim/init.vim<CR>
 
 " To toggle numbering
 nmap <leader>i :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
@@ -166,8 +171,8 @@ nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
 " stay in normal mode after inserting a new line
-noremap o o<Esc>
-noremap O O<Esc>
+"noremap o o<Esc>
+"noremap O O<Esc>
 
 " fast scrolling
 nnoremap J 6j
@@ -193,8 +198,8 @@ set background=dark
 set termguicolors
 
 " Cursors
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 set notimeout ttimeout ttimeoutlen=40 
 set mouse=a

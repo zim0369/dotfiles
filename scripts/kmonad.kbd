@@ -59,7 +59,7 @@ No need to create layers for function/multimedia keys as they're mapped by firmw
 
 (defalias
 num (layer-toggle nums)
-es  (tap-hold 200 esc sft)                  ;; Tap on escape for escape and hold for left ctrl
+es  (tap-hold 170 esc sft)                  ;; Tap on escape for escape and hold for left ctrl
 vi  (layer-toggle vim)                      ;; enables the number layer 
 prv C-S-tab
 nxt C-tab
