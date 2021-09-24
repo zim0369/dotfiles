@@ -22,9 +22,6 @@ Plug 'preservim/tagbar'
 
 "                   Graphical
 
-"                   cursorline
-Plug 'miyakogi/conoline.vim'
-
 " colorscheme
 Plug 'rafalbromirski/vim-aurora' "dark
 Plug 'tomasr/molokai' "dark
@@ -171,8 +168,8 @@ nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
 " stay in normal mode after inserting a new line
-"noremap o o<Esc>
-"noremap O O<Esc>
+noremap o o <Esc>
+noremap O O <Esc>
 
 " fast scrolling
 nnoremap J 6j
@@ -198,7 +195,7 @@ set background=dark
 set termguicolors
 
 " Cursors
-" set cursorline
+set cursorline
 " set cursorcolumn
 
 set notimeout ttimeout ttimeoutlen=40 
