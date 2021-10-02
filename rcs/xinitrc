@@ -44,14 +44,16 @@ fi
 
 feh --bg-scale ~/pictures/minimal/archneon.png
 /opt/bar/dwm_bar.sh &
-nm-applet &
+nm-applet --indicator &
+mate-power-manager &
 
 while true; do
     # Log stderror to a file 
     dwm 2> ~/.dwm.log
-    nm-applet &
+    nm-applet --indicator &
+    mate-power-manager &
     # No error logging
     #dwm >/dev/null 2>&1
 done
  
-exec dwm
+exec i3
