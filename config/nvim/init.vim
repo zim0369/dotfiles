@@ -1,81 +1,111 @@
-
-
-
 call plug#begin('~/.vim/plugged')
 
-" Traces(Real time replace)
-Plug 'markonm/traces.vim'
-
-" easy motion
-Plug 'easymotion/vim-easymotion'
-
-" explorers
+Plug 'lervag/vimtex'
 Plug 'junegunn/fzf.vim'
-Plug 'jlanzarotta/bufexplorer'
-
-" Programming
+Plug 'simeji/winresizer'
+Plug 'markonm/traces.vim'
 Plug 'tpope/vim-surround'
-Plug 'rust-lang/rust.vim'
+Plug 'vim-scripts/LargeFile'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'easymotion/vim-easymotion'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'vim-syntastic/syntastic'
-Plug 'preservim/tagbar'
-
-"                   Graphical
-
-" colorscheme
-Plug 'rafalbromirski/vim-aurora' "dark
-Plug 'tomasr/molokai' "dark
-Plug 'yuttie/hydrangea-vim' "dark
-Plug 'ghifarit53/tokyonight-vim' "dark|darkbluish
-
-Plug 'chriskempson/vim-tomorrow-theme' " multiple|dark|light (Tomorr..)
-
-" eye-friendly
-Plug 'tyrannicaltoucan/vim-deep-space' "dark
-Plug 'arcticicestudio/nord-vim' "dark
-Plug 'AlessandroYorba/Despacio' "darkshades 
-Plug 'w0ng/vim-hybrid' "dark
-
-Plug 'morhetz/gruvbox' "light|dark
-Plug 'nightsense/cosmic_latte' " dark|light
-Plug 'nightsense/stellarized' " dark|light
-Plug 'cocopon/iceberg.vim' "dark| light
-Plug 'nightsense/snow' "dark|light
-
-" Watching
-" Plug 'airblade/vim-rooter' "to set root directory to tell fzf where to
-" search
-" Plug 'preservim/nerdcommenter' "to comment lines
-" Plug 'embark-theme/vim', { 'as': 'embark' } "dark/bad theme 
+" Themes dark
+Plug 'sjl/badwolf'
+Plug 'tomasr/molokai' 
+Plug 'w0ng/vim-hybrid' 
+Plug 'yuttie/hydrangea-vim' 
+Plug 'tomasiser/vim-code-dark' 
+Plug 'AlessandroYorba/Despacio' 
+Plug 'arcticicestudio/nord-vim' 
+Plug 'rafalbromirski/vim-aurora' 
+Plug 'ghifarit53/tokyonight-vim' 
+Plug 'tyrannicaltoucan/vim-deep-space' 
+" Themes light/dark
+Plug 'morhetz/gruvbox'
+Plug 'nightsense/snow' 
+Plug 'cocopon/iceberg.vim' 
+Plug 'junegunn/seoul256.vim'
+Plug 'nightsense/stellarized' 
+Plug 'nightsense/cosmic_latte' 
+Plug 'NLKNguyen/papercolor-theme' 
+Plug 'chriskempson/vim-tomorrow-theme'
 
 call plug#end()			
 
+ 
+ 
+
+
+
+syntax on
+set nocompatible
+filetype plugin indent on
+ 
+"neovide 
+set guifont=FuraCode\ Nerd\ Font:h17
+let g:neovide_cursor_vfx_mode = "railgun"
 
 "                       LEADER KEY 
 let mapleader="," 
 
 " ====================== Plugin-settings ==========================
 
-"                         vim-plug
-nnoremap <Leader><Leader>p :PlugInstall<CR>
-nnoremap <Leader><Leader>c :PlugClean<CR>
-nnoremap <Leader><Leader>u :PlugUpdate<CR>
+nnoremap <Leader><leader>p :PlugInstall<CR>
+nnoremap <Leader><leader>c :PlugClean<CR>
+nnoremap <Leader><leader>u :PlugUpdate<CR>
+
+"                       nvimtree
+lua require'nvim-web-devicons'.setup()
+lua require 'nvim-tree'.setup()
+nnoremap <C-n> :NvimTreeToggle<CR>
+
+"Colorschemes    
+let g:molokai_original = 1
+let g:despacio_Pitch = 0
+let g:despacio_Sunset = 1
+let g:despacio_Twilight = 0
+let g:despacio_Midnight = 0
+let g:deepspace_italics = 1
+let g:badwolf_tabline = 0
+let g:badwolf_darkgutter = 1
+let g:badwolf_css_props_highlight = 1
+let g:seoul256_background = 233 
+let g:tokyonight_style = 'storm'
+let g:tokyonight_enable_italic = 1
+let g:hybrid_reduced_contrast = 1
+let g:hybrid_custom_term_colors = 1
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_light = 'medium'
 
 "                          Easymotion
-map <Leader> <Plug>(easymotion-prefix)
+" Move to word
+let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
+map f <Plug>(easymotion-bd-w)
 
 " Explorers
-nnoremap <C-p> :Files<CR>
+nnoremap <leader>f :Files<CR>
 let g:fzf_layout = {'down':'40%' }
-nnoremap <leader>l :Buffers<CR>
 
 nnoremap <leader>e :BufExplorer<CR>
+nnoremap <silent> <F11> :BufExplorer<CR>
+nnoremap <silent> <s-F11> :ToggleBufExplorer<CR>
+nnoremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
+
+"                         winresizer
+" If you want to start window resize mode by `Ctrl+E`
+let g:winresizer_start_key = '<C-E>'
+let g:winresizer_gui_start_key = '<C-E>'
+" To expand your window size toward upper using upper arrow (instead of k)
+let g:winresizer_keycode_up = "<k>"
+" To expand your window size toward lower using down arrow (instead of j)
+let g:winresizer_keycode_down = "<j>"
 
 "                      Programming
-"                       Tagbar
-nnoremap tt :TagbarToggle<CR>
-"                       rust
-let g:rustfmt_autosave = 1
+
 "                       coc.nvim
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -90,73 +120,89 @@ endfunction
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile "prettier
 
-"                       Colorschemes    
-let g:gruvbox_style = 'night' "night/storm
-let g:gruvbox_enable_italic = 1
-let g:deepspace_italics = 1
-
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-let g:molokai_original = 1
-
-let g:despacio_Sunset = 1
-let g:despacio_Twilight = 0
-let g:despacio_Midnight = 0
-let g:despacio_Pitch = 0
-
+"                         VIM SURROUND
+xmap s  <Plug>VSurround
+xmap S  <Plug>VgSurround
+nmap s  ys
+nmap S  ys$
 " ======================= Key-bindings ==========================
+ 
+" Do not lose selection after indentation.
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+ 
+" Easy redo 
+nnoremap U :redo<CR>
 
-" Write changes
-nnoremap .. :w<CR>
+" move backwards to the end of the word 
+nnoremap E ge
+ 
+" history
+inoremap <Space> <C-]><Space><c-g>u
+inoremap <CR> <CR><c-g>u
 
-" Follow
-nnoremap f *
+" theme
+inoremap <C-Space> :!source /home/zim/.github/dotfiles/scripts/theme.sh<CR>
+nnoremap <C-Space> :!source /home/zim/.github/dotfiles/scripts/theme.sh<CR>
 
-" viewports 
-nmap m <C-w>
-nnoremap <C-e> m=
-inoremap <C-e> <Esc>m=a
-nnoremap <C-s> m-
-inoremap <C-s> <Esc>m-a
-nnoremap <C-d> m+
-inoremap <C-d> <Esc>m+a
+" ============== 'm'- manipulate, make, move, & more... =================
 
-" move lines
-nnoremap <C-K> <CMD>m .-2<CR>
-nnoremap <C-J> <CMD>m .+1<CR>
-nnoremap <C-H> <<
-nnoremap <C-L> >>  
+" viewports
+nnoremap <silent> <c-h> <c-w>h
+nnoremap <silent> <c-j> <c-w>j
+nnoremap <silent> <c-k> <c-w>k
+nnoremap <silent> <c-l> <c-w>l
 
-inoremap <C-H> <CMD>normal <<<CR>
-inoremap <C-L> <CMD>normal >><CR>
-inoremap <C-K> <CMD>m .-2<CR>
-inoremap <C-J> <CMD>m .+1<CR>
+tnoremap <silent> <c-h> <c-w>h
+tnoremap <silent> <c-j> <c-w>j
+tnoremap <silent> <c-k> <c-w>k
+tnoremap <silent> <c-l> <c-w>l
+ 
+"splits  
+nnoremap <leader>n :new<CR>
+nnoremap <leader>v :vnew<CR>
 
-vnoremap <C-K> :m '<-2<CR>gv
-vnoremap <C-J> :m '>+1<CR>gv
-vnoremap <C-H> <gv
-vnoremap <C-L> >gv 
+" Buffer next
+nnoremap <Space> :bn<CR>
+ 
+" FANCY LINE MOVING
+" nnoremap <C-K> <CMD>m .-2<CR>
+" nnoremap <C-J> <CMD>m .+1<CR>
+" nnoremap <C-H> <<
+" nnoremap <C-L> >>  
+"  
+" vnoremap <C-K> :m '<-2<CR>gv
+" vnoremap <C-J> :m '>+1<CR>gv
+" vnoremap <C-H> <gv
+" vnoremap <C-L> >gv 
+" 
+" " These lines conflict with the default bindings 
+" inoremap <C-H> <CMD>normal <<<CR>
+" inoremap <C-L> <CMD>normal >><CR>
+" inoremap <C-K> <CMD>m .-2<CR>
+" inoremap <C-J> <CMD>m .+1<CR>
 
 " copy the entire file to the clipboard
-nnoremap Y :!xsel -b < %<CR><CR>
+noremap Y :w <bar> :!xsel -b < %<CR><CR>
 
 " Copy pasting (Using gvim to use inbuilt clipboards)
-noremap <leader>y "+y
-noremap <leader>p "+p
-autocmd VimLeave * call system("xsel -ib", getreg('+'))
+xnoremap <leader>y "+y
+nnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
+nnoremap <leader>p "+p
+xnoremap <leader>p "+p
+nnoremap <leader>P "+P
+xnoremap <leader>P "+P
+inoremap <expr> <c-p> pumvisible() ? '<c-p>' : '<c-r>+'
 
-" Source nvimrc
-nnoremap ., :source ~/.config/nvim/init.vim<CR>
+" Don't clear the clipboard on exiting vim 
+" autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " To toggle numbering
 nmap <leader>i :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
-" format the code
-nnoremap <C-f> :RustFmt<CR>
-" autocmd BufNewFile,BufRead *.rs :RustFmt
-
 " nohl
-nnoremap <silent><expr> <Leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+nnoremap <silent><expr> H (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
 "                            NAVIGATION KEYBINDINGS 
 
@@ -166,51 +212,67 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
+ 
+"todo 
+nnoremap td :e ~/.todo.txt<CR>
+ 
+" line in line scroll 
+noremap <silent> j gj
+noremap <silent> k gk
+noremap <silent> dj dj
+noremap <silent> dk dk
+noremap <silent> 0 g0
+noremap <silent> $ g$
 
-" stay in normal mode after inserting a new line
-noremap o o <Esc>
-noremap O O <Esc>
-
-" fast scrolling
-nnoremap J 6j
-nnoremap K 6k
-vnoremap J 6j
-vnoremap K 6k
-
-" fast scrolling
-nnoremap H 6h
-nnoremap L 6l
-vnoremap H 6h
-vnoremap L 6l
+" Don't include leading whitespace
+onoremap a' 2i'
+onoremap a" 2i"
+xnoremap a' 2i'
+xnoremap a" 2i"
+ 
+" if nofiletype then set it to text
+" autocmd BufNewFile,BufRead * if &filetype ==# '' | setlocal filetype=text | endif
+" autocmd BufEnter * if expand('%') ==# '' | setfiletype text | endif
+" " stay in normal mode after inserting a new line
+" noremap o o <Esc>
+" autocmd FileType text,markdown,conf,vim noremap <buffer> o o<Esc>
+" noremap O O <Esc>
+" autocmd FileType text,markdown,conf,vim noremap <buffer> O O<Esc>
+ 
+" save
+nnoremap <leader>w :w<CR>
+" Source vimrc
+nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
+" buffer delete
+nnoremap <leader>d :bd<CR>
+" Reload buffer
+nnoremap <leader>l <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 " ============================ Switches/Misc =============================
 
 " numbering
-set rnu 
+set nu 
 
 " background
-set background=dark
+set background=light
 
 " 256 colors
 set termguicolors
 
 " Cursors
 set cursorline
-" set cursorcolumn
+set nocursorcolumn 
+" https://github.com/vim/vim/issues/8908 closed
 
 set notimeout ttimeout ttimeoutlen=40 
 set mouse=a
-set scrolloff=18
-
-set nocompatible
-filetype plugin indent on
-syntax on
+set scrolloff=15
 
 " highlight matching braces
 set showmatch
 
 " How many tenths of a second to blink when matching brackets
-set mat=0
+set mat=5
 
 " Set recursive search
 set path+=**
@@ -218,7 +280,7 @@ set path+=**
 " Use tab completion everywhere 
 set wildmenu
 
-" disable wrapping of long lines into multiple lines
+" wrapping of long lines into multiple lines
 set wrap
 
 " history
@@ -238,7 +300,6 @@ set signcolumn=number
 set autoindent
 set showmode 
 set smartindent
-filetype indent on 
 set shiftwidth=4
 set tabstop=4
 set smarttab
@@ -277,12 +338,12 @@ set nowb
 " reload files changed outside vim
 set autoread
 " Triger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-" Notification after file change
-autocmd FileChangedShellPost *
+" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" " Notification after file change
+" autocmd FileChangedShellPost *
             \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-" ========= template / compile / run ===============
+" ============== template / compile / run ====================
 
 nnoremap <leader>t :!cp ~/templates/template.%:e %<Enter> 
 
@@ -291,36 +352,46 @@ map <leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "!clear && gcc % -o %< && echo COMPILED"
-        exec "!clear && time ./%<"
+        exec "!gcc % -o %<"
+        exec "!time ./%<"
     elseif &filetype == 'cpp'
-        exec "!clear && g++ % -o %< && echo COMPILED"
-        exec "!clear && time ./%<"
-    elseif expand('%:t') == 'main.rs'
-        exec "!clear && cargo build --manifest-path=%:p:h:h/Cargo.toml && echo COMPILED"
-        exec "!time cargo run --manifest-path=%:p:h:h/Cargo.toml"
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
     elseif &filetype == 'rust'
-        exec "!clear && rustc %:p --out-dir=%:p:h && echo COMPILED"
-        exec "!time " .expand("%:p:r")
+        exec "!cargo build --manifest-path=%:p:h:h/Cargo.toml"
+        exec "!time cargo run --manifest-path=%:p:h:h/Cargo.toml"
+         
+    "elseif &filetype == 'rust'
+    "    exec "!rustc %:p --out-dir=%:p:h"
+    "    exec "!time " .expand("%:p:r")
+    " elseif expand('%:t') == 'main.rs'
+    "     exec "!cargo build --manifest-path=%:p:h:h/Cargo.toml"
+    "     exec "!time cargo run --manifest-path=%:p:h:h/Cargo.toml"
+
     elseif &filetype == 'java'
-        exec "!clear && javac % && echo COMPILED"
-        exec "!clear && time java -cp %:p:h %:t:r"
+        exec "!javac %"
+        exec "!time java -cp %:p:h %:t:r"
     elseif &filetype == 'sh'
-        exec "!clear && time bash %"
-    elseif &filetype == 'text'
-        exec "!clear && echo 'words : ' && wc -w % && echo 'lines : ' && wc -l % && echo 'size : ' && du -h %"
+        exec "!time bash %"
     elseif &filetype == 'python'
-        exec "!clear && time python3 %"
+        exec "!time python3 %"
     elseif &filetype == 'javascript'
-        exec "!clear && time node %"
+        exec "!time node %"
     elseif &filetype == 'html'
         exec "!chromium % &"
+    elseif &filetype == 'tex'
+        exec "!pdflatex --output-directory=%:p:h %"
     elseif &filetype == 'go'
-        exec "!go build %< && echo COMPILED"
-        exec "!clear && time go run %"
+        exec "!go build %<"
+        exec "!time go run %"
+    elseif &filetype == 'text'
+        exec "!echo 'words : ' && wc -w % && echo 'lines : ' && wc -l % && echo 'size : ' && du -h %"
+    elseif &filetype == 'markdown'
+        exec "!echo 'words : ' && wc -w % && echo 'lines : ' && wc -l % && echo 'size : ' && du -h %"
     endif
 endfunc
 
-" ====================================================================
-"
-colorscheme tokyonight
+" =================================================================
+
+colorscheme gruvbox
+syntax on

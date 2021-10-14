@@ -15,16 +15,16 @@ scrolling:
   auto_scroll: false
 font:
   normal:
-    family: Source Code Pro
+    family: Fira Code
     style: Medium
   bold:
-    family: Source Code Pro
+    family: Fira Code
     style: Bold
   italic:
-    family: Source Code Pro
+    family: Fira Code
     style: Italic
   bold_italic:
-    family: Source Code Pro
+    family: Fira Code
     style: Bold Italic
   size: 7.5
   offset:
@@ -104,14 +104,22 @@ key_bindings:
   - key: L
     mods: Control
     chars: "\f"
-  - key: PageUp
-    mods: None
+
+  - key: Space
+    mods: Control
+    action: ToggleViMode
+  - key: U
+    mods: Control
     action: ScrollHalfPageUp
     mode: ~Alt
-  - key: PageDown
-    mods: None
+  - key: D
+    mods: Control
     action: ScrollHalfPageDown
     mode: ~Alt
+  - key: T
+    mods: Alt
+    chars: "theme\r"
+
   - key: PageUp
     mods: Alt
     action: ScrollToTop

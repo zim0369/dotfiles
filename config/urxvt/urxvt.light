@@ -1,6 +1,6 @@
 
 ! CLIPBOARD
-URxvt.perl-ext-common:  clipboard,resize-font
+URxvt.perl-ext-common:  clipboard, resize-font
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-y: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste
@@ -23,23 +23,40 @@ URxvt.keysym.C-equal:     resize-font:reset
 URxvt.keysym.C-question:  resize-font:show
 
 ! THEME
-! Atom One Light theme
-urxvt*background: #f9f9f9
-urxvt*foreground: #383a42
-urxvt*cursorColor: #d0d0d0
-urxvt*color0: #000000
-urxvt*color1: #E45649
-urxvt*color2: #50A14F
-urxvt*color3: #986801
-urxvt*color4: #4078F2
-urxvt*color5: #A626A4
-urxvt*color6: #0184BC
-urxvt*color7: #A0A1A7
-urxvt*color8: #5c6370
-urxvt*color9: #e06c75
-urxvt*color10: #50A14F
-urxvt*color11: #986801
-urxvt*color12: #4078F2
-urxvt*color13: #A626A4
-urxvt*color14: #0184BC
-urxvt*color15: #ffffff
+
+! special
+*.foreground:   #6e6b5e
+*.background:   #fefbec
+*.cursorColor:  #6e6b5e
+
+! black
+*.color0:       #20201d
+*.color8:       #7d7a68
+
+! red
+*.color1:       #d73737
+*.color9:       #d73737
+
+! green
+*.color2:       #60ac39
+*.color10:      #60ac39
+
+! yellow
+*.color3:       #cfb017
+*.color11:      #cfb017
+
+! blue
+*.color4:       #6684e1
+*.color12:      #6684e1
+
+! magenta
+*.color5:       #b854d4
+*.color13:      #b854d4
+
+! cyan
+*.color6:       #1fad83
+*.color14:      #1fad83
+
+! white
+*.color7:       #a6a28c
+*.color15:      #fefbec

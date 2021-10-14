@@ -1,6 +1,6 @@
 
 ! CLIPBOARD
-URxvt.perl-ext-common:  clipboard,resize-font
+URxvt.perl-ext-common:  clipboard, resize-font
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-y: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste

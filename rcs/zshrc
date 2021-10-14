@@ -7,10 +7,9 @@ fi
 
 export TERM='xterm-256color' 
 export LANG=en_US.UTF-8
-export DARKO='hydrangea'
+export DARKO='PaperColor'
 export LIGHTO='gruvbox'
 
-. "$HOME/.cargo/env"
 source /home/zim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
@@ -32,20 +31,22 @@ alias x="exit"
 alias l="ls" 
 alias ll="ls -la" 
 alias c="clear" 
-alias v='vim'
+alias v='nvim'
 alias k='kak'
-alias sv='sudo vim'
-alias brc="vim ~/.bashrc"
-alias vrc="vim ~/.vimrc"
-alias zrc="vim ~/.zshrc"
+alias sv='sudo nvim'
+alias brc="nvim ~/.bashrc"
+alias vrc="nvim ~/.config/nvim/init.vim"
+alias zrc="nvim ~/.zshrc"
 alias sbrc="source ~/.bashrc"
-alias svrc="source ~/.vimrc"
+alias svrc="source ~/.config/nvim/init.vim"
 alias szrc="source ~/.zshrc"
-alias cf="cd /opt/dwm && vim config.def.h"
-alias td="vim ~/.todo.txt" 
+alias cf="cd /opt/dwm && nvim config.def.h"
+alias td="nvim ~/.todo.txt" 
 alias pacman="sudo pacman" 
 alias torr='transmission-cli -w ~/torrents -D -u 30' 
 alias dragon='dragon-drag-and-drop'
+alias theme="source /home/zim/.github/dotfiles/scripts/theme.sh" 
+alias fm="ranger" 
 
 alias suspend='systemctl suspend && slock'
 alias poweroff='systemctl poweroff'
