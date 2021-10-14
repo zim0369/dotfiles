@@ -1,3 +1,4 @@
+let $BASH_ENV = "~/.bash_aliases"
 call plug#begin('~/.vim/plugged')
 
 Plug 'lervag/vimtex'
