@@ -1,4 +1,3 @@
-let $BASH_ENV = "~/.bash_aliases"
 call plug#begin('~/.vim/plugged')
 
 Plug 'lervag/vimtex'
@@ -217,14 +216,6 @@ nnoremap tl :tablast<CR>
 "todo 
 nnoremap td :e ~/.todo.txt<CR>
  
-" line in line scroll 
-noremap <silent> j gj
-noremap <silent> k gk
-noremap <silent> dj dj
-noremap <silent> dk dk
-noremap <silent> 0 g0
-noremap <silent> $ g$
-
 " Don't include leading whitespace
 onoremap a' 2i'
 onoremap a" 2i"
@@ -255,7 +246,7 @@ nnoremap <leader>l <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 set nu 
 
 " background
-set background=light
+set background=dark
 
 " 256 colors
 set termguicolors
@@ -394,5 +385,5 @@ endfunc
 
 " =================================================================
 
-colorscheme gruvbox
+colorscheme
 syntax on
