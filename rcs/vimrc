@@ -229,7 +229,7 @@ nnoremap <leader>s :source ~/.vimrc<CR>
 set nu 
 
 " background
-set background=dark
+set background=light
 
 " 256 colors
 set termguicolors

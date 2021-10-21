@@ -7,8 +7,8 @@ fi
 
 export TERM='xterm-256color' 
 export LANG=en_US.UTF-8
-export DARKO='PaperColor'
-export LIGHTO='gruvbox'
+export darko='hydrangea'
+export lighto='gruvbox'
 
 source /home/zim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -45,7 +45,6 @@ alias td="nvim ~/.todo.txt"
 alias pacman="sudo pacman" 
 alias torr='transmission-cli -w ~/torrents -D -u 30' 
 alias dragon='dragon-drag-and-drop'
-alias theme="source /home/zim/.github/dotfiles/scripts/theme.sh" 
 alias fm="ranger" 
 
 alias suspend='systemctl suspend && slock'

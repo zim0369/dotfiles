@@ -15,22 +15,27 @@
 )
 
 (defalias
+nxt C-tab
+prv C-S-tab
 cb   C-bspc
-nxt  C-tab
-prv  C-S-tab
 sprt S-prnt
+vi   (layer-toggle vim)
+sqr (tap-macro [ ] left)
+bra (tap-macro { } left)
 sym  (layer-toggle syms)
-es   (tap-hold 170 esc (layer-toggle lshift))
+par (tap-macro \( \) left)
+lsf  (tap-hold 160 esc (layer-toggle lshift))
 num  (tap-hold 150 , (layer-toggle nums))
-fvi  (tap-hold 150 f11 (layer-toggle vim))
+cz  (tap-hold 150 z ctl)
+csz  (tap-hold 150 Z C-sft)
 )
 
 (deflayer qwerty                            ;; The default layer that'd be read when you launch kmonad
   end   f1    f2   f3   f4   f5    f6   f7    f8    f9   f10   f11  f12  prnt  ins  del
   `     1     2    @prv @nxt M-c   6    7     8     bspc 0     -    =    bspc
   tab   q     w    e    r    t     _    y     u     i    o     p    '    \
-  @es   a     s    d    f    g     _    h     j     k    l     rsft ret
-  lctl  z     x    c    v    b     b    n     m     @num .     ralt
+  @lsf  a     s    d    f    g     _    h     j     k    l     rsft ret
+  lalt  @cz   x    c    v    b     b    n     m     @num .     ralt
   caps  lalt  lmet           spc              @sym  rctl
 )
 
@@ -38,8 +43,8 @@ fvi  (tap-hold 150 f11 (layer-toggle vim))
   end   f1    f2   f3   f4   f5    f6   f7    f8    f9   f10   f11  f12  S-prnt  ins  del
   ~     !     ?    #    M-S-c  %     ^    &     *   C-bspc     \(   \_   +    bspc
   S-tab Q     W    E    R    T     _    Y     U     I    O     P    "    |
-  @es   A     S    D    F    G     _    H     J     K    L     rsft S-ret
-  C-sft Z     X    C    V    B     B    N     M     <    >     A-sft
+  @lsf  A     S    D    F    G     _    H     J     K    L     rsft S-ret
+  A-sft @csz  X    C    V    B     B    N     M     <    >     A-sft
   caps  lalt  lmet           S-spc            @sym  C-sft
 )
 
@@ -56,15 +61,15 @@ fvi  (tap-hold 150 f11 (layer-toggle vim))
   _     _     _    _    _    _     _    _     _    _    _     _    _    _     _    _
   _     _     _    brdn brup _     _    _     _    _    _     _    _    _
   spc   *     #    %    &    +     _    _     {    \(   \)    }    \    _
-  lsft  !     ?    $    @    -     _    \_    :    /    =     _    _
+  f11   !     ?    $    @    -     _    \_    :    /    =     _    _
   lctl  ~     `    ;    ^    |     |    _     _    _    _     _
-  _     _     _              @fvi             _    rctl
+  _     _     _              @vi             _    rctl
 )
 
 (deflayer vim
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
-  _    _    _    vold volu _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    vold volu _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    C--  C-+  _    _    _   
   _    _    _    _    _    _    _    left down up   right _   _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _
