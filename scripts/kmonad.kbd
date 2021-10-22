@@ -27,6 +27,8 @@ par (tap-macro \( \) left)
 lsf  (tap-hold 160 esc (layer-toggle lshift))
 num  (tap-hold 150 , (layer-toggle nums))
 cz  (tap-hold 150 z ctl)
+cp  (tap-hold 150 . ctl)
+csp  (tap-hold 150 > C-sft)
 csz  (tap-hold 150 Z C-sft)
 )
 
@@ -35,7 +37,7 @@ csz  (tap-hold 150 Z C-sft)
   `     1     2    @prv @nxt M-c   6    7     8     bspc 0     -    =    bspc
   tab   q     w    e    r    t     _    y     u     i    o     p    '    \
   @lsf  a     s    d    f    g     _    h     j     k    l     rsft ret
-  lalt  @cz   x    c    v    b     b    n     m     @num .     ralt
+  lalt  @cz   x    c    v    b     b    n     m     @num @cp   ralt
   caps  lalt  lmet           spc              @sym  rctl
 )
 
@@ -44,7 +46,7 @@ csz  (tap-hold 150 Z C-sft)
   ~     !     ?    #    M-S-c  %     ^    &     *   C-bspc     \(   \_   +    bspc
   S-tab Q     W    E    R    T     _    Y     U     I    O     P    "    |
   @lsf  A     S    D    F    G     _    H     J     K    L     rsft S-ret
-  A-sft @csz  X    C    V    B     B    N     M     <    >     A-sft
+  A-sft @csz  X    C    V    B     B    N     M     <    @csp  A-sft
   caps  lalt  lmet           S-spc            @sym  C-sft
 )
 

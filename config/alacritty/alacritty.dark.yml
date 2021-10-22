@@ -15,16 +15,16 @@ scrolling:
   auto_scroll: false
 font:
   normal:
-    family: Fira Code
+    family: FuraCode Nerd Font Mono
     style: Medium
   bold:
-    family: Fira Code
+    family: FuraCode Nerd Font Mono
     style: Bold
   italic:
-    family: Fira Code
+    family: FuraCode Nerd Font Mono
     style: Italic
   bold_italic:
-    family: Fira Code
+    family: FuraCode Nerd Font Mono
     style: Bold Italic
   size: 7.5
   offset:
