@@ -1,27 +1,20 @@
-local fn = vim.fn
-local execute = vim.api.nvim_command
-
--- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 require('settings')
 require('autocmds')
 require('plugins/packer')
-require('plugins/hop-nvim')
+require('plugins/tabout-nvim')
+require('plugins/comfortable-motion')
+require('plugins/nvim-treesitter')
+require('plugins/nvim-lspconfig')
+require('plugins/nvim-autopairs')
 require('plugins/nvim-tree')
 require('plugins/telescope')
+require('plugins/hop-nvim')
+require('plugins/nvim-cmp')
 require('plugins/feline')
-require('plugins/nvim-lspconfig')
-require('plugins/vim-easymotion')
-require('plugins/nvim-autopairs')
-require('plugins/nvim-treesitter')
-require('plugins/comfortable-motion')
 require('compiler')
 require('mappings')
 
--- require('plugins/tabout-nvim')
+-- ISSUES
+-- require('plugins/shade-nvim')
+-- https://www.reddit.com/r/neovim/comments/qe7c7v/set_bglightdark_on_the_fly_not_fixed_yet/

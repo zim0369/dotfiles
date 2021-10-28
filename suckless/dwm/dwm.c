@@ -54,7 +54,10 @@
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
-#define TAGMASK                 ((1 << LENGTH(tags)) - 1)
+#define NUMTAGS					(LENGTH(tags) + LENGTH(scratchpads))
+#define TAGMASK     			((1 << NUMTAGS) - 1)
+#define SPTAG(i) 				((1 << LENGTH(tags)) << (i))
+#define SPTAGMASK   			(((1 << LENGTH(scratchpads))-1) << LENGTH(tags))
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
 #define SYSTEM_TRAY_REQUEST_DOCK    0
@@ -140,6 +143,7 @@ struct Monitor {
 	unsigned int seltags;
 	unsigned int sellt;
 	unsigned int tagset[2];
+	int rmaster;
 	int showbar;
 	int topbar;
 	Client *clients;
@@ -244,6 +248,8 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglescratch(const Arg *arg);
+static void togglermaster(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -264,14 +270,12 @@ static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
 static Client *wintoclient(Window w);
-static Client *wintosystrayicon(Window w);
 static Monitor *wintomon(Window w);
+static Client *wintosystrayicon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
-static void centeredmaster(Monitor *m);
-static void centeredfloatingmaster(Monitor *m);
 
 /* variables */
 static Systray *systray =  NULL;
@@ -340,6 +344,11 @@ applyrules(Client *c)
 		{
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
+			if ((r->tags & SPTAGMASK) && r->isfloating) {
+				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
+				c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+			}
+
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
 				c->mon = m;
@@ -349,7 +358,7 @@ applyrules(Client *c)
 		XFree(ch.res_class);
 	if (ch.res_name)
 		XFree(ch.res_name);
-	c->tags = c->tags & TAGMASK ? c->tags & TAGMASK : c->mon->tagset[c->mon->seltags];
+	c->tags = c->tags & TAGMASK ? c->tags & TAGMASK : (c->mon->tagset[c->mon->seltags] & ~SPTAGMASK);
 }
 
 int
@@ -615,7 +624,7 @@ clientmessage(XEvent *e)
 		if (cme->data.l[1] == netatom[NetWMFullscreen]
 		|| cme->data.l[2] == netatom[NetWMFullscreen])
 			setfullscreen(c, (cme->data.l[0] == 1 /* _NET_WM_STATE_ADD    */
-				|| (cme->data.l[0] == 2 /* _NET_WM_STATE_TOGGLE */ && !c->isfullscreen)));
+				|| cme->data.l[0] == 2 /* _NET_WM_STATE_TOGGLE */));
 	} else if (cme->message_type == netatom[NetActiveWindow]) {
 		if (c != selmon->sel && !c->isurgent)
 			seturgent(c, 1);
@@ -645,7 +654,6 @@ void
 configurenotify(XEvent *e)
 {
 	Monitor *m;
-	Client *c;
 	XConfigureEvent *ev = &e->xconfigure;
 	int dirty;
 
@@ -657,17 +665,12 @@ configurenotify(XEvent *e)
 		if (updategeom() || dirty) {
 			drw_resize(drw, sw, bh);
 			updatebars();
-			for (m = mons; m; m = m->next) {
-				for (c = m->clients; c; c = c->next)
-					if (c->isfullscreen)
-						resizeclient(c, m->mx, m->my, m->mw, m->mh);
 				resizebarwin(m);
 			}
 			focus(NULL);
 			arrange(NULL);
 		}
 	}
-}
 
 void
 configurerequest(XEvent *e)
@@ -730,6 +733,7 @@ createmon(void)
 	m->tagset[0] = m->tagset[1] = 1;
 	m->mfact = mfact;
 	m->nmaster = nmaster;
+	m->rmaster = rmaster;
 	m->showbar = showbar;
 	m->topbar = topbar;
 	m->lt[0] = &layouts[0];
@@ -1321,8 +1325,6 @@ movemouse(const Arg *arg)
 
 	if (!(c = selmon->sel))
 		return;
-	if (c->isfullscreen) /* no support moving fullscreen windows by mouse */
-		return;
 	restack(selmon);
 	ocx = c->x;
 	ocy = c->y;
@@ -1497,6 +1499,14 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
+	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
+	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
+	    && !c->isfullscreen && !c->isfloating
+	    && NULL != c->mon->lt[c->mon->sellt]->arrange) {
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
+		wc.border_width = 0;
+	}
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
@@ -1512,8 +1522,6 @@ resizemouse(const Arg *arg)
 	Time lasttime = 0;
 
 	if (!(c = selmon->sel))
-		return;
-	if (c->isfullscreen) /* no support resizing fullscreen windows by mouse */
 		return;
 	restack(selmon);
 	ocx = c->x;
@@ -1714,24 +1722,10 @@ setfullscreen(Client *c, int fullscreen)
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
 			PropModeReplace, (unsigned char*)&netatom[NetWMFullscreen], 1);
 		c->isfullscreen = 1;
-		c->oldstate = c->isfloating;
-		c->oldbw = c->bw;
-		c->bw = 0;
-		c->isfloating = 1;
-		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
-		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
 			PropModeReplace, (unsigned char*)0, 0);
 		c->isfullscreen = 0;
-		c->isfloating = c->oldstate;
-		c->bw = c->oldbw;
-		c->x = c->oldx;
-		c->y = c->oldy;
-		c->w = c->oldw;
-		c->h = c->oldh;
-		resizeclient(c, c->x, c->y, c->w, c->h);
-		arrange(c->mon);
 	}
 }
 
@@ -1783,7 +1777,7 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	bh = user_bh ? user_bh : drw->fonts->h + 2;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
@@ -1863,9 +1857,13 @@ showhide(Client *c)
 	if (!c)
 		return;
 	if (ISVISIBLE(c)) {
+		if ((c->tags & SPTAGMASK) && c->isfloating) {
+			c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
+			c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+		}
 		/* show clients top down */
 		XMoveWindow(dpy, c->win, c->x, c->y);
-		if ((!c->mon->lt[c->mon->sellt]->arrange || c->isfloating) && !c->isfullscreen)
+		if (!c->mon->lt[c->mon->sellt]->arrange || c->isfloating)
 			resize(c, c->x, c->y, c->w, c->h, 0);
 		showhide(c->snext);
 	} else {
@@ -1928,18 +1926,22 @@ tile(Monitor *m)
 		return;
 
 	if (n > m->nmaster)
-        mw = m->nmaster ? m->ww * (1.0 - m->mfact) : 0;
+		mw = m->nmaster
+			? m->ww * (m->rmaster ? 1.0 - m->mfact : m->mfact)
+			: 0;
 	else
 		mw = m->ww;
 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx + m->ww - mw, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
+			resize(c, m->rmaster ? m->wx + m->ww - mw : m->wx,
+			       m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
 			if (my + HEIGHT(c) < m->wh)
 				my += HEIGHT(c);
 		} else {
 			h = (m->wh - ty) / (n - i);
-			resize(c, m->wx, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
+			resize(c, m->rmaster ? m->wx : m->wx + mw, m->wy + ty,
+			       m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
 			if (ty + HEIGHT(c) < m->wh)
 				ty += HEIGHT(c);
 		}
@@ -1970,13 +1972,47 @@ togglefloating(const Arg *arg)
 {
 	if (!selmon->sel)
 		return;
-	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
-		return;
 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
 	if (selmon->sel->isfloating)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
 	arrange(selmon);
+}
+
+void
+togglermaster(const Arg *arg)
+{
+	selmon->rmaster = !selmon->rmaster;
+	/* now mfact represents the left factor */
+	selmon->mfact = 1.0 - selmon->mfact;
+	if (selmon->lt[selmon->sellt]->arrange)
+		arrange(selmon);
+}
+
+void
+togglescratch(const Arg *arg)
+{
+	Client *c;
+	unsigned int found = 0;
+	unsigned int scratchtag = SPTAG(arg->ui);
+	Arg sparg = {.v = scratchpads[arg->ui].cmd};
+
+	for (c = selmon->clients; c && !(found = c->tags & scratchtag); c = c->next);
+	if (found) {
+		unsigned int newtagset = selmon->tagset[selmon->seltags] ^ scratchtag;
+		if (newtagset) {
+			selmon->tagset[selmon->seltags] = newtagset;
+			focus(NULL);
+			arrange(selmon);
+		}
+		if (ISVISIBLE(c)) {
+			focus(c);
+			restack(selmon);
+		}
+	} else {
+		selmon->tagset[selmon->seltags] |= scratchtag;
+		spawn(&sparg);
+	}
 }
 
 void
@@ -2562,107 +2598,4 @@ main(int argc, char *argv[])
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
-}
-
-void
-centeredmaster(Monitor *m)
-{
-	unsigned int i, n, h, mw, mx, my, oty, ety, tw;
-	Client *c;
-
-	/* count number of clients in the selected monitor */
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 0)
-		return;
-
-	/* initialize areas */
-	mw = m->ww;
-	mx = 0;
-	my = 0;
-	tw = mw;
-
-	if (n > m->nmaster) {
-		/* go mfact box in the center if more than nmaster clients */
-		mw = m->nmaster ? m->ww * m->mfact : 0;
-		tw = m->ww - mw;
-
-		if (n - m->nmaster > 1) {
-			/* only one client */
-			mx = (m->ww - mw) / 2;
-			tw = (m->ww - mw) / 2;
-		}
-	}
-
-	oty = 0;
-	ety = 0;
-	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-	if (i < m->nmaster) {
-		/* nmaster clients are stacked vertically, in the center
-		 * of the screen */
-		h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-		resize(c, m->wx + mx, m->wy + my, mw - (2*c->bw),
-		       h - (2*c->bw), 0);
-		my += HEIGHT(c);
-	} else {
-		/* stack clients are stacked vertically */
-		if ((i - m->nmaster) % 2 ) {
-			h = (m->wh - ety) / ( (1 + n - i) / 2);
-			resize(c, m->wx, m->wy + ety, tw - (2*c->bw),
-			       h - (2*c->bw), 0);
-			ety += HEIGHT(c);
-		} else {
-			h = (m->wh - oty) / ((1 + n - i) / 2);
-			resize(c, m->wx + mx + mw, m->wy + oty,
-			       tw - (2*c->bw), h - (2*c->bw), 0);
-			oty += HEIGHT(c);
-		}
-	}
-}
-
-void
-centeredfloatingmaster(Monitor *m)
-{
-	unsigned int i, n, w, mh, mw, mx, mxo, my, myo, tx;
-	Client *c;
-
-	/* count number of clients in the selected monitor */
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 0)
-		return;
-
-	/* initialize nmaster area */
-	if (n > m->nmaster) {
-		/* go mfact box in the center if more than nmaster clients */
-		if (m->ww > m->wh) {
-			mw = m->nmaster ? m->ww * m->mfact : 0;
-			mh = m->nmaster ? m->wh * 0.9 : 0;
-		} else {
-			mh = m->nmaster ? m->wh * m->mfact : 0;
-			mw = m->nmaster ? m->ww * 0.9 : 0;
-		}
-		mx = mxo = (m->ww - mw) / 2;
-		my = myo = (m->wh - mh) / 2;
-	} else {
-		/* go fullscreen if all clients are in the master area */
-		mh = m->wh;
-		mw = m->ww;
-		mx = mxo = 0;
-		my = myo = 0;
-	}
-
-	for(i = tx = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-	if (i < m->nmaster) {
-		/* nmaster clients are stacked horizontally, in the center
-		 * of the screen */
-		w = (mw + mxo - mx) / (MIN(n, m->nmaster) - i);
-		resize(c, m->wx + mx, m->wy + my, w - (2*c->bw),
-		       mh - (2*c->bw), 0);
-		mx += WIDTH(c);
-	} else {
-		/* stack clients are stacked horizontally */
-		w = (m->ww - tx) / (n - i);
-		resize(c, m->wx + tx, m->wy, w - (2*c->bw),
-		       m->wh - (2*c->bw), 0);
-		tx += WIDTH(c);
-	}
 }

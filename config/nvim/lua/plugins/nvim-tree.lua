@@ -1,3 +1,1 @@
-config = function()
-require'nvim-tree'.setup {}
-end
+require'nvim-tree'.setup{}

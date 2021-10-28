@@ -1,14 +1,14 @@
-From db6a8931a55982b95ed24ef57c8b71a6a3dafab6 Mon Sep 17 00:00:00 2001
+From 8f662e7a556f94bda83ec724fb036e15b2badaac Mon Sep 17 00:00:00 2001
 From: Jack Bird <jack.bird@durham.ac.uk>
-Date: Wed, 4 Aug 2021 20:27:23 +0100
-Subject: [PATCH] Focus master and return supported over all tags
+Date: Fri, 27 Aug 2021 01:14:44 +0100
+Subject: [PATCH] 6.2 focusmaster return
 
 ---
  dwm.c | 39 +++++++++++++++++++++++++++++++++++++++
  1 file changed, 39 insertions(+)
 
 diff --git a/dwm.c b/dwm.c
-index 5e4d494..ee28f28 100644
+index 4465af1..5219cbd 100644
 --- a/dwm.c
 +++ b/dwm.c
 @@ -127,6 +127,7 @@ struct Monitor {
@@ -26,8 +26,8 @@ index 5e4d494..ee28f28 100644
 +static void focusmaster(const Arg *arg);
  static void focusmon(const Arg *arg);
  static void focusstack(const Arg *arg);
- static Atom getatomprop(Client *c, Atom prop);
-@@ -660,6 +662,10 @@ detach(Client *c)
+ static int getrootptr(int *x, int *y);
+@@ -659,6 +661,10 @@ detach(Client *c)
  {
  	Client **tc;
  
@@ -38,7 +38,7 @@ index 5e4d494..ee28f28 100644
  	for (tc = &c->mon->clients; *tc && *tc != c; tc = &(*tc)->next);
  	*tc = c->next;
  }
-@@ -816,6 +822,34 @@ focusin(XEvent *e)
+@@ -815,6 +821,34 @@ focusin(XEvent *e)
  		setfocus(selmon->sel);
  }
  
@@ -73,7 +73,7 @@ index 5e4d494..ee28f28 100644
  void
  focusmon(const Arg *arg)
  {
-@@ -1203,6 +1237,11 @@ nexttiled(Client *c)
+@@ -1202,6 +1236,11 @@ nexttiled(Client *c)
  void
  pop(Client *c)
  {
@@ -86,5 +86,5 @@ index 5e4d494..ee28f28 100644
  	attach(c);
  	focus(c);
 -- 
-2.32.0
+2.33.0
 

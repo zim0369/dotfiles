@@ -1,3 +1,3 @@
-config = function()
   require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-end
+-- config = function()
+-- end

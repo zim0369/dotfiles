@@ -69,6 +69,14 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
   ["comfortable-motion.vim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim"
@@ -89,6 +97,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
@@ -106,9 +118,8 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -121,6 +132,14 @@ _G.packer_plugins = {
   ["traces.vim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/traces.vim"
+  },
+  ["vim-jumpmotion"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-jumpmotion"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-repeat"
   },
   ["vim-surround"] = {
     loaded = true,
