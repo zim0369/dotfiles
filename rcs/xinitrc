@@ -39,21 +39,20 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# setxkbmap -option altwin:swap_lalt_lwin
-# setxkbmap -option caps:swapescape
+ # setxkbmap -option altwin:swap_lalt_lwin
+ # setxkbmap -option caps:swapescape
 
-feh --bg-scale ~/pictures/minimal/archneon.png
+feh --bg-scale --randomize ~/pictures/landscape/*
+/home/zim/.config/picom/picom-toggle.sh
 /opt/bar/dwm_bar.sh &
 nm-applet --indicator &
-mate-power-manager &
 
-while true; do
-    # Log stderror to a file 
-    dwm 2> ~/.dwm.log
-    nm-applet --indicator &
-    mate-power-manager &
-    # No error logging
-    #dwm >/dev/null 2>&1
-done
- 
-exec i3
+ while true; do
+     # Log stderror to a file
+     dwm 2> ~/.dwm.log
+     nm-applet --indicator &
+     # No error logging
+     #dwm >/dev/null 2>&1
+ done
+
+ exec dwm

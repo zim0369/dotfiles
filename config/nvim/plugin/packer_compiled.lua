@@ -71,83 +71,128 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["comfortable-motion.vim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim",
+    url = "https://github.com/yuttie/comfortable-motion.vim"
+  },
+  everforest = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["feline.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/feline.nvim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/feline.nvim",
+    url = "https://github.com/famiu/feline.nvim"
+  },
+  firenvim = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
   },
   hop = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/hop"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/hop",
+    url = "https://github.com/phaazon/hop.nvim"
   },
-  neon = {
+  ["hydrangea-vim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/neon"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/hydrangea-vim",
+    url = "https://github.com/yuttie/hydrangea-vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["shade.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/shade.nvim",
+    url = "https://github.com/sunjon/shade.nvim"
+  },
+  ["sideways.vim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/sideways.vim",
+    url = "https://github.com/AndrewRadev/sideways.vim"
+  },
+  ["space-nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/space-nvim",
+    url = "https://github.com/Th3Whit3Wolf/space-nvim"
+  },
+  ["targets.vim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/targets.vim",
+    url = "https://github.com/wellle/targets.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["traces.vim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/traces.vim"
-  },
-  ["vim-jumpmotion"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-jumpmotion"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/traces.vim",
+    url = "https://github.com/markonm/traces.vim"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-repeat"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   winresizer = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/winresizer"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/winresizer",
+    url = "https://github.com/simeji/winresizer"
   }
 }
 

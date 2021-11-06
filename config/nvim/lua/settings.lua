@@ -29,11 +29,13 @@ opt.colorcolumn = '80'        -- line length marker at 80 columns
 opt.signcolumn='number'
 opt.scrolloff = 15
 opt.cursorline = true
+opt.cursorcolumn = true
 opt.splitright = true         -- vertical split to the right
 opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
+opt.backspace = [[indent,eol,start]]
 
 -----------------------------------------------------------
 -- Memory, CPU
@@ -56,5 +58,5 @@ opt.smartindent = true    -- autoindent new lines
 -----------------------------------------------------------
 opt.termguicolors = true
 cmd [[colorscheme everforest]]
-opt.guifont='FuraCode Nerd Font:h16'
+opt.guifont='FuraCode Nerd Font:h17'
 g.neovide_cursor_vfx_mode = "railgun"

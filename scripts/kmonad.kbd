@@ -1,8 +1,8 @@
 (defcfg                                                       ;; For linux & by-id lists pluggable devices
-  fallthrough true ;; If set to false you won't be able to access keys that you haven't made a binding for
-  allow-cmd true ;; If you wish to run system commands on a key/combo press then enable this
+  fallthrough true
+  allow-cmd true
   input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
-  output (uinput-sink "KMonad output")
+  output (uinput-sink "My KMonad output")
 )
 
 (defsrc
@@ -16,37 +16,37 @@
 
 (defalias
 sym  (layer-toggle syms)
-az   (tap-hold 150 z alt)
+az   (tap-hold 153 z alt)
 asf  (layer-toggle altsft)
-lsf  (layer-toggle lshift)
 rsf  (layer-toggle rshift)
-csp  (tap-hold 150 > rctl)
-asz  (tap-hold 150 Z A-sft)
-num  (tap-hold 150 , (layer-toggle nums))
-vi   (tap-hold 150 ret (layer-toggle vim))
-cp   (tap-hold 150 . (layer-toggle control))
+csp  (tap-hold 153 > rctl)
+asz  (tap-hold 153 Z A-sft)
+vq   (tap-hold 153 q (layer-toggle vim))
+num  (tap-hold 153 , (layer-toggle nums))
+cp   (tap-hold 153 . (layer-toggle control))
+lsf  (tap-hold 153 esc (layer-toggle lshift))
 )
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
-  end       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C-S-tab C-tab   M-c    6       7        M-S-c    bspc    0      -        =      bspc
-  tab       q        w       e       r       t      _       y        u        i       o      p        '      \
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      bspc
+  tab       @vq      w       e       r       t      _       y        u        i       o      p        '      \
   @lsf      a        s       d       f       g      _       h        j        k       l      @rsf     ret
-  lctl      @az      x       c       v       b      b       n        m        @num    @cp    ralt     volu
-  C-sft     A-sft    lmet                    spc            @sym     C-sft    brdn    vold   brup
+  lctl      @az      x       c       v       b      b       n        m        @num    @cp    ralt     up
+  C-sft     A-sft    lmet                    spc            @sym     C-sft    left    down   right
 )
 
 (deflayer control
-  end       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C--     C-+     M-c    6       7        M-S-c    bspc    0      -        =      bspc
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       C--     C-+     5      6       7        8        bspc    0      -        =      bspc
   C-tab     C-q      C-w     C-e     C-r     C-t    _       C-y      C-u      C-i     C-o    C-p      C-'    C-\
-  @lsf      C-a      C-s     C-d     C-f     C-g    _       C-h      C-j      C-k     C-l    C-@rsf   C-ret
+  @lsf      C-a      C-s     C-d     C-f     C-g    _       C-h      C-j      C-k     C-l    C-@rsf   S-ret
   lctl      C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     @cp    ralt     _
   C-sft     A-sft    lmet                    spc            @sym     C-sft    _       _      _
 )
 
 (deflayer lshift
-  end       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
   ~         !        ?       #       $       %      ^       &        *        C-bspc  \)     \_       +      bspc
   S-tab     Q        W       E       R       T      _       Y        U        I       O      P        "      |
   @lsf      A        S       D       F       G      _       H        J        K       L      @rsf     S-ret
@@ -55,8 +55,8 @@ cp   (tap-hold 150 . (layer-toggle control))
 )
 
 (deflayer rshift
-  end       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
-  ~         !        ?       A-left  A-right %      ^       &        *        C-bspc  \)     \_       +      bspc
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
+  ~         !        ?       {       }       %      ^       &        *        C-bspc  \)     \_       +      bspc
   S-tab     Q        W       E       R       T      _       Y        U        I       O      P        "      |
   @lsf      A        S       D       F       G      _       H        J        K       L      @rsf     S-ret
   lctl      @asz     X       C       V       B      B       N        M        <       @csp   ralt     _
@@ -64,41 +64,40 @@ cp   (tap-hold 150 . (layer-toggle control))
 )
 
 (deflayer altsft
-  end       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       _       _       _      6       7        8        bspc    0      -        =      bspc
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       3       4       5      6       7        8        bspc    0      -        =      bspc
   A-S-tab   A-S-q    A-S-w   A-S-e   A-S-r   A-S-t  _       A-S-y    A-S-u    A-S-i   A-S-o  A-S-p    A-S-'  A-S-\
   @lsf      A-S-a    A-S-s   A-S-d   A-S-f   A-S-g  _       A-S-h    A-S-j    A-S-k   A-S-l  @rsf     A-S-ret
   lctl      A-S-z    A-S-x   A-S-c   A-S-v   A-S-b  A-S-b   A-S-n    A-S-m    A-S-,   A-S-.  ralt     _
-  C-sft     A-sft    lmet                    A-S-spc                 @asf     C-sft    _       _      _
+  C-sft     A-sft    lmet                    A-S-ret                   @asf     C-sft    _       _      _
 )
 
 (deflayer nums
   _         _        _       _       _       _      _       _        _        _       _      _         _     _       _      _
-  _         _        _       -       +       _      _       _        _        bspc    _      _         _     _
+  _         _        _       [       ]       _      _       _        _        bspc    _      _         _     _
   _         3        4       7       8       9      _       _        _        _       _      _         _     _
   _         1        2       5       6       0      _       _        _        _       _      _         _
-  _         _        _       [       ]       _      _       _        _        _       _      _         _
+  _         _        _       _       _       _      _       _        _        _       _      _         _
   _         _        _                       spc                     _        _       _      _         _
 )
 
 (deflayer syms
   _         _        _       _       _       _      _       _        _        C-bspc  _      _         _     _       _      _
-  _         _        _       -       +       _      _       _        _        _       _      _         _     _
-  _         *        #       esc     &       tab    _       _        {        \(      \)     }         \     _
-  f11       !        ?       $       @       %      _       \_       :        /       =      @asf      _
-  _         ~        `       ;       ^       |      |       _        _        _       _      _         _
-  _         _        _                       @vi                     _        rctl    _      _         _
+  _         _        _       [       ]       _      _       _        _        _       _      _         _     _
+  _         *        #       esc     &       tab    _       _        `        %       \_     \         _     _
+  f11       !        ?       $       @       -      _       +        :        /       =      @asf      _
+  _         _        ~       ;       ^       |      |       _        _        _       _      _         _
+  _         _        _                       ret                     _        _       _      _         _
 )
 
 (deflayer vim
   _         _        _       _       _       _      _       _        _        _       _      _         _     _       _      _
   _         _        _       _       _       _      _       _        _        _       _      _         _     _
-  _         _        _       _       _       _      _       _        vold     brdn    brup   volu      _     _
+  _         _        _       _       _       _      _       _        _        _       _      _         _     _
   _         _        _       _       _       _      _       left     down     up      right  _         _
   _         _        _       _       _       _      _       _        _        _       _      _         _
   _         _        _                       _                       _        _       _      _         _
 )
-
 
 
 #|_________________________________________________________________________________
@@ -129,5 +128,60 @@ cp   (tap-hold 150 . (layer-toggle control))
   @smt  ;     q    j    k    x     b    m     w     v    z     @sa
   caps  lalt  lmet           spc              @num  rctl
 )
+
+(deflayer normal
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       \(      \)      5      6       7        C-ralt   bspc    0      M-o      =      bspc
+  tab       M-q      w       e       r       t      _       y        u        @ins    o      p        '      \
+  @nsf      a        M-s     d       f       g      _       left     down     up      right  @nsf     ret
+  lctl      z        x       c       v       M-S-b  M-b     n        m        ,       .      ralt     up
+  C-sft     A-sft    @mod                    @nspc          @nsym     C-sft    left    down   right
+)
+
+(deflayer nspace
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       C-S-tab C-tab   5      6       7        C-ralt   bspc    0      M-o      =      bspc
+  tab       q        w       e       r       t      _       y        u        @ins    o      p        '      \
+  @nsf      a        s       d       f       g      _       left     down     up      right  @nsf     ret
+  lctl      @az      x       c       v       b      b       n        m        <       >      ralt     up
+  C-sft     A-sft    @mod                    S-spc          @sym     C-sft    left    down   right
+)
+
+(deflayer nshift
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       C-S-tab C-tab   5      6       7        C-ralt   bspc    0      M-o      =      bspc
+  tab       q        w       e       r       t      _       y        u        @ins    o      p        '      \
+  @nsf      a        s       d       f       g      _       left     pgdn     pgup    right  @nsf     ret
+  lctl      z        C-S-t   c       v       b      b       n        m        <       >      ralt     up
+  C-sft     A-sft    @mod                    S-spc          @sym     C-sft    left    down   right
+)
+
+(deflayer ncontrol
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       C--     C-+     5      6       7        8        bspc    0      -        =      bspc
+  C-tab     C-q      C-w     C-e     C-r     C-t    _       C-y      C-u      C-i     C-o    C-p      C-'    C-\
+  @nsf      C-a      C-s     C-d     C-f     C-g    _       C-left   C-down   C-up    C-right C-@nsf   S-ret
+  @nctl     C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     @cp    ralt     _
+  C-sft     A-sft    lmet                    spc            @sym     C-sft    _       _      _
+)
+
+(deflayer   nsyms
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-o      =      @ccc
+  tab       q        w       e       r       t      _       y        u        i       o      p        '      \
+  @lsf      a        s       d       f       g      _       h        j        k       l      @rsf     @norm
+  lctl      @az      x       c       v       b      b       n        m        @num    @cp    ralt     up
+  C-sft     A-sft    lmet                    spc            @sym     C-sft    left    down   right
+)
+
+(deflayer modkey
+  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
+  `         1        2       M--     M-+     5      6       7        8        bspc    0      -        =      bspc
+  M-tab     M-q      M-w     M-e     M-r     M-t    _       M-y      M-u      M-i     M-o    M-p      M-'    M-\
+  @lsf      M-a      M-s     M-d     M-f     M-g    _       M-h      M-j      M-k     M-l    M-@rsf   S-ret
+  lctl      M-z      M-x     M-c     M-v     M-b    M-b     M-n      M-m      M-,     @cp    ralt     _
+  M-sft     A-sft    lmet                    spc            @sym     M-sft    _       _      _
+)
+
 
 |#

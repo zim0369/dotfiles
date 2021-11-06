@@ -11,13 +11,12 @@ local cmd = vim.cmd
 -- Neovim shortcuts:
 -----------------------------------------------------------
 
+map('n', 't', 'f', default_opts)
+
 map('n', '<leader>mi', ':PackerInstall<CR>', default_opts)
 map('n', '<leader>mu', ':PackerUpdate<CR>', default_opts)
 map('n', '<leader>mc', ':PackerCompile<CR>', default_opts)
 map('n', '<leader>mC', ':PackerClean<CR>', default_opts)
-
--- map Esc to kk
-map('i', 'kk', '<Esc>', {noremap = true})
 
 -- fast saving with <leader> and s
 map('n', '<leader>w', ':w<CR>', default_opts)
@@ -43,6 +42,9 @@ map('n', '<leader>tl', ':+tabmove<CR>', default_opts)
 
 map('n', '<leader>i', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
 map('n', '<C-Space>', ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', default_opts)
+map('i', '<C-Space>', ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', default_opts)
+
+map('i', '<C-H>', '<C-W>', {noremap = true})
 
 -----------------------------------------------------------
 -- Applications & Plugins shortcuts:
@@ -56,7 +58,7 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
 
 map('n', 'o', 'o <Esc>', default_opts)
 map('n', 'O', 'O <Esc>', default_opts)
-map('n', '<Leader>h', ':nohlsearch<CR>', default_opts)
+map('n', '<C-l>', ':nohl<CR><C-l>', default_opts)
 
 map('n', 'Y', 'y$', default_opts)
 map('n', '<Leader>y', '"+y', default_opts)
@@ -65,12 +67,11 @@ map('n', '<Leader>Y', 'gg"+yG', default_opts)
 map('n', '<Leader>p', '"+p', default_opts)
 map('n', '<Leader>P', '"+P', default_opts)
 
-map('n', '<Leader>ff', ':lua require([[telescope.builtin]]).find_files()<cr>'  , default_opts)
+map('n', '<Leader>fb', ':lua require([[telescope.builtin]]).buffers()<cr>'    , default_opts)
 map('n', '<Leader>fg', ':lua require([[telescope.builtin]]).live_grep()<cr>'  , default_opts)
-map('n', '<Leader>fb', ':lua require([[telescope.builtin]]).buffers()<cr>'  , default_opts)
-map('n', '<Leader>fh', ':lua require([[telescope.builtin]]).help_tags()<cr>'  , default_opts)
 map('n', '<Leader>fc', ':lua require([[telescope.builtin]]).colorscheme()<cr>', default_opts)
-
+map('n', '<Leader>ff', ':lua require"telescope.builtin".find_files()<CR>'     , default_opts)
+map('n', '<Leader>fh', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', default_opts)
 map('n', '<Leader>/',  ':lua require[[telescope.builtin]].current_buffer_fuzzy_find{}<CR>', default_opts)
 
 map('n', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
@@ -79,5 +80,10 @@ map('o', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
 
 map('n', '<leader>j', ':call comfortable_motion#flick(90)<CR>', default_opts)
 map('n', '<leader>k', ':call comfortable_motion#flick(-90)<CR>', default_opts)
+map('v', '<leader>j', '<C-d>', default_opts)
+map('v', '<leader>k', '<C-u>', default_opts)
 
 map('n', '<leader>b', ':!cp ~/boilerplates/boilerplate.%:e %<Enter>', default_opts)
+
+map('n', '<leader>h', ':SidewaysLeft<cr>', default_opts)
+map('n', '<leader>l', ':SidewaysRight<cr>', default_opts)

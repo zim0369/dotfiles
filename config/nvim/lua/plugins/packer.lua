@@ -7,6 +7,7 @@ local packer = require 'packer'
 -- for packages info see: init.lua (Lua modules)
 return packer.startup(function(use)
 
+  -- TODO Install targets.vim
   use 'tpope/vim-repeat'
   use 'hrsh7th/nvim-cmp'
   use 'sunjon/shade.nvim'
@@ -20,6 +21,7 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'windwp/nvim-autopairs'
   use 'wbthomason/packer.nvim'
+  use 'glepnir/dashboard-nvim'
   use 'Th3Whit3Wolf/space-nvim'
   use 'yuttie/comfortable-motion.vim'
   use 'nvim-treesitter/nvim-treesitter'
@@ -38,5 +40,15 @@ return packer.startup(function(use)
   use {
     'phaazon/hop.nvim',
     as = 'hop',
+  }
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
+  use {
+    'wellle/targets.vim'
+  }
+  use {
+    'AndrewRadev/sideways.vim'
   }
 end)
