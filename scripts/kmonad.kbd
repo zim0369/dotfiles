@@ -15,21 +15,21 @@
 )
 
 (defalias
-za   (tap-hold-next-release 300 z lalt)
+za   (tap-next z lalt)
 asf  (layer-toggle altsft)
 con  (layer-toggle control)
-as  (tap-hold-next-release 300 a (layer-toggle lshift))
+as  (tap-next a (layer-toggle lshift))
 
-sm  (tap-hold-next-release 300 spc lmet)
+sm  (tap-next spc lmet)
 
 sym  (layer-toggle syms)
 rsf  (layer-toggle rshift)
-sza  (tap-hold-next-release 300 Z A-sft)
+sza  (tap-next Z A-sft)
 web  (cmd-button "neovide")
-vq   (tap-hold-next-release 300 q (layer-toggle vim))
-num  (tap-hold-next-release 300 , (layer-toggle nums))
-cp   (tap-hold-next-release 300 . (layer-toggle control))
-cs   (tap-hold-next-release 300 ; (layer-toggle rshift))
+vq   (tap-next q (layer-toggle vim))
+num  (tap-next , (layer-toggle nums))
+cp   (tap-next . (layer-toggle control))
+cs   (tap-next ; (layer-toggle rshift))
 )
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
