@@ -15,42 +15,47 @@
 )
 
 (defalias
-sym  (layer-toggle syms)
-az   (tap-hold 153 z alt)
+za   (tap-hold-next-release 300 z lalt)
 asf  (layer-toggle altsft)
+con  (layer-toggle control)
+as  (tap-hold-next-release 300 a (layer-toggle lshift))
+
+sm  (tap-hold-next-release 300 spc lmet)
+
+sym  (layer-toggle syms)
 rsf  (layer-toggle rshift)
-csp  (tap-hold 153 > rctl)
-asz  (tap-hold 153 Z A-sft)
-vq   (tap-hold 153 q (layer-toggle vim))
-num  (tap-hold 153 , (layer-toggle nums))
-cp   (tap-hold 153 . (layer-toggle control))
-lsf  (tap-hold 153 esc (layer-toggle lshift))
+sza  (tap-hold-next-release 300 Z A-sft)
+web  (cmd-button "neovide")
+vq   (tap-hold-next-release 300 q (layer-toggle vim))
+num  (tap-hold-next-release 300 , (layer-toggle nums))
+cp   (tap-hold-next-release 300 . (layer-toggle control))
+cs   (tap-hold-next-release 300 ; (layer-toggle rshift))
 )
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      bspc
-  tab       @vq      w       e       r       t      _       y        u        i       o      p        '      \
-  @lsf      a        s       d       f       g      _       h        j        k       l      @rsf     ret
-  lctl      @az      x       c       v       b      b       n        m        @num    @cp    ralt     up
-  C-sft     A-sft    lmet                    spc            @sym     C-sft    left    down   right
+  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      @web
+  tab       @vq      w       e       r       t      brup    y        u        i       o      p        '      \
+  @con      @as      s       d       f       g      brdn    h        j        k       l      @cs      lctl
+  lalt      z        x       c       v       b      b       n        m        @num    @cp    ralt     up
+  C-sft     A-sft    M-sft                   @sm            @sym     C-sft    left    down   right
 )
 
 (deflayer control
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
   `         1        2       C--     C-+     5      6       7        8        bspc    0      -        =      bspc
   C-tab     C-q      C-w     C-e     C-r     C-t    _       C-y      C-u      C-i     C-o    C-p      C-'    C-\
-  @lsf      C-a      C-s     C-d     C-f     C-g    _       C-h      C-j      C-k     C-l    C-@rsf   S-ret
-  lctl      C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     @cp    ralt     _
-  C-sft     A-sft    lmet                    spc            @sym     C-sft    _       _      _
+  @con      C-a      C-s     C-d     C-f     C-g    _       C-h      C-j      C-k     C-l    C-;      C-ret
+  lalt      C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     C-.    ralt     _
+  C-sft     A-sft    M-sft                   C-spc          @sym     C-sft    _       _      _
 )
 
 (deflayer lshift
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
   ~         !        ?       #       $       %      ^       &        *        C-bspc  \)     \_       +      bspc
   S-tab     Q        W       E       R       T      _       Y        U        I       O      P        "      |
-  @lsf      A        S       D       F       G      _       H        J        K       L      @rsf     S-ret
-  lctl      @asz     X       C       V       B      B       N        M        <       @csp   ralt     volu
+  @con      A        S       D       F       G      _       H        J        K       L      ;        S-ret
+  lsft      Z        X       C       V       B      B       N        M        <       >      ralt     volu
   C-sft     A-sft    M-sft                   S-spc                   @sym     C-sft   brdn   vold     brup
 )
 
@@ -58,18 +63,18 @@ lsf  (tap-hold 153 esc (layer-toggle lshift))
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    S-prnt  ins    del
   ~         !        ?       {       }       %      ^       &        *        C-bspc  \)     \_       +      bspc
   S-tab     Q        W       E       R       T      _       Y        U        I       O      P        "      |
-  @lsf      A        S       D       F       G      _       H        J        K       L      @rsf     S-ret
-  lctl      @asz     X       C       V       B      B       N        M        <       @csp   ralt     _
-  C-sft     A-sft    M-sft                   S-spc                   @asf     C-sft    _       _      _
+  @con      A        S       D       F       G      _       H        J        K       L      @cs      S-ret
+  lalt      Z        X       C       V       B      B       N        M        <       >      ralt     _
+  C-sft     A-sft    M-sft                   S-spc                   @asf     C-sft   _      _        _
 )
 
 (deflayer altsft
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
   `         1        2       3       4       5      6       7        8        bspc    0      -        =      bspc
   A-S-tab   A-S-q    A-S-w   A-S-e   A-S-r   A-S-t  _       A-S-y    A-S-u    A-S-i   A-S-o  A-S-p    A-S-'  A-S-\
-  @lsf      A-S-a    A-S-s   A-S-d   A-S-f   A-S-g  _       A-S-h    A-S-j    A-S-k   A-S-l  @rsf     A-S-ret
+  lmet      A-S-a    A-S-s   A-S-d   A-S-f   A-S-g  _       A-S-h    A-S-j    A-S-k   A-S-l  @rsf     A-S-ret
   lctl      A-S-z    A-S-x   A-S-c   A-S-v   A-S-b  A-S-b   A-S-n    A-S-m    A-S-,   A-S-.  ralt     _
-  C-sft     A-sft    lmet                    A-S-ret                   @asf     C-sft    _       _      _
+  C-sft     A-sft    M-sft                   A-S-ret                 @asf     C-sft   _      _        _
 )
 
 (deflayer nums
@@ -82,11 +87,11 @@ lsf  (tap-hold 153 esc (layer-toggle lshift))
 )
 
 (deflayer syms
-  _         _        _       _       _       _      _       _        _        C-bspc  _      _         _     _       _      _
-  _         _        _       [       ]       _      _       _        _        _       _      _         _     _
-  _         *        #       esc     &       tab    _       _        `        %       \_     \         _     _
-  f11       !        ?       $       @       -      _       +        :        /       =      @asf      _
-  _         _        ~       ;       ^       |      |       _        _        _       _      _         _
+  _         _        _       _       _       _      _       _        _        _       _      _         _     _       _      _
+  _         _        _       [       ]       _      _       _        _        M-bspc  _      _         _     _
+  _         =        +       \_      &       #      _       _        @        `       \      ~         _     _
+  f11       ^        -       esc     tab     !      _       ?        :        /       $      @asf      _
+  _         _        |       ;       *       _      _       _        %        _       _      _         _
   _         _        _                       ret                     _        _       _      _         _
 )
 
@@ -100,8 +105,10 @@ lsf  (tap-hold 153 esc (layer-toggle lshift))
 )
 
 
-#|_________________________________________________________________________________
 
+
+
+#|_________________________________________________________________________________
 (deflayer template
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -119,69 +126,4 @@ lsf  (tap-hold 153 esc (layer-toggle lshift))
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           spc            rmet rctl
 )
-
-(deflayer dvorak
-  end   f1    f2   f3   f4   f5    f6   f7    f8    f9   f10   f11  f12  prnt  ins  del
-  0     1     2    3    4    5     6    7     8     9    0     -    =    bspc
-  tab   /     ,    .    p    y     _    f     g     c    r     l    '    \
-  @es   a     o    e    i    u     _    d     h     t    n     s    @bsf
-  @smt  ;     q    j    k    x     b    m     w     v    z     @sa
-  caps  lalt  lmet           spc              @num  rctl
-)
-
-(deflayer normal
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       \(      \)      5      6       7        C-ralt   bspc    0      M-o      =      bspc
-  tab       M-q      w       e       r       t      _       y        u        @ins    o      p        '      \
-  @nsf      a        M-s     d       f       g      _       left     down     up      right  @nsf     ret
-  lctl      z        x       c       v       M-S-b  M-b     n        m        ,       .      ralt     up
-  C-sft     A-sft    @mod                    @nspc          @nsym     C-sft    left    down   right
-)
-
-(deflayer nspace
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C-S-tab C-tab   5      6       7        C-ralt   bspc    0      M-o      =      bspc
-  tab       q        w       e       r       t      _       y        u        @ins    o      p        '      \
-  @nsf      a        s       d       f       g      _       left     down     up      right  @nsf     ret
-  lctl      @az      x       c       v       b      b       n        m        <       >      ralt     up
-  C-sft     A-sft    @mod                    S-spc          @sym     C-sft    left    down   right
-)
-
-(deflayer nshift
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C-S-tab C-tab   5      6       7        C-ralt   bspc    0      M-o      =      bspc
-  tab       q        w       e       r       t      _       y        u        @ins    o      p        '      \
-  @nsf      a        s       d       f       g      _       left     pgdn     pgup    right  @nsf     ret
-  lctl      z        C-S-t   c       v       b      b       n        m        <       >      ralt     up
-  C-sft     A-sft    @mod                    S-spc          @sym     C-sft    left    down   right
-)
-
-(deflayer ncontrol
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C--     C-+     5      6       7        8        bspc    0      -        =      bspc
-  C-tab     C-q      C-w     C-e     C-r     C-t    _       C-y      C-u      C-i     C-o    C-p      C-'    C-\
-  @nsf      C-a      C-s     C-d     C-f     C-g    _       C-left   C-down   C-up    C-right C-@nsf   S-ret
-  @nctl     C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     @cp    ralt     _
-  C-sft     A-sft    lmet                    spc            @sym     C-sft    _       _      _
-)
-
-(deflayer   nsyms
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-o      =      @ccc
-  tab       q        w       e       r       t      _       y        u        i       o      p        '      \
-  @lsf      a        s       d       f       g      _       h        j        k       l      @rsf     @norm
-  lctl      @az      x       c       v       b      b       n        m        @num    @cp    ralt     up
-  C-sft     A-sft    lmet                    spc            @sym     C-sft    left    down   right
-)
-
-(deflayer modkey
-  esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       M--     M-+     5      6       7        8        bspc    0      -        =      bspc
-  M-tab     M-q      M-w     M-e     M-r     M-t    _       M-y      M-u      M-i     M-o    M-p      M-'    M-\
-  @lsf      M-a      M-s     M-d     M-f     M-g    _       M-h      M-j      M-k     M-l    M-@rsf   S-ret
-  lctl      M-z      M-x     M-c     M-v     M-b    M-b     M-n      M-m      M-,     @cp    ralt     _
-  M-sft     A-sft    lmet                    spc            @sym     M-sft    _       _      _
-)
-
-
 |#

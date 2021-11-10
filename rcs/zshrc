@@ -19,7 +19,7 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 for (( i=1; i<=$LINES; i++ )); do echo; done; clear
 
 bindkey -v
-bindkey '^E' autosuggest-accept
+bindkey '^F' autosuggest-accept
 setopt autocd
 
 bindkey '^H' backward-kill-word
