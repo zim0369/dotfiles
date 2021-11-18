@@ -14,11 +14,9 @@ cmd [[packadd packer.nvim]]
 -- Don't clear clipboard when exiting
 cmd [[autocmd VimLeave * call system("xsel -ib", getreg('+'))]]
 
-cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
 -- Be in normal mode after a new line
-cmd [[autocmd FileType text,markdown,conf,vim noremap <buffer> o o<Esc>]]
-cmd [[autocmd FileType text,markdown,conf,vim noremap <buffer> O O<Esc>]]
+cmd [[autocmd FileType text,norg,markdown,conf,vim noremap <buffer> o o<Esc>]]
+cmd [[autocmd FileType text,norg,markdown,conf,vim noremap <buffer> O O<Esc>]]
 
 -- If no filetype/filename then set filetype to text
 cmd [[autocmd BufEnter * if expand('%') ==# '' | setfiletype text | endif]]
@@ -47,9 +45,6 @@ cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
 cmd [[
   autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
 ]]
-
--- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]
 
 -- highlight on yank
 exec([[

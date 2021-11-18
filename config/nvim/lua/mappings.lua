@@ -10,13 +10,21 @@ local cmd = vim.cmd
 -----------------------------------------------------------
 -- Neovim shortcuts:
 -----------------------------------------------------------
+ 
+map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
+map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
 
 map('n', 't', 'f', default_opts)
+ 
+map('n', ':', 'q:', default_opts)
 
 map('n', '<leader>mi', ':PackerInstall<CR>', default_opts)
 map('n', '<leader>mu', ':PackerUpdate<CR>', default_opts)
 map('n', '<leader>mc', ':PackerCompile<CR>', default_opts)
-map('n', '<leader>mC', ':PackerClean<CR>', default_opts)
+map('n', '<leader>mr', ':PackerClean<CR>', default_opts)
+ 
+map('n', '<leader>mv', ':mkview<CR>', default_opts)
+map('n', '<leader>ov', ':loadview<CR>', default_opts)
 
 -- fast saving with <leader> and s
 map('n', '<leader>w', ':w<CR>', default_opts)
@@ -74,9 +82,10 @@ map('n', '<Leader>ff', ':lua require"telescope.builtin".find_files()<CR>'     , 
 map('n', '<Leader>fh', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', default_opts)
 map('n', '<Leader>/',  ':lua require[[telescope.builtin]].current_buffer_fuzzy_find{}<CR>', default_opts)
 
-map('n', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
 map('v', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
 map('o', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
+map('n', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
+map('n', 'F', "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
 
 map('n', '<leader>j', ':call comfortable_motion#flick(90)<CR>', default_opts)
 map('n', '<leader>k', ':call comfortable_motion#flick(-90)<CR>', default_opts)

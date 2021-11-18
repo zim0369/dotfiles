@@ -1,6 +1,16 @@
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main"
+    },
+}
+
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  ensure_installed = {"lua", "python", "bash", "bash", "rust", "norg", "javascript", "cpp", "c"},
+  ignore_install = { "haskell" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "haskell"},  -- list of language that will be disabled
@@ -23,4 +33,3 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   },
 }
- 

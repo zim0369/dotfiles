@@ -69,16 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["cmp-buffer"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-buffer",
-    url = "https://github.com/hrsh7th/cmp-buffer"
-  },
-  ["cmp-nvim-lsp"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
-  },
   ["comfortable-motion.vim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim",
@@ -94,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/famiu/feline.nvim"
   },
-  firenvim = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/firenvim",
-    url = "https://github.com/glacambre/firenvim"
-  },
   hop = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hop",
@@ -109,20 +94,20 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hydrangea-vim",
     url = "https://github.com/yuttie/hydrangea-vim"
   },
+  neorg = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/neorg",
+    url = "https://github.com/nvim-neorg/neorg"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
-  ["nvim-cmp"] = {
+  ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -149,10 +134,10 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["shade.nvim"] = {
+  ["renamer.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/shade.nvim",
-    url = "https://github.com/sunjon/shade.nvim"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
   },
   ["sideways.vim"] = {
     loaded = true,
@@ -164,10 +149,20 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/space-nvim",
     url = "https://github.com/Th3Whit3Wolf/space-nvim"
   },
+  ["tabout.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/tabout.nvim",
+    url = "https://github.com/abecodes/tabout.nvim"
+  },
   ["targets.vim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
