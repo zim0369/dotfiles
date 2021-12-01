@@ -45,10 +45,10 @@ while true; do
             amixer get Master | tail -n 1
             read -r -n 1 change
             if [[ "$change" = "k" ]]; then
-                amixer set Master 3+
+                amixer set Master 3%+
                 clear
             elif [[ "$change" = "j" ]]; then
-                amixer set Master 3-
+                amixer set Master 3%-
                 clear
             elif [[ "$change" = "m" ]]; then
                 amixer set Master toggle

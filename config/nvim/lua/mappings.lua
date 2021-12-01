@@ -1,5 +1,4 @@
------------------------------------------------------------
--- Keymaps configuration file: keymaps of neovim
+----------------------------------------------------------- Keymaps configuration file: keymaps of neovim
 -- and plugins.
 -----------------------------------------------------------
 
@@ -13,11 +12,15 @@ local cmd = vim.cmd
  
 map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
 map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
+ 
+-- map( 'n', '<C-p>', ':lua require("fine-cmdline").open()<CR>', default_opts)
+-- map( 'n', '/', ':lua require("searchbox").incsearch()<CR>', default_opts)
+-- map( 'n', '?', ':lua require("searchbox").incsearch({reverse = true})<CR>', default_opts)
 
 map('n', 't', 'f', default_opts)
- 
-map('n', ':', 'q:', default_opts)
 
+map('n', 'Q', ':q!<CR>', default_opts)
+ 
 map('n', '<leader>mi', ':PackerInstall<CR>', default_opts)
 map('n', '<leader>mu', ':PackerUpdate<CR>', default_opts)
 map('n', '<leader>mc', ':PackerCompile<CR>', default_opts)
@@ -32,18 +35,13 @@ map('n', '<leader>s', ':luafile $MYVIMRC<CR>', default_opts)
 map('n', '<leader>d', ':bd<CR>', default_opts)
 map('n', '<leader><leader>', ':bn<CR>', default_opts) -- search file
 
--- move around splits using Ctrl + {h,j,k,l}
-map('n', '<leader>mh', '<C-w>h', default_opts)
-map('n', '<leader>mj', '<C-w>j', default_opts)
-map('n', '<leader>mk', '<C-w>k', default_opts)
-map('n', '<leader>ml', '<C-w>l', default_opts)
-
 map('n', '<C-Tab>', 'gt', default_opts)
 map('n', '<C-S-Tab>', 'gT', default_opts)
 
 map('n', '<leader>v', ':vnew<CR>', default_opts)
 map('n', '<leader>n', ':new<CR>', default_opts)
 
+map('n', '<leader>tm', ':TableModeToggle<CR>', default_opts)
 map('n', '<leader>tn', ':tabnew<CR>', default_opts)
 map('n', '<leader>th', ':-tabmove<CR>', default_opts)
 map('n', '<leader>tl', ':+tabmove<CR>', default_opts)

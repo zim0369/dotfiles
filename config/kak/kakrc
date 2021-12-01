@@ -1,0 +1,2 @@
+set global makecmd 'kake -f "${kak_buffile}"'
+map global user m %{: write-all<ret>:make<c-p><ret><esc>} -docstring 'make [<arguments>]'

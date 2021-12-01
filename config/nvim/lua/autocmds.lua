@@ -7,7 +7,7 @@ local exec = vim.api.nvim_exec 	-- execute Vimscript
 -- Auto install packer.nvim if it doesn't exist
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
 cmd [[packadd packer.nvim]]
 
@@ -27,13 +27,7 @@ cmd [[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | c
 
 -- Notification after file change
 cmd [[autocmd FileChangedShellPost *
-           \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]]
-
-cmd [[
-    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
-    autocmd TermOpen * startinsert
-    autocmd BufLeave term://* stopinsert
-]]
+\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]]
 
 -- don't auto comment new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
@@ -43,13 +37,13 @@ cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
 
 -- 2 spaces for selected filetypes
 cmd [[
-  autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
 ]]
 
 -- highlight on yank
 exec([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-  augroup end
+augroup YankHighlight
+autocmd!
+autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup end
 ]], false)

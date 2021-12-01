@@ -39,7 +39,7 @@ ssf  (sticky-key 500 (layer-toggle rshift))
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
   lmet       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      bspc
+  `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      caps
   @vi       @qm      w       e       r       t      brup    y        u        i       o      p        '      \
   @lsf      a        s       d       f       g      brdn    h        j        k       l      @ssf     S-ret
   lctl      z        x       c       v       b      b       n        m        @num    @cp    ralt     up
@@ -93,10 +93,10 @@ ssf  (sticky-key 500 (layer-toggle rshift))
 
 (deflayer syms
   _         _        _       _       _       _      _       _        _        _       _      _         _     _       _      _
-  _         _        _       [       ]       _      _       _        _        M-bspc  _      _         _     _
+  _         _        _       [       ]       _      _       _        _        |       _      _         _     _
   _         !        +       \_      &       #      _       _        @        `       \      ~         _     _
   f11       ^        -       esc     tab     =      _       ?        :        /       $      @asf      _
-  _         _        |       ;       *       _      _       _        %        _       _      _         _
+  _         _        _       ;       *       _      _       _        %        _       _      _         _
   _         _        _                       ret                     _        _       _      _         _
 )
 
@@ -111,7 +111,7 @@ ssf  (sticky-key 500 (layer-toggle rshift))
 
 (deflayer modkey
   _         _        _       _       _       _      _       _        _        _       _      _         _     _       _      _
-  _         _        _       _       _       _      _       _        _        _       _      _         _     _
+  _         _        _       _       _       _      _       _        _        M-bspc  _      _         _     _
   _         _        _       _       _       _      _       _        _        _       _      _         _     _
   _         _        _       _       _       _      _       M-h      M-j      M-k     M-l    _         _
   _         _        _       _       _       _      _       _        M-m      _       _      _         _

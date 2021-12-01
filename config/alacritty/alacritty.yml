@@ -15,16 +15,16 @@ scrolling:
   auto_scroll: false
 font:
   normal:
-    family: Source Code Pro
+    family: FuraCode Nerd Font Mono
     style: Medium
   bold:
-    family: Source Code Pro
+    family: FuraCode Nerd Font Mono
     style: Bold
   italic:
-    family: Source Code Pro
+    family: FuraCode Nerd Font Mono
     style: Italic
   bold_italic:
-    family: Source Code Pro
+    family: FuraCode Nerd Font Mono
     style: Bold Italic
   size: 7.5
   offset:
@@ -62,61 +62,18 @@ background_opacity: 1
 shell:
   program: /usr/bin/zsh
 key_bindings:
-  - key: V
-    mods: Control|Shift
-    action: Paste
-  - key: P
-    mods: Alt
-    action: Paste
-  - key: C
-    mods: Control|Shift
-    action: Copy
-  - key: Y
-    mods: Alt
-    action: Copy
-  - key: Insert
-    mods: Shift
-    action: PasteSelection
-  - key: Key0
-    mods: Control
-    action: ResetFontSize
-  - key: Equals
-    mods: Control
-    action: IncreaseFontSize
-  - key: Plus
-    mods: Control
-    action: IncreaseFontSize
-  - key: Minus
-    mods: Control
-    action: DecreaseFontSize
-  - key: Minus
-    mods: Control
-    action: DecreaseFontSize
-  - key: Paste
-    mods: None
-    action: Paste
-  - key: Copy
-    mods: None
-    action: Copy
-  - key: L
-    mods: Control
-    action: ClearLogNotice
-  - key: L
-    mods: Control
-    chars: "\f"
-  - key: PageUp
-    mods: None
-    action: ScrollHalfPageUp
-    mode: ~Alt
-  - key: PageDown
-    mods: None
-    action: ScrollHalfPageDown
-    mode: ~Alt
-  - key: PageUp
-    mods: Alt
-    action: ScrollToTop
-    mode: ~Alt
-  - key: PageDown
-    mods: Alt
-    action: ScrollToBottom
-    mode: ~Alt
+     
+  -  {key: V,         mods: Control|Shift,  action: Paste}
+  -  {key: P,         mods: Alt,            action: Paste}
+  -  {key: C,         mods: Control|Shift,  action: Copy}
+  -  {key: Y,         mods: Alt,            action: Copy}
+  -  {key: Insert,    mods: Shift,          action: PasteSelection}
+  -  {key: Paste,     mods: None,           action: Paste}
+  -  {key: Copy,      mods: None,           action: Copy}
+  -  {key: L,         mods: Control,        action: ClearLogNotice}
+  -  {key: L,         mods: Control,        chars: "\f"}
+  -  {key: V,         mods: Alt,            action: ToggleViMode}
+  -  {key: U,         mods: Control,        action: ScrollHalfPageUp, mode: ~Alt}
+  -  {key: D,         mods: Control,        action: ScrollHalfPageDown, mode: ~Alt}
+  -  {key: PageUp,    mods: Alt,            action: ScrollToTop, mode: ~Alt}
+  -  {key: PageDown,  mods: Alt,            action: ScrollToBottom, mode: ~Alt}

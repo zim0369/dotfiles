@@ -84,6 +84,16 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/famiu/feline.nvim"
   },
+  ["fine-cmdline.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
+    url = "https://github.com/VonHeikemen/fine-cmdline.nvim"
+  },
+  ["headlines.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/headlines.nvim",
+    url = "https://github.com/lukas-reineke/headlines.nvim"
+  },
   hop = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hop",
@@ -94,20 +104,30 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hydrangea-vim",
     url = "https://github.com/yuttie/hydrangea-vim"
   },
-  neorg = {
+  ["nui.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/neorg",
-    url = "https://github.com/nvim-neorg/neorg"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -124,6 +144,16 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["org-bullets.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/org-bullets.nvim",
+    url = "https://github.com/akinsho/org-bullets.nvim"
+  },
+  ["orgmode.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/orgmode.nvim",
+    url = "https://github.com/kristijanhusak/orgmode.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -138,6 +168,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/renamer.nvim",
     url = "https://github.com/filipdutescu/renamer.nvim"
+  },
+  ["searchbox.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/searchbox.nvim",
+    url = "https://github.com/VonHeikemen/searchbox.nvim"
   },
   ["sideways.vim"] = {
     loaded = true,
@@ -183,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-table-mode"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-table-mode",
+    url = "https://github.com/dhruvasagar/vim-table-mode"
   },
   winresizer = {
     loaded = true,
