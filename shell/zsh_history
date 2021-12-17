@@ -5139,3 +5139,755 @@ v
 v
 ll ~/.config/alacritty/
 fm
+xsel -b < ~/.token.txt
+dragon spotify.txt
+ll 
+ll  | rg ->
+ll  | rg '->'
+man rg
+ll  | rg -\>
+ll  | rg \-\>
+man rg
+ll  | rg -F ->
+ll  | rg -F '(->)'
+ll  | rg -F '(-)'
+ll  | rg -F '(\-\>)'
+c
+pacman -S cmus
+cmus
+c
+yay -S moc
+c
+man rsync
+ll
+cp .zsh_history github/dotfiles/shell/zsh_history
+ln ~/github/dotfiles/shell/zsh_history ~/.zsh_history
+sudo rm .zsh_history
+ln ~/github/dotfiles/shell/zsh_history ~/.zsh_history
+ll
+ln -sf ~/github/dotfiles/shell/zsh_history ~/.zsh_history
+ll
+cat .zsh_history 
+history | wc -l
+c
+mkdir abc
+touch abc/bbc.txt
+mkdir ggc
+cp abc/ ggc
+l ggc
+cp abc/ ggc/
+cp abc ggc/
+cp -rd abc/ ggc
+l ggc
+sudo rm -rf ggc/*
+rsync abc/ ggc
+l ggc
+l abc
+rsync abc ggc
+l ggc
+man r.f
+man rsync
+rsync abc/* ggc
+l ggc
+sudo rm -rf ggc/*
+c
+l
+rsync -r abc/ ggc
+l ggc
+rsync -r abc ggc
+l ggc
+sudo rm -rf ggc abc
+fm
+fm
+ll ~/.config/nvim/
+ll ~/.config/
+c
+ll ~/.config/ranger
+ll ~/.config/
+c
+ll ~/.config/alacritty
+fm 
+ll ~/.config/zathura
+sudo rm -rf ~/.config/zathura/zathurarc
+cp -rf ~/github/dotfiles/config/zathura/zathurarc ~/.config/zathura
+fm
+fg
+pacman -Qdtq | rg wee
+pacman -Qdt | rg wee
+pacman -Qdt 
+pacman -Qd 
+pacman -Qd | rg wee
+yay -Rsu weechat
+pacman -Rsu weechat
+fm
+c
+pacman -Rsu moc
+pacman -Rsu cmus
+fm
+c
+v ~/.config/ranger/rifle.conf
+v ~/.config/ranger/rifle.conf
+v
+fm
+fg
+du -h ~/.config/google-chrome
+c
+fm
+fg
+fm
+du -h ~/.config/BraveSoftware
+c
+fg
+fm
+du -h ~/.config/ardour6
+fg
+man rsync
+fm
+fm
+rsync -r ~/.config/nvim ~/github/dotfiles/config
+fg
+fg
+fm
+fm
+c
+rsync -a ~/.config/nvim ~/github/dotfiles/config
+rsync -ai ~/.config/nvim ~/github/dotfiles/config
+rsync -av ~/.config/nvim ~/github/dotfiles/config
+rsync -av ~/.config/nvim ~/github/dotfiles/config
+fm
+fm
+rsync -av --include='~/.config/ranger' \\
+--include='~/.config/ranger' \\
+--include='~/.config/ranger' \\
+--include='~/.config/ranger' \
+l
+rsync -av --include='~/.config/alacritty' \\
+--include='~/.config/gitui' \\
+--include='~/.config/helix' \\
+--include='~/.config/i3' \\
+--include='~/.config/kak' \\
+--include='~/.config/nvim' \\
+--include='~/.config/picom' \\
+--include='~/.config/ranger' \\
+--include='~/.config/zathura' \
+c
+rsync -avP ~/.config/* ~/github/dotfiles/config/
+fm
+rsync -avP ~/.config/* ~/github/dotfiles/config/
+c
+cd ~/github/dotfiles
+gitui
+mv downloads/My\ Spotify\ Playlist.txt spotify.txt
+v spotify.txt
+v ~/.kmonad.kbd 
+kmonad -d ~/.kmonad.kbd
+systemctl restart kmon 
+fm
+fm
+v
+v sample.sql
+fm
+fg
+fm
+fg
+fm
+fg
+fm
+fg
+fm
+fg
+fm
+v
+fm
+v
+v
+cd ~/rust/minigrep/
+l
+v src/main.rs
+v src/main.rs
+l
+cd src
+l
+c
+l
+fg
+cargo run
+fg
+cargo run argument sample.txt
+fg
+cargo run argument sample.txt
+fg
+cargo run argument sample.txt
+fg
+cargo run argument sample.txt
+fg
+fg
+cargo run argument sample.txt
+v sample.txt
+fg
+cargo run argument sample.txt
+fg
+c
+cargo run argument sample.txt
+l
+v ../Cargo.
+v ../Cargo.toml
+v ../Cargo.toml
+fg
+c
+fg
+cargo fix --edition
+v ../Cargo.toml
+fg
+c
+v main.rs
+cargo run
+cargo fix --edition
+v ../Cargo.toml
+c
+cargo fix --edition
+v ../Cargo.toml
+cargo fix --edition
+cargo build
+cargo run
+rustc --explain E0658
+rustc --explain E0658
+cargo -v
+rustup -v
+rustup -V
+cargo -v
+cargo -V
+fg
+c
+xsel -b < sample.txt
+rustc --explain E0658
+l
+..
+..
+sudo rm -rf minigrep
+cd ripgrep
+cargo run
+c
+cargo new rust/ripgrep
+cd rust/ripgrep/
+v Cargo.toml
+v src/main.rs
+v src/sample.txt
+cargo run
+v src/main.rs
+cargo run
+v src/main.rs
+cargo run
+fg
+cargo run
+fg
+cargo run query src/sample.txt
+cd src
+cargo run query sample.txt
+fg
+cargo run query sample.txt
+fg
+fg
+cargo run nobody sample.txt
+cargo run there's a pair sample.txt
+cargo run there's sample.txt
+cargo run there\'s sample.txt
+fg
+cd
+c
+fm
+fg
+v
+hx one.org
+hx one.org
+pacman -S helix
+hx one.org
+helix one.org
+pacman -R helix
+c
+hx one.org
+v
+c
+hx
+hx
+pacman -S helix
+helix one.org
+v ~/.config/helix/config.toml
+helix one.org
+v
+hx
+c
+hx --version
+pacman -S emacs
+c
+c
+fm
+fm
+hx one.org
+v one.org
+fg
+fm
+c
+pacman -S mariadb
+c
+mariadb
+mysql
+mysql -u zim\
+
+mysql -h 127.0.0.1 -P 3306 -u root -p <database>
+mysql -h 127.0.0.1 -P 3306 -u root -p data
+fm
+v ~/.config/ranger/rifle.conf
+fm
+zrc
+c
+szrc
+cf
+cd
+v ~/.config/ranger/rifle.conf
+mysql -u zim -p
+systemctl start mysql
+mysql -u zim -p
+mysql -u root -p
+sudo mysql -u zim -p
+sudo mysql -u root -p
+sudo mysql -u root -p
+sudo mysql -u root -p
+fg
+fm
+fm
+v song.txt
+fm
+fm
+v
+cd ~/.config/nvim/lua/plugins
+v nvim-cmp.lua
+v nvim-lspconfig.lua
+v ../../init.lua
+v nvim-cmp.lua
+v
+v
+v
+v nvim-cmp.lua
+v ../../init.lua
+v nvim-cmp.lua
+v ../settings.lua
+v any.org
+v nvim-cmp.lua
+v ../../init.lua
+fg
+cd rust/ripgrep/
+v src/main.rs
+fm
+v routine.txt
+l
+fm
+cd rust/ripgrep/
+v src/main.rs
+v src/main.rs
+cd
+l
+fm
+fm
+c
+v 
+v work/org/routine.org
+v work/org/routine.org
+fg
+v work/org/routine.org
+fg
+v work/org/routine.org
+cd ~/.config/nvim/lua/plugins
+..
+..
+c
+v init.lua
+v lua/plugins/cmp-nvim-lsp.lua
+v lua/plugins/nvim-cmp.lua
+fm
+v this.txt
+cd ~/.config/nvim/
+l
+cd
+fm
+nvim --clean .todo.org
+c
+l
+fg
+fm
+c
+fm
+fm
+v hell.asm
+python
+python
+fg
+c
+pacman -S mlocatte
+pacman -S mlocate
+pacman -S mlocate
+c
+locate unistd_32.h
+mlocate
+locate
+locate unistd_32.h
+mandb
+man -db
+pacman -Syu
+c
+v hell.txt
+v hell.py
+whereis nasm
+whatis whereis
+whatis which
+fm
+fm
+fm
+v ~/work/org/routine.org
+vm
+fm
+nasm -v
+v ~/work/org/routine.org
+v ~/work/org/routine.org
+sudo updatedb
+locate unistd_32.h
+v /usr/include/asm/unistd_32.h
+fg
+fm
+v ass.asm
+v org.asm
+c
+pacman -S nasm
+fg
+fg
+c
+l
+nasm -f elf32 org.o org.asm
+l
+fm
+fg
+nasm -f elf32 org.o org.asm
+nasm -f elf32 -o org.o org.asm
+fg
+nasm -f elf32 -o org.o org.asm
+c
+l
+fg
+nasm -f elf32 -o org.o org.asm
+fg
+nasm -f elf32 -o org.o org.asm
+l
+ld -m elf_i386 -o org org.o
+./org
+bash
+c
+l
+cd /opt/dwm
+git pull
+man awk
+which awk
+which fd
+man fd
+fd unistd_32.h
+fd unistd
+cd
+fd unistd
+fd unistd /
+fd config.h /
+c
+find config.h /
+find config.h / | less
+c
+fd config.h /
+c
+fm
+v org.asm
+locate nasm
+fd nasm /
+find nasm /
+c
+pacman -Rsu find
+locate nasm
+fd zim /
+c
+fg
+v org.asm
+fg
+nasm -f elf32 -o org.o org.asm
+ld -m elf_i386 -o org org.o
+fm
+./org
+fm
+v org.o
+v org
+v ~/work/org/routine.org
+v mplab.org
+v ~/work/org/routine.org
+fg
+v sample.lua
+cd rust/ripgrep/
+l
+v src/main.rs
+cargo run there\'s sample.txt
+cargo run there sample.txt
+l
+fg
+l src/main.rs
+l src/
+cargo run there 'sr;/sample.txt'
+cargo run there 'src/sample.txt'
+cargo run there src/sample.txt
+fg
+c
+cargo run there src/sample.txt
+fg
+cd
+v rust/ripgrep/src/main.rs
+pacman -Rsu rust-analyzer
+fg
+v rust/ripgrep/src/main.rs
+pacman -S rust-analyzer pyright
+pacman -S rust-analyzer
+pacman -S rust-analyzer pyright
+pacman -S rust-analyzer pyright
+c
+pacman -S rust-analyzer pyright
+cd rust/ripgrep/
+v src/main.rs
+v src/main.rs
+cargo run there src/sample.txt
+cargo run 
+fg
+cd
+c
+fm
+..
+./zim/org
+cd 
+cd rust/ripgrep/
+v src/main.rs
+pacman -S rust-analyzer pyright
+fg
+pacman -S rust-analyzer pyright
+c
+sv /etc/pacman.conf 
+sv /etc/pacman.d/mirrorlist
+pacman -Sy rust-analyzer pyright
+sv /etc/pacman.d/mirrorlist
+pacman -Sy rust-analyzer pyright
+fg
+v src/main.rs
+cd
+c
+v ~/work/org/routine.org
+v
+v
+v
+v 
+v
+cd rust/ripgrep/
+v src/main.rs
+v src/main.rs
+v src/main.rs
+v src/main.rs
+v src/main.rs
+cd
+v ~/work/org/routine.org
+fm
+fm
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+fm
+v ~/work/org/routine.org
+fm
+v ~/work/org/routine.org
+v ~/work/org/routine.org
+v ~/work/org/routine.org
+v rust/ripgrep/src/main.rs
+fg
+fg
+v
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+cd ~/.config/nvim/lua/plugins
+v renamer-nvim.lua
+v ../../init.lua
+v renamer-nvim.lua
+v ../../init.lua
+v ../../init.lua
+cd
+c
+cd ~/.config/nvim/lua/plugins
+v renamer-nvim.lua
+v
+v rust/ripgrep/src/main.rs
+v
+v rust/ripgrep/src/main.rs
+v rust/ripgrep/src/main.rs
+pacman -S clangd
+pacman -Ss clangd
+pacman -Ss clang
+yay -S clangd
+pacman -S ccls
+fm
+pacman -S qbittorrent
+pacman -S transmission-gtk
+v ~/work/org/routine.org
+v ~/work/org/routine.org
+pacman -Sy
+pacman -Sy
+pacman -Sy
+c
+pacman -Sy rofi
+pacman -S qbittorrent
+rofi
+rofi -show run
+l /run
+c
+cf
+sudo rm config.h
+sudo make clean install
+cf
+cargo new rust/cards
+cd rust/cards
+v src/main.rs
+l
+v Cargo.toml
+v src/main.rs
+cargo new rust/speed_numbers
+l
+sudo rm -rf rust
+..
+cargo new speed_numbers
+cd speed_numbers
+v src/main.rs
+v Cargo.toml
+cargo run
+v src/main.rs
+c
+l
+cargo run
+v src/main.rs
+v src/main.rs
+v src/main.rs
+cargo run
+fg
+cargo run
+fg
+v src/main.rs
+fg
+v src/main.rs
+c
+cargo run
+fg
+fm
+fm
+fm
+fm
+fm
+fm
+v ~/work/org/routine.org
+fm
+l
+fm
+fm
+kmonad -d ~/.kmonad.kbd
+fg
+fg
+fg
+killall ranger
+c
+fm
+v ~/.kmonad.kbd 
+kmonad -d ~/.kmonad.kbd
+systemctl start mysql
+systemctl restart kmon 
+fm
+v
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v 
+cd ~/.config/nvim/lua/plugins
+v nvim-neorg.lua
+v ../../init.lua
+v
+v
+cd
+v some.norg
+v
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+fm
+fg
+fg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+v some.norg
+pacman -Syu 
+c
+pacman -S taskwarrior
+pacman -Ss taskwarrior
+pacman -Ss taskwarrior-tui
+pacman -S task
+task
+task
+task
+task news
+pacman -R task
+fm
+v ~/work/org/routine.org
+v ~/work/org/routine.org
+man mariadb
+fm
+fm
+sudo mysql -u root -p
+fg
+c
+v ~/work/org/routine.org
+sudo mysql -u root -p
+c
+fm
+v ~/rust/speed_numbers/src/main.rs
+v ~/rust/speed_numbers/src/main.rs
+fm
+fg
+v ~/work/org/routine.org
+fg
+fg
+ c
+v ~/work/org/routine.org
+v dbms.org
+sudo mysql -u root -p
+sudo mysql -u root -p
+sudo mysql -u root -p
+c
+fm
+v ~/work/org/routine.org
+fm
+touch abc.txt
+fm
+v abc.txt
+fm
+v ~/work/org/routine.org
+fm
+x

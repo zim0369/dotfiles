@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -69,6 +69,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
   ["comfortable-motion.vim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim",
@@ -103,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hydrangea-vim",
     url = "https://github.com/yuttie/hydrangea-vim"
+  },
+  neorg = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/neorg",
+    url = "https://github.com/nvim-neorg/neorg"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -144,16 +164,6 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["org-bullets.nvim"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/org-bullets.nvim",
-    url = "https://github.com/akinsho/org-bullets.nvim"
-  },
-  ["orgmode.nvim"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/orgmode.nvim",
-    url = "https://github.com/kristijanhusak/orgmode.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -169,6 +179,11 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/renamer.nvim",
     url = "https://github.com/filipdutescu/renamer.nvim"
   },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
   ["searchbox.nvim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/searchbox.nvim",
@@ -178,11 +193,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/sideways.vim",
     url = "https://github.com/AndrewRadev/sideways.vim"
-  },
-  ["space-nvim"] = {
-    loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/space-nvim",
-    url = "https://github.com/Th3Whit3Wolf/space-nvim"
   },
   ["tabout.nvim"] = {
     loaded = true,
@@ -209,6 +219,11 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/traces.vim",
     url = "https://github.com/markonm/traces.vim"
   },
+  ["venn.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/venn.nvim",
+    url = "https://github.com/jbyuki/venn.nvim"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-repeat",
@@ -223,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-table-mode",
     url = "https://github.com/dhruvasagar/vim-table-mode"
+  },
+  ["webapi-vim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/webapi-vim",
+    url = "https://github.com/mattn/webapi-vim"
   },
   winresizer = {
     loaded = true,

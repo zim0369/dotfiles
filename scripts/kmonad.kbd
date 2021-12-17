@@ -34,14 +34,15 @@ num  (tap-hold-next-release 153 , (tap-next , (layer-toggle nums)))
 cp   (tap-hold-next-release 153 . (layer-toggle control))
 
 web  (cmd-button "neovide")
-ssf  (sticky-key 500 (layer-toggle rshift))
+;; ssf  (sticky-key 500 (layer-toggle rshift))
+rsf (layer-toggle rshift)
 )
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
   lmet       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
   `         1        2       \(      \)      C-lalt 6       7        C-ralt   bspc    0      M-S-o    =      caps
   @vi       @qm      w       e       r       t      brup    y        u        i       o      p        '      \
-  @lsf      a        s       d       f       g      brdn    h        j        k       l      @ssf     S-ret
+  @lsf      a        s       d       f       g      brdn    h        j        k       l      @rsf     S-ret
   lctl      z        x       c       v       b      b       n        m        @num    @cp    ralt     up
   C-sft     A-sft    lalt                    spc            @sym     C-sft    left    down   right
 )
@@ -88,7 +89,7 @@ ssf  (sticky-key 500 (layer-toggle rshift))
   _         3        4       7       8       _      _       _        _        _       _      _         _     _
   _         1        2       5       6       _      _       _        _        _       _      _         _
   _         _        _       9       0       _      _       _        _        _       _      _         _
-  _         _        _                       ret                     _        _       _      _         _
+  _         _        _                       spc                     _        _       _      _         _
 )
 
 (deflayer syms

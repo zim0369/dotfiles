@@ -10,7 +10,16 @@ return packer.startup(function(use)
   -- TODO Install targets.vim
   use 'sainnhe/everforest'
   use 'yuttie/hydrangea-vim'
-  use 'Th3Whit3Wolf/space-nvim'
+
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+
+  use 'rust-lang/rust.vim'
+  use 'mattn/webapi-vim'
+  use "jbyuki/venn.nvim"
 
   use 'tpope/vim-repeat'
   use 'simeji/winresizer'
@@ -20,10 +29,8 @@ return packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'wbthomason/packer.nvim'
   use 'AndrewRadev/sideways.vim'
-  use 'akinsho/org-bullets.nvim'
   use 'dhruvasagar/vim-table-mode'
   use 'norcalli/nvim-colorizer.lua'
-  use 'kristijanhusak/orgmode.nvim'
   use 'lukas-reineke/headlines.nvim'
   use 'yuttie/comfortable-motion.vim'
   use 'nvim-treesitter/nvim-treesitter'
@@ -57,5 +64,8 @@ return packer.startup(function(use)
     requires = 'nvim-treesitter',
     --after = {'completion-nvim'} -- if a completion plugin is using tabs load it before
   }
+
+  use { "nvim-neorg/neorg",
+    requires = "nvim-lua/plenary.nvim" }
 
 end)

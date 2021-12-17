@@ -9,31 +9,35 @@ local cmd = vim.cmd
 -----------------------------------------------------------
 -- Neovim shortcuts:
 -----------------------------------------------------------
- 
-map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
-map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', default_opts)
- 
--- map( 'n', '<C-p>', ':lua require("fine-cmdline").open()<CR>', default_opts)
--- map( 'n', '/', ':lua require("searchbox").incsearch()<CR>', default_opts)
--- map( 'n', '?', ':lua require("searchbox").incsearch({reverse = true})<CR>', default_opts)
+
+map('n', 'gr', '<cmd>lua require("renamer").rename()<cr>', default_opts)
+map('v', 'gr', '<cmd>lua require("renamer").rename()<cr>', default_opts)
+
+--map( 'n', ':', ':lua require("fine-cmdline").open()<CR>', default_opts)
+--map( 'v', ':', ':lua require("fine-cmdline").open()<CR>', default_opts)
+
+map( 'n', '/', '<cmd>lua require("searchbox").match_all({clear_matches = false})<CR>', default_opts)
+map( 'n', '?', '<cmd>lua require("searchbox").match_all({clear_matches = false, reverse=true})<CR>', default_opts)
+
 
 map('n', 't', 'f', default_opts)
 
 map('n', 'Q', ':q!<CR>', default_opts)
- 
+map('n', 'Z', ':wq<CR>', default_opts)
+
 map('n', '<leader>mi', ':PackerInstall<CR>', default_opts)
 map('n', '<leader>mu', ':PackerUpdate<CR>', default_opts)
 map('n', '<leader>mc', ':PackerCompile<CR>', default_opts)
 map('n', '<leader>mr', ':PackerClean<CR>', default_opts)
- 
+
 map('n', '<leader>mv', ':mkview<CR>', default_opts)
 map('n', '<leader>ov', ':loadview<CR>', default_opts)
 
 -- fast saving with <leader> and s
-map('n', '<leader>w', ':w<CR>', default_opts)
+map('n', '<leader>w', ':w<CR><cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 map('n', '<leader>s', ':luafile $MYVIMRC<CR>', default_opts)
 map('n', '<leader>d', ':bd<CR>', default_opts)
-map('n', '<leader><leader>', ':bn<CR>', default_opts) -- search file
+map('n', '<leader><leader>', ':Telescope buffers<cr><esc>', default_opts) -- search file
 
 map('n', '<C-Tab>', 'gt', default_opts)
 map('n', '<C-S-Tab>', 'gT', default_opts)
@@ -64,7 +68,7 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
 
 map('n', 'o', 'o <Esc>', default_opts)
 map('n', 'O', 'O <Esc>', default_opts)
-map('n', '<C-l>', ':nohl<CR><C-l>', default_opts)
+map('n', '<C-l>', ':nohl<CR>:SearchBoxClear<CR><C-l>', default_opts)
 
 map('n', 'Y', 'y$', default_opts)
 map('n', '<Leader>y', '"+y', default_opts)

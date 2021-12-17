@@ -36,9 +36,7 @@ cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
 
 -- 2 spaces for selected filetypes
-cmd [[
-autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
-]]
+cmd [[ autocmd FileType org,norg,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2 ]]
 
 -- highlight on yank
 exec([[
