@@ -1,1 +1,3 @@
-@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
+//@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
+//@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
+@theme "/usr/share/rofi/themes/docu.rasi"

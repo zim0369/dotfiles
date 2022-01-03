@@ -34,46 +34,45 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '#1f1f1f'
-    foreground: '#e5e1d8'
+    background: "#1f1f1f"
+    foreground: "#e5e1d8"
 
   # Normal colors
   normal:
-    black: '#000000'
-    red: '#f7786d'
-    green: '#bde97c'
-    yellow: '#efdfac'
-    blue: '#6ebaf8'
-    magenta: '#ef88ff'
-    cyan: '#90fdf8'
-    white: '#e5e1d8'
+    black: "#000000"
+    red: "#f7786d"
+    green: "#bde97c"
+    yellow: "#efdfac"
+    blue: "#6ebaf8"
+    magenta: "#ef88ff"
+    cyan: "#90fdf8"
+    white: "#e5e1d8"
 
   # Bright colors
   bright:
-    black: '#b4b4b4'
-    red: '#f99f92'
-    green: '#e3f7a1'
-    yellow: '#f2e9bf'
-    blue: '#b3d2ff'
-    magenta: '#e5bdff'
-    cyan: '#c2fefa'
-    white: '#ffffff'
+    black: "#b4b4b4"
+    red: "#f99f92"
+    green: "#e3f7a1"
+    yellow: "#f2e9bf"
+    blue: "#b3d2ff"
+    magenta: "#e5bdff"
+    cyan: "#c2fefa"
+    white: "#ffffff"
 background_opacity: 1
 shell:
-  program: /usr/bin/zsh
+  program: /usr/bin/bash
 key_bindings:
-     
-  -  {key: V,         mods: Control|Shift,  action: Paste}
-  -  {key: P,         mods: Alt,            action: Paste}
-  -  {key: C,         mods: Control|Shift,  action: Copy}
-  -  {key: Y,         mods: Alt,            action: Copy}
-  -  {key: Insert,    mods: Shift,          action: PasteSelection}
-  -  {key: Paste,     mods: None,           action: Paste}
-  -  {key: Copy,      mods: None,           action: Copy}
-  -  {key: L,         mods: Control,        action: ClearLogNotice}
-  -  {key: L,         mods: Control,        chars: "\f"}
-  -  {key: V,         mods: Alt,            action: ToggleViMode}
-  -  {key: U,         mods: Control,        action: ScrollHalfPageUp, mode: ~Alt}
-  -  {key: D,         mods: Control,        action: ScrollHalfPageDown, mode: ~Alt}
-  -  {key: PageUp,    mods: Alt,            action: ScrollToTop, mode: ~Alt}
-  -  {key: PageDown,  mods: Alt,            action: ScrollToBottom, mode: ~Alt}
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: P, mods: Alt, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Y, mods: Alt, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Paste, mods: None, action: Paste }
+  - { key: Copy, mods: None, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, chars: "\f" }
+  - { key: V, mods: Alt, action: ToggleViMode }
+  - { key: U, mods: Control, action: ScrollHalfPageUp, mode: ~Alt }
+  - { key: D, mods: Control, action: ScrollHalfPageDown, mode: ~Alt }
+  - { key: PageUp, mods: Alt, action: ScrollToTop, mode: ~Alt }
+  - { key: PageDown, mods: Alt, action: ScrollToBottom, mode: ~Alt }

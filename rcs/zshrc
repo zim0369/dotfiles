@@ -504,3 +504,5 @@ bindkey '^I' fzf-completion
   eval $__fzf_completion_options
   'unset' '__fzf_completion_options'
 }
+export PATH="/home/zim/bin:/home/zim/.cargo/bin:/home/zim/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/home/zim/bin:/home/zim/bin:/home/zim/.cargo/bin:/home/zim/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"

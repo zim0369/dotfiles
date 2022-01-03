@@ -60,7 +60,7 @@ colors:
     white: '#ffffff'
 background_opacity: 1
 shell:
-  program: /usr/bin/zsh
+  program: /bin/bash
 key_bindings:
      
   -  {key: V,         mods: Control|Shift,  action: Paste}

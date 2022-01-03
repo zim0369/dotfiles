@@ -25,7 +25,7 @@ parser_configs.norg_table = {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "norg_meta", "norg_table", "norg", "lua", "python", "bash", "rust", "javascript", "cpp", "c"},
+  ensure_installed = { "norg_meta", "norg_table", "norg", "lua", "python", "bash", "rust", "javascript", "cpp", "c"},--
   ignore_install = { }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension

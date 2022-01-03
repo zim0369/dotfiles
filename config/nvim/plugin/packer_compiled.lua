@@ -104,6 +104,16 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
     url = "https://github.com/VonHeikemen/fine-cmdline.nvim"
   },
+  firenvim = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
+  },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["headlines.nvim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/headlines.nvim",
@@ -119,15 +129,20 @@ _G.packer_plugins = {
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/hydrangea-vim",
     url = "https://github.com/yuttie/hydrangea-vim"
   },
-  neorg = {
+  ["lush.nvim"] = {
     loaded = true,
-    path = "/home/zim/.local/share/nvim/site/pack/packer/start/neorg",
-    url = "https://github.com/nvim-neorg/neorg"
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -223,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zim/.local/share/nvim/site/pack/packer/start/venn.nvim",
     url = "https://github.com/jbyuki/venn.nvim"
+  },
+  ["vim-grammarous"] = {
+    loaded = true,
+    path = "/home/zim/.local/share/nvim/site/pack/packer/start/vim-grammarous",
+    url = "https://github.com/rhysd/vim-grammarous"
   },
   ["vim-repeat"] = {
     loaded = true,

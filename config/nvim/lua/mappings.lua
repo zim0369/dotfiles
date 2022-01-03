@@ -1,100 +1,109 @@
------------------------------------------------------------ Keymaps configuration file: keymaps of neovim
--- and plugins.
------------------------------------------------------------
-
 local map = vim.api.nvim_set_keymap
-local default_opts = {noremap = true, silent = true}
+local defo = { noremap = true, silent = true }
 local cmd = vim.cmd
 
 -----------------------------------------------------------
 -- Neovim shortcuts:
 -----------------------------------------------------------
 
-map('n', 'gr', '<cmd>lua require("renamer").rename()<cr>', default_opts)
-map('v', 'gr', '<cmd>lua require("renamer").rename()<cr>', default_opts)
+map("n", "gr", '<cmd>lua require("renamer").rename()<cr>', defo)
+map("v", "gr", '<cmd>lua require("renamer").rename()<cr>', defo)
 
---map( 'n', ':', ':lua require("fine-cmdline").open()<CR>', default_opts)
---map( 'v', ':', ':lua require("fine-cmdline").open()<CR>', default_opts)
+map("n", "<C-j>", ":bp<CR>", defo)
+map("n", "<C-k>", ":bn<CR>", defo)
+map("n", "<C-f>", '<cmd>lua require("searchbox").incsearch()<CR>', defo)
+-- .match_all({clear_matches = false})<CR>
+map("n", "?", '<cmd>lua require("searchbox").incsearch().match_all({clear_matches = false, reverse=true})<CR>', defo)
 
-map( 'n', '/', '<cmd>lua require("searchbox").match_all({clear_matches = false})<CR>', default_opts)
-map( 'n', '?', '<cmd>lua require("searchbox").match_all({clear_matches = false, reverse=true})<CR>', default_opts)
+map("n", "t", "f", defo)
 
+map("n", "Q", ":q!<CR>", defo)
+map("n", "Z", ":wq<CR>", defo)
 
-map('n', 't', 'f', default_opts)
+map("n", "<leader>e", ":lua vim.diagnostic.open_float(0,{scope = 'cursor'})<CR>", defo)
 
-map('n', 'Q', ':q!<CR>', default_opts)
-map('n', 'Z', ':wq<CR>', default_opts)
+map("n", "<leader>mi", ":PaqInstall<CR>", defo)
+map("n", "<leader>mu", ":PaqUpdate<CR>", defo)
+map("n", "<leader>mc", ":PaqSync<CR>", defo)
+map("n", "<leader>mr", ":PaqClean<CR>", defo)
 
-map('n', '<leader>mi', ':PackerInstall<CR>', default_opts)
-map('n', '<leader>mu', ':PackerUpdate<CR>', default_opts)
-map('n', '<leader>mc', ':PackerCompile<CR>', default_opts)
-map('n', '<leader>mr', ':PackerClean<CR>', default_opts)
+map("n", "<leader>mp", ":Glow<CR>", defo)
 
-map('n', '<leader>mv', ':mkview<CR>', default_opts)
-map('n', '<leader>ov', ':loadview<CR>', default_opts)
+map("n", "<leader>mv", ":mkview<CR>", defo)
+map("n", "<leader>ov", ":loadview<CR>", defo)
 
--- fast saving with <leader> and s
-map('n', '<leader>w', ':w<CR><cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
-map('n', '<leader>s', ':luafile $MYVIMRC<CR>', default_opts)
-map('n', '<leader>d', ':bd<CR>', default_opts)
-map('n', '<leader><leader>', ':Telescope buffers<cr><esc>', default_opts) -- search file
+map("n", "<leader>s", ":w<CR>", defo)
+map("n", "<leader>d", ":bd<CR>", defo)
+map("n", "<leader><leader>", ":Telescope buffers<cr><esc>", defo) -- search file
 
-map('n', '<C-Tab>', 'gt', default_opts)
-map('n', '<C-S-Tab>', 'gT', default_opts)
+map("n", "<C-Tab>", "gt", defo)
+map("n", "<C-S-Tab>", "gT", defo)
 
-map('n', '<leader>v', ':vnew<CR>', default_opts)
-map('n', '<leader>n', ':new<CR>', default_opts)
+map("n", "<leader>v", ":vnew<CR>", defo)
+map("n", "<leader>n", ":new<CR>", defo)
 
-map('n', '<leader>tm', ':TableModeToggle<CR>', default_opts)
-map('n', '<leader>tn', ':tabnew<CR>', default_opts)
-map('n', '<leader>th', ':-tabmove<CR>', default_opts)
-map('n', '<leader>tl', ':+tabmove<CR>', default_opts)
+map("n", "<leader>tm", ":TableModeToggle<CR>", defo)
+map("n", "<leader>tn", ":tabnew<CR>", defo)
+map("n", "<leader>th", ":-tabmove<CR>", defo)
+map("n", "<leader>tl", ":+tabmove<CR>", defo)
 
-map('n', '<leader>i', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
-map('n', '<C-Space>', ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', default_opts)
-map('i', '<C-Space>', ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', default_opts)
+map("n", "<leader>i", ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', defo)
+map("n", "<C-Space>", ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', defo)
+map("i", "<C-Space>", ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', defo)
 
-map('i', '<C-H>', '<C-W>', {noremap = true})
+--map("i", "<C-H>", "<C-W>", { noremap = true })
 
 -----------------------------------------------------------
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 
 -- open terminal
-map('n', '<leader>tt', ':term<CR>', default_opts)
+map("n", "<leader>tt", ":term<CR>", defo)
 
 -- nvim-tree
-map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
+map("n", "<C-n>", ":NvimTreeToggle<CR>", defo) -- open/close
 
-map('n', 'o', 'o <Esc>', default_opts)
-map('n', 'O', 'O <Esc>', default_opts)
-map('n', '<C-l>', ':nohl<CR>:SearchBoxClear<CR><C-l>', default_opts)
+map("n", "o", "o <Esc>", defo)
+map("n", "O", "O <Esc>", defo)
+map("n", "<C-l>", ":nohl<CR>:SearchBoxClear<CR><C-l>", defo)
 
-map('n', 'Y', 'y$', default_opts)
-map('n', '<Leader>y', '"+y', default_opts)
-map('v', '<Leader>y', '"+y', default_opts)
-map('n', '<Leader>Y', 'gg"+yG', default_opts)
-map('n', '<Leader>p', '"+p', default_opts)
-map('n', '<Leader>P', '"+P', default_opts)
+map("n", "Y", 'gg"+yG``', defo)
+map("v", "-", '"+y', defo)
+map("n", "-", '"+yy', defo)
+map("v", "x", '"+ygvd', defo)
+map("v", "+", '"+p', defo)
+map("n", "+", '"+P', defo)
+map("n", "<leader><leader>", "a <esc>", defo)
 
-map('n', '<Leader>fb', ':lua require([[telescope.builtin]]).buffers()<cr>'    , default_opts)
-map('n', '<Leader>fg', ':lua require([[telescope.builtin]]).live_grep()<cr>'  , default_opts)
-map('n', '<Leader>fc', ':lua require([[telescope.builtin]]).colorscheme()<cr>', default_opts)
-map('n', '<Leader>ff', ':lua require"telescope.builtin".find_files()<CR>'     , default_opts)
-map('n', '<Leader>fh', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', default_opts)
-map('n', '<Leader>/',  ':lua require[[telescope.builtin]].current_buffer_fuzzy_find{}<CR>', default_opts)
+map("n", "<Leader>fb", ":lua require([[telescope.builtin]]).buffers()<cr>", defo)
+map("n", "<Leader>fg", ":lua require([[telescope.builtin]]).live_grep()<cr>", defo)
+map("n", "<Leader>fc", ":lua require([[telescope.builtin]]).colorscheme()<cr>", defo)
+map("n", "<Leader>ff", ':lua require"telescope.builtin".find_files()<CR>', defo)
+map("n", "<Leader>fh", ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', defo)
+map("n", "<Leader>/", ":lua require[[telescope.builtin]].current_buffer_fuzzy_find{}<CR>", defo)
 
-map('v', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
-map('o', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
-map('n', 'f', "<cmd>lua require'hop'.hint_words()<cr>", {})
-map('n', 'F', "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
+map("v", "f", "<cmd>lua require'hop'.hint_words()<cr>", {})
+map("o", "f", "<cmd>lua require'hop'.hint_words()<cr>", {})
+map("n", "f", "<cmd>lua require'hop'.hint_words()<cr>", {})
+map("v", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
+map("o", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
+map("n", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
 
-map('n', '<leader>j', ':call comfortable_motion#flick(90)<CR>', default_opts)
-map('n', '<leader>k', ':call comfortable_motion#flick(-90)<CR>', default_opts)
-map('v', '<leader>j', '<C-d>', default_opts)
-map('v', '<leader>k', '<C-u>', default_opts)
+map("n", "<leader>j", "<C-d>", defo)
+map("n", "<leader>k", "<C-u>", defo)
+map("v", "<leader>j", "<C-d>", defo)
+map("v", "<leader>k", "<C-u>", defo)
 
-map('n', '<leader>b', ':!cp ~/boilerplates/boilerplate.%:e %<Enter>', default_opts)
+map("n", "<leader>b", ":!cp ~/boilerplates/boilerplate.%:e %<Enter>", defo)
 
-map('n', '<leader>h', ':SidewaysLeft<cr>', default_opts)
-map('n', '<leader>l', ':SidewaysRight<cr>', default_opts)
+map("n", "<leader>h", ":SidewaysLeft<cr>", defo)
+map("n", "<leader>l", ":SidewaysRight<cr>", defo)
+
+map("n", "<C-d>", ":MoveLine(1)<CR>", { noremap = true, silent = true })
+map("n", "<C-u>", ":MoveLine(-1)<CR>", { noremap = true, silent = true })
+map("v", "<C-d>", ":MoveBlock(1)<CR>", { noremap = true, silent = true })
+map("v", "<C-u>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
+-- map('n', '<C-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
+-- map('n', '<C-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
+-- map('v', '<C-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
+-- map('v', '<C-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
