@@ -15,16 +15,16 @@ scrolling:
   auto_scroll: false
 font:
   normal:
-    family: FuraCode Nerd Font Mono
+    family: Fira Code
     style: Medium
   bold:
-    family: FuraCode Nerd Font Mono
+    family: Fira Code
     style: Bold
   italic:
-    family: FuraCode Nerd Font Mono
+    family: Fira Code
     style: Italic
   bold_italic:
-    family: FuraCode Nerd Font Mono
+    family: Fira Code
     style: Bold Italic
   size: 7.5
   offset:
@@ -34,46 +34,47 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '#1f1f1f'
-    foreground: '#e5e1d8'
+    # hard contrast: background = '#f9f5d7'
+    background: "#fbf1c7"
+    # soft contrast: background = '#f2e5bc'
+    foreground: "#3c3836"
 
   # Normal colors
   normal:
-    black: '#000000'
-    red: '#f7786d'
-    green: '#bde97c'
-    yellow: '#efdfac'
-    blue: '#6ebaf8'
-    magenta: '#ef88ff'
-    cyan: '#90fdf8'
-    white: '#e5e1d8'
+    black: "#fbf1c7"
+    red: "#cc241d"
+    green: "#98971a"
+    yellow: "#d79921"
+    blue: "#458588"
+    magenta: "#b16286"
+    cyan: "#689d6a"
+    white: "#7c6f64"
 
   # Bright colors
   bright:
-    black: '#b4b4b4'
-    red: '#f99f92'
-    green: '#e3f7a1'
-    yellow: '#f2e9bf'
-    blue: '#b3d2ff'
-    magenta: '#e5bdff'
-    cyan: '#c2fefa'
-    white: '#ffffff'
+    black: "#928374"
+    red: "#9d0006"
+    green: "#79740e"
+    yellow: "#b57614"
+    blue: "#076678"
+    magenta: "#8f3f71"
+    cyan: "#427b58"
+    white: "#3c3836"
 background_opacity: 1
 shell:
-  program: /bin/bash
+  program: /usr/bin/fish
 key_bindings:
-     
-  -  {key: V,         mods: Control|Shift,  action: Paste}
-  -  {key: P,         mods: Alt,            action: Paste}
-  -  {key: C,         mods: Control|Shift,  action: Copy}
-  -  {key: Y,         mods: Alt,            action: Copy}
-  -  {key: Insert,    mods: Shift,          action: PasteSelection}
-  -  {key: Paste,     mods: None,           action: Paste}
-  -  {key: Copy,      mods: None,           action: Copy}
-  -  {key: L,         mods: Control,        action: ClearLogNotice}
-  -  {key: L,         mods: Control,        chars: "\f"}
-  -  {key: V,         mods: Alt,            action: ToggleViMode}
-  -  {key: U,         mods: Control,        action: ScrollHalfPageUp, mode: ~Alt}
-  -  {key: D,         mods: Control,        action: ScrollHalfPageDown, mode: ~Alt}
-  -  {key: PageUp,    mods: Alt,            action: ScrollToTop, mode: ~Alt}
-  -  {key: PageDown,  mods: Alt,            action: ScrollToBottom, mode: ~Alt}
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: P, mods: Alt, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Y, mods: Alt, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Paste, mods: None, action: Paste }
+  - { key: Copy, mods: None, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, chars: "\f" }
+  - { key: V, mods: Alt, action: ToggleViMode }
+  - { key: U, mods: Control, action: ScrollHalfPageUp, mode: ~Alt }
+  - { key: D, mods: Control, action: ScrollHalfPageDown, mode: ~Alt }
+  - { key: PageUp, mods: Alt, action: ScrollToTop, mode: ~Alt }
+  - { key: PageDown, mods: Alt, action: ScrollToBottom, mode: ~Alt }

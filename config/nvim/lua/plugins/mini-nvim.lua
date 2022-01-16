@@ -1,6 +1,8 @@
-require("mini.sessions").setup({ directory = "~/.config/nvim/misc/sessions" })
-require("mini.starter").setup()
 require("mini.fuzzy").setup()
+
+require("mini.starter").setup()
+
+require("mini.tabline").setup()
 
 require("mini.statusline").setup({
 	content = {
@@ -33,33 +35,13 @@ require("mini.statusline").setup({
 		end,
 	},
 })
-require("mini.tabline").setup()
 
 vim.defer_fn(function()
 	require("mini.comment").setup()
+
+	-- require("mini.trailspace").setup()
+
 	-- require("mini.cursorword").setup()
-	require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
-	require("mini.surround").setup({
-		-- Number of lines within which surrounding is searched
-		n_lines = 20,
 
-		-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-		highlight_duration = 500,
-
-		-- Pattern to match function name in 'function call' surrounding
-		-- By default it is a string of letters, '_' or '.'
-		funname_pattern = "[%w_%.]+",
-
-		-- Mappings. Use `''` (empty string) to disable one.
-		mappings = {
-			add = "s", -- Add surrounding
-			delete = "ds", -- Delete surrounding
-			-- find = "sf", -- Find surrounding (to the right)
-			-- find_left = "sF", -- Find surrounding (to the left)
-			-- highlight = "sh", -- Highlight surrounding
-			replace = "cs", -- Replace surrounding
-			-- update_n_lines = "sn", -- Update `n_lines`
-		},
-	})
-	require("mini.trailspace").setup()
+	-- require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
 end, 0)

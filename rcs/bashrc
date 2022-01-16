@@ -3,9 +3,9 @@
 # global variables
 export LANG=en_US.UTF-8
 export CHROME_EXECUTABLE='google-chrome-stable'
-export TERM='xterm-256color' 
- 
-# prompt 
+export TERM='xterm-256color'
+
+# prompt
 #Regular text color
 BLACK='\[\e[0;30m\]'
 #Bold text color
@@ -95,14 +95,13 @@ alias sbrc="source ~/.bashrc"
 alias svrc="source ~/.config/nvim/init.vim"
 alias szrc="source ~/.zshrc"
 alias cf="cd /opt/dwm && nvim config.def.h"
-alias td="nvim ~/.todo.txt" 
-alias pacman="sudo pacman" 
-alias torr='transmission-cli -w ~/torrents -D -u 30' 
-alias dragon="dragon-drag-and-drop" 
+alias td="nvim ~/.todo.txt"
+alias pacman="sudo pacman"
+alias torr='transmission-cli -w ~/torrents -D -u 30'
+alias dragon="dragon-drag-and-drop"
 
 alias suspend='systemctl suspend && slock'
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
- 
-source ~/.local/share/blesh/ble.sh
+
 export PATH=$HOME/.cargo/bin:$HOME/.local/:$PATH

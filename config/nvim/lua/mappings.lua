@@ -9,11 +9,27 @@ local cmd = vim.cmd
 map("n", "gr", '<cmd>lua require("renamer").rename()<cr>', defo)
 map("v", "gr", '<cmd>lua require("renamer").rename()<cr>', defo)
 
+-- map("n", "y", "<plug>YAMotion<cr>", defo)
+-- map("x", "y", "<plug>YAVisual<cr>", defo)
+-- map("n", "yy", "<plug>YALine<cr>", defo)
+
 map("n", "<C-j>", ":bp<CR>", defo)
+map("i", "<C-j>", "<esc>:bp<CR>", defo)
 map("n", "<C-k>", ":bn<CR>", defo)
-map("n", "<C-f>", '<cmd>lua require("searchbox").incsearch()<CR>', defo)
--- .match_all({clear_matches = false})<CR>
-map("n", "?", '<cmd>lua require("searchbox").incsearch().match_all({clear_matches = false, reverse=true})<CR>', defo)
+map("i", "<C-k>", "<esc>:bn<CR>", defo)
+
+map("n", "dk", "dkk", defo)
+
+map("i", "<C-z>", ":<esc>stop<CR>", defo)
+
+-- map("n", "<C-b>", ":bp<CR>", defo)
+-- map("n", "<C-f>", ":bn<CR>", defo)
+
+map("n", "/", ":SearchBoxMatchAll<CR>", defo)
+map("x", "/", ":SearchBoxMatchAll visual_mode=true<CR>", defo)
+map("n", "?", ":SearchBoxMatchAll reverse=true<CR>", defo)
+
+-- map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })
 
 map("n", "t", "f", defo)
 
@@ -21,6 +37,8 @@ map("n", "Q", ":q!<CR>", defo)
 map("n", "Z", ":wq<CR>", defo)
 
 map("n", "<leader>e", ":lua vim.diagnostic.open_float(0,{scope = 'cursor'})<CR>", defo)
+map("n", "<leader>r", ":SearchBoxReplace confirm=menu<CR>", defo)
+map("v", "<leader>r", ":SearchBoxReplace confirm=menu visual_mode=true<CR>", defo)
 
 map("n", "<leader>mi", ":PaqInstall<CR>", defo)
 map("n", "<leader>mu", ":PaqUpdate<CR>", defo)
@@ -34,10 +52,6 @@ map("n", "<leader>ov", ":loadview<CR>", defo)
 
 map("n", "<leader>s", ":w<CR>", defo)
 map("n", "<leader>d", ":bd<CR>", defo)
-map("n", "<leader><leader>", ":Telescope buffers<cr><esc>", defo) -- search file
-
-map("n", "<C-Tab>", "gt", defo)
-map("n", "<C-S-Tab>", "gT", defo)
 
 map("n", "<leader>v", ":vnew<CR>", defo)
 map("n", "<leader>n", ":new<CR>", defo)
@@ -49,7 +63,7 @@ map("n", "<leader>tl", ":+tabmove<CR>", defo)
 
 map("n", "<leader>i", ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', defo)
 map("n", "<C-Space>", ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', defo)
-map("i", "<C-Space>", ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', defo)
+map("i", "<C-Space>", ':<esc>exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', defo)
 
 --map("i", "<C-H>", "<C-W>", { noremap = true })
 
@@ -57,15 +71,13 @@ map("i", "<C-Space>", ':exec &bg=="light"? "set bg=dark" : "set bg=light"<CR>', 
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 
--- open terminal
-map("n", "<leader>tt", ":term<CR>", defo)
-
 -- nvim-tree
-map("n", "<C-n>", ":NvimTreeToggle<CR>", defo) -- open/close
+map("n", "<leader><leader>", ":NvimTreeToggle<CR>", defo) -- open/close
 
 map("n", "o", "o <Esc>", defo)
 map("n", "O", "O <Esc>", defo)
-map("n", "<C-l>", ":nohl<CR>:SearchBoxClear<CR><C-l>", defo)
+map("n", "<C-l>", ":SearchBoxClear<CR><C-l>", defo)
+map("i", "<C-l>", ":<esc>SearchBoxClear<CR><C-l>", defo)
 
 map("n", "Y", 'gg"+yG``', defo)
 map("v", "-", '"+y', defo)
@@ -73,7 +85,7 @@ map("n", "-", '"+yy', defo)
 map("v", "x", '"+ygvd', defo)
 map("v", "+", '"+p', defo)
 map("n", "+", '"+P', defo)
-map("n", "<leader><leader>", "a <esc>", defo)
+map("n", "_", "a <esc>", defo)
 
 map("n", "<Leader>fb", ":lua require([[telescope.builtin]]).buffers()<cr>", defo)
 map("n", "<Leader>fg", ":lua require([[telescope.builtin]]).live_grep()<cr>", defo)
@@ -89,18 +101,15 @@ map("v", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>"
 map("o", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
 map("n", "F", "<cmd>lua require'hop'.hint_words({current_line_only = true})<cr>", {})
 
-map("n", "<leader>j", "<C-d>", defo)
-map("n", "<leader>k", "<C-u>", defo)
-map("v", "<leader>j", "<C-d>", defo)
-map("v", "<leader>k", "<C-u>", defo)
-
 map("n", "<leader>b", ":!cp ~/boilerplates/boilerplate.%:e %<Enter>", defo)
 
 map("n", "<leader>h", ":SidewaysLeft<cr>", defo)
 map("n", "<leader>l", ":SidewaysRight<cr>", defo)
 
 map("n", "<C-d>", ":MoveLine(1)<CR>", { noremap = true, silent = true })
+map("i", "<C-d>", ":<esc>MoveLine(1)<CR>", { noremap = true, silent = true })
 map("n", "<C-u>", ":MoveLine(-1)<CR>", { noremap = true, silent = true })
+map("i", "<C-u>", ":<esc>MoveLine(-1)<CR>", { noremap = true, silent = true })
 map("v", "<C-d>", ":MoveBlock(1)<CR>", { noremap = true, silent = true })
 map("v", "<C-u>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
 -- map('n', '<C-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })

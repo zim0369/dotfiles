@@ -42,17 +42,23 @@ fi
  # setxkbmap -option altwin:swap_lalt_lwin
  # setxkbmap -option caps:swapescape
 
-feh --bg-scale --randomize ~/pictures/landscape/*
-/home/zim/.config/picom/picom-toggle.sh
-/opt/bar/dwm_bar.sh &
-nm-applet --indicator &
+feh --bg-scale --randomize ~/pictures/wallpapers/*
+# /home/zim/.config/picom/picom-toggle.sh
+# /opt/bar/dwm_bar.sh &
+# stalonetray & 
+# nm-applet --indicator &
+#
+#  while true; do
+#      # Log stderror to a file
+#      dwm 2> ~/.dwm.log
+#      nm-applet --indicator &
+#      # No error logging
+#      #dwm >/dev/null 2>&1
+#  done
 
- while true; do
-     # Log stderror to a file
-     dwm 2> ~/.dwm.log
-     nm-applet --indicator &
-     # No error logging
-     #dwm >/dev/null 2>&1
- done
-
- exec dwm
+exec xmonad
+# polybar start
+ # exec dwm
+# /usr/bin/i3
+# /usr/local/bin/stumpwm
+# /usr/bin/leftwm

@@ -35,7 +35,7 @@ while true; do
             r | 8) workspace=8 ;;
             * | 9) workspace=9 ;;
         esac
-        xdotool key Super+m
+        xdotool key Super+j
         xdotool key Super+Shift+$workspace
         xdotool key Super+$workspace
         clear
@@ -106,7 +106,7 @@ while true; do
         toggle_touchpad
         break
     elif [[ "$action" = "w" ]]; then
-        feh --bg-scale --randomize ~/pictures/landscape/*
+        feh --bg-scale --randomize ~/pictures/wallpapers/*
         break
     elif [[ "$action" = "p" ]]; then
         /usr/bin/bash ~/.config/picom/picom-toggle.sh

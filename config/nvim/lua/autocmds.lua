@@ -35,10 +35,10 @@ cmd([[au FileChangedShellPost *
 cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
 -- Formatting
-cmd([[au BufWrite <buffer> lua vim.lsp.buf.formatting_sync()]])
+cmd([[ autocmd BufWritePre *.rs RustFmt]])
 
--- remove line length marker for selected filetypes
-cmd([[au FileType text,markdown,html,xhtml,javascript setlocal cc=0]])
+-- add line length marker for selected filetypes
+-- cmd([[au FileType text,markdown,org,neorg,html setlocal cc=80]])
 
 -- 2 spaces for selected filetypes
 cmd([[ au FileType markdown setlocal shiftwidth=3 tabstop=3 ]])
@@ -47,10 +47,10 @@ cmd([[ au FileType org,norg,xml,html,xhtml,css,scss,javascript,lua,yaml setlocal
 -- highlight on yank
 exec(
 	[[
-augroup YankHighlight
-au!
-au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup end
-]],
+  augroup YankHighlight
+  au!
+  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=369}
+  augroup end
+  ]],
 	false
 )

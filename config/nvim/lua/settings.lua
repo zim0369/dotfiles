@@ -39,13 +39,14 @@ opt.colorcolumn = "80"
 opt.signcolumn = "number"
 opt.backspace = [[indent,eol,start]]
 opt.completeopt = [[menu,menuone,noselect]]
-vim.cmd([[set dict+=/usr/share/dict/american-english]])
-vim.cmd([[set thesaurus+=/home/zim/.config/nvim/spell/thesaurus.txt]])
+cmd([[set dict+=/usr/share/dict/american-english]])
+cmd([[set thesaurus+=/home/zim/.config/nvim/spell/thesaurus.txt]])
 
 opt.listchars = {
-	eol = "⤶",
-	tab = " ×",
-	trail = "•",
+	eol = "↲",
+	space = "⋅",
+	tab = "  ",
+	trail = " ",
 	extends = "◀",
 	precedes = "▶",
 }
@@ -69,6 +70,7 @@ opt.smartindent = true -- autoindent new lines
 -----------------------------------------------------------
 -- Fancy
 -----------------------------------------------------------
+cmd([[autocmd ColorScheme * highlight link SearchBoxMatch Search]])
 opt.termguicolors = true
 cmd([[colorscheme gruvbox]])
 opt.guifont = "FuraCode Nerd Font:h13"
@@ -78,14 +80,19 @@ g.neovide_cursor_vfx_mode = "railgun"
 -- Plugins
 -----------------------------------------------------------
 
--- g.table_mode_corner = '|'            -- Markdown Compatible
+g.table_mode_corner = "|" -- Markdown Compatible
 
-g.table_mode_corner_corner = "+" -- ReST-compatible tables
-g.table_mode_header_fillchar = "=" -- ReST-compatible tables
+-- g.table_mode_corner_corner = "+" -- ReST-compatible tables
+-- g.table_mode_header_fillchar = "=" -- ReST-compatible tables
 
 g.rustfmt_autosave = 0 -- Rust AutoFormat on save
 g.rust_clip_command = "xclip -selection clipboard"
 
 g.glow_border = "rounded"
 
-g.cursorhold_updatetime = 100
+-- g.cursorhold_updatetime = 100
+
+g.yankassassin_use_mappings = 1
+
+cmd([[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]])
+cmd([[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]])
