@@ -1,19 +1,16 @@
 -- xmonad.hs
 -- xmonad example config file.
-
+--
 -- A template showing all available configuration hooks,
 -- and how to override the defaults in your own xmonad.hs conf file.
-
+--
 -- Normally, you'd only override those defaults you care about.
-
--- SPECIAL
+--
+-- SPECIAL --
 -- import XMonad.Layout.DecorationMadness
 -- import XMonad.Actions.EasyMotion (selectWindow)
 
-import Control.Applicative
-import Control.Monad
 import qualified Data.Map as M
-import Data.Maybe
 import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
@@ -30,7 +27,6 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
 import qualified XMonad.Util.Hacks as Hacks
 import XMonad.Util.NamedScratchpad
-import XMonad.Util.Stack
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -78,128 +74,129 @@ myFocusedBorderColor = "#00ffff"
 ------------------------------------------------------------------------
 
 scratchpads =
-  [ -- (className =? "htop")/(title =? "htop")
-    NS
-      "htop"
-      "alacritty -t htop -e htop"
-      (title =? "htop")
-      -- defaultFloating ,
-      (customFloating $ W.RationalRect (2 / 7) (1 / 9) (2 / 5) (2 / 4)),
-    NS
-      "scratch"
-      "alacritty -t scratch -e nvim ~/.scratch.md ~/.todo.md ~/.ideas.md"
-      (title =? "scratch")
-      (customFloating $ W.RationalRect (2 / 6) (1 / 9) (2 / 5) (2 / 4)),
-    NS
-      "nmtui"
-      "alacritty -t nmtui -e nmtui"
-      (title =? "nmtui")
-      (customFloating $ W.RationalRect (2 / 6) (1 / 9) (2 / 5) (2 / 4)),
-    NS
-      "tags"
-      "alacritty -t tags -e tags"
-      (title =? "tags")
-      (customFloating $ W.RationalRect (2 / 5) (3 / 9) (2 / 7) (1 / 5)),
-    NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") nonFloating
-  ]
+    [ -- (className =? "htop")/(title =? "htop")
+      NS
+        "htop"
+        "alacritty -t htop -e htop"
+        (title =? "htop")
+        -- defaultFloating ,
+        (customFloating $ W.RationalRect (2 / 7) (1 / 9) (2 / 5) (2 / 4))
+    , NS
+        "scratch"
+        "alacritty -t scratch -e nvim ~/.scratch.md ~/.todo.md ~/.ideas.md"
+        (title =? "scratch")
+        (customFloating $ W.RationalRect (2 / 6) (1 / 9) (2 / 5) (2 / 4))
+    , NS
+        "nmtui"
+        "alacritty -t nmtui -e nmtui"
+        (title =? "nmtui")
+        (customFloating $ W.RationalRect (2 / 6) (1 / 9) (2 / 5) (2 / 4))
+    , NS
+        "tags"
+        "alacritty -t tags -e tags"
+        (title =? "tags")
+        (customFloating $ W.RationalRect (2 / 5) (3 / 9) (2 / 7) (1 / 5))
+    , NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") nonFloating
+    ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
 
-myFocusMaster = withWindowSet $ \ws ->
-  let wins = drop 1 $ W.index ws -- first is master
-   in withRecentsIn (W.currentTag ws) () $ \lw cw ->
-        when (cw /= lw) . windows $ tryFocus (lw : wins)
-
-tryFocus :: [Window] -> WindowSet -> WindowSet
-tryFocus wins = W.modify' $ \s ->
-  fromMaybe s . msum $ (\w -> findS (== w) s) <$> wins --
+myFocusMaster :: X ()
+myFocusMaster = withWindowSet $ \wset ->
+    case W.index wset of
+        [] -> pure ()
+        (x : _) ->
+            if Just x == W.peek wset
+                then toggleFocus
+                else windows W.focusMaster
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
-myKeys conf@(XConfig {XMonad.modMask = modm}) =
-  M.fromList $
-    [ ((0, xF86XK_AudioMute), spawn "amixer set Master toggle"),
-      ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 3%-"),
-      ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 3%+"),
-      ((0, xF86XK_MonBrightnessUp), spawn "brightnessctl set 3%+"),
-      ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl set 3%-"),
-      ((modm, xK_w), spawn "brave"),
-      ((modm, xK_r), rofi_launch),
-      ((modm, xK_BackSpace), kill),
-      ((modm, xK_space), sendMessage NextLayout),
-      ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf),
-      ((modm, xK_n), refresh),
-      ((modm, xK_Tab), windows W.focusDown),
-      ((modm, xK_m), myFocusMaster),
-      -- ((modm, xK_f), selectWindow def >>= (`whenJust` windows . W.focusWindow)),
-      ((modm, xK_o), namedScratchpadAction scratchpads "scratch"),
-      ((modm, xK_f), whenX (swapHybrid True) dwmpromote),
-      ((modm .|. shiftMask, xK_j), windows W.swapDown),
-      ((modm .|. shiftMask, xK_k), windows W.swapUp),
-      ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
-      ((modm, xK_q), spawn "xmonad --recompile && xmonad --restart"),
-      ((modm, xK_t), withFocused $ windows . W.sink),
-      ((modm, xK_comma), sendMessage (IncMasterN 1)),
-      ((modm, xK_s), spawn $ XMonad.terminal conf),
-      ((modm, xK_period), sendMessage (IncMasterN (-1))),
-      ((modm, xK_h), sendMessage Expand),
-      ((modm, xK_j), windows W.focusDown),
-      ((modm, xK_k), windows W.focusUp),
-      ((modm, xK_l), sendMessage Shrink),
-      ((modm .|. shiftMask, xK_o), namedScratchpadAction scratchpads "tags"),
-      ((modm .|. controlMask, xK_o), namedScratchpadAction scratchpads "nmtui")
-    ]
-      ++
-      --
-      -- mod-[1..9], Switch to workspace N
-      -- mod-shift-[1..9], Move client to workspace N
-      --
-      [ ((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
-          (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-      ]
-      -- ++
-      --
-      -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-      -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-      --
-      -- [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      --   | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
-      --     (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
-      -- ]
-      ++ [ ((0, xK_Print), spawn "scrotfull"),
-           ((shiftMask, xK_Print), spawn "scrotsel"),
-           ((controlMask, xK_Print), spawn "scrotactive"),
-           ((0, xF86XK_PowerOff), spawn "slock"),
-           ((0, xF86XK_PowerOff), spawn "systemctl suspend"),
-           ((0, xF86XK_TouchpadToggle), spawn "toggle_touchpad")
-         ]
+myKeys conf@(XConfig{XMonad.modMask = modm}) =
+    M.fromList $
+        [ ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
+        , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 3%-")
+        , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 3%+")
+        , ((0, xF86XK_MonBrightnessUp), spawn "brightnessctl set 3%+")
+        , ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl set 3%-")
+        , ((modm, xK_w), spawn "brave")
+        , ((modm, xK_r), rofi_launch)
+        , ((modm, xK_BackSpace), kill)
+        , ((modm, xK_space), sendMessage NextLayout)
+        , ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
+        , ((modm, xK_n), refresh)
+        , ((modm, xK_Tab), windows W.focusDown)
+        , ((modm, xK_m), myFocusMaster)
+        , -- ((modm, xK_f), selectWindow def >>= (`whenJust` windows . W.focusWindow)),
+          ((modm, xK_o), namedScratchpadAction scratchpads "scratch")
+        , ((modm, xK_f), whenX (swapHybrid True) dwmpromote)
+        , ((modm .|. shiftMask, xK_j), windows W.swapDown)
+        , ((modm .|. shiftMask, xK_k), windows W.swapUp)
+        , ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
+        , ((modm, xK_q), spawn "xmonad --recompile && xmonad --restart")
+        , ((modm, xK_t), withFocused $ windows . W.sink)
+        , ((modm, xK_comma), sendMessage (IncMasterN 1))
+        , ((modm, xK_s), spawn $ XMonad.terminal conf)
+        , ((modm, xK_period), sendMessage (IncMasterN (-1)))
+        , ((modm, xK_h), sendMessage Expand)
+        , ((modm, xK_j), windows W.focusDown)
+        , ((modm, xK_k), windows W.focusUp)
+        , ((modm, xK_l), sendMessage Shrink)
+        , ((modm .|. shiftMask, xK_o), namedScratchpadAction scratchpads "tags")
+        , ((modm .|. controlMask, xK_o), namedScratchpadAction scratchpads "nmtui")
+        ]
+            ++
+            --
+            -- mod-[1..9], Switch to workspace N
+            -- mod-shift-[1..9], Move client to workspace N
+            --
+            [ ((m .|. modm, k), windows $ f i)
+            | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+            , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+            ]
+            -- ++
+            --
+            -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+            -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+            --
+            -- [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+            --   | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
+            --     (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+            -- ]
+            ++ [ ((0, xK_Print), spawn "scrotfull")
+               , ((shiftMask, xK_Print), spawn "scrotsel")
+               , ((controlMask, xK_Print), spawn "scrotactive")
+               , ((0, xF86XK_PowerOff), spawn "slock")
+               , ((0, xF86XK_PowerOff), spawn "systemctl suspend")
+               , ((0, xF86XK_TouchpadToggle), spawn "toggle_touchpad")
+               ]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
-myMouseBindings (XConfig {XMonad.modMask = modm}) =
-  M.fromList $
-    -- mod-button1, Set the window to floating mode and move by dragging
-    [ ( (modm, button1),
-        ( \w ->
-            focus w >> mouseMoveWindow w
-              >> windows W.shiftMaster
-        )
-      ),
-      -- mod-button2, Raise the window to the top of the stack
-      ((modm, button2), (\w -> focus w >> windows W.shiftMaster)),
-      -- mod-button3, Set the window to floating mode and resize by dragging
+myMouseBindings (XConfig{XMonad.modMask = modm}) =
+    M.fromList $
+        -- mod-button1, Set the window to floating mode and move by dragging
+        [
+            ( (modm, button1)
+            , ( \w ->
+                    focus w >> mouseMoveWindow w
+                        >> windows W.shiftMaster
+              )
+            )
+        , -- mod-button2, Raise the window to the top of the stack
+          ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
+        , -- mod-button3, Set the window to floating mode and resize by dragging
 
-      ( (modm, button3),
-        ( \w ->
-            focus w >> mouseResizeWindow w
-              >> windows W.shiftMaster
-        )
-      )
-      -- you may also bind events to the mouse scroll wheel (button4 and button5)
-    ]
+            ( (modm, button3)
+            , ( \w ->
+                    focus w >> mouseResizeWindow w
+                        >> windows W.shiftMaster
+              )
+            )
+            -- you may also bind events to the mouse scroll wheel (button4 and button5)
+        ]
 
 ------------------------------------------------------------------------
 -- Layouts:
@@ -243,13 +240,13 @@ myLayout = tiled ||| noBorders Full
 -- 'className' and 'resource' are used below.
 --
 myManageHook =
-  composeAll
-    [ className =? "MPlayer" --> doFloat,
-      className =? "Gimp" --> doFloat,
-      resource =? "desktop_window" --> doIgnore,
-      resource =? "kdesktop" --> doIgnore
-    ]
-    <+> namedScratchpadManageHook scratchpads
+    composeAll
+        [ className =? "MPlayer" --> doFloat
+        , className =? "Gimp" --> doFloat
+        , resource =? "desktop_window" --> doIgnore
+        , resource =? "kdesktop" --> doIgnore
+        ]
+        <+> namedScratchpadManageHook scratchpads
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -288,10 +285,10 @@ myStartupHook = return ()
 myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
-myPP = xmobarPP {ppCurrent = xmobarColor "#00ffff" "" . wrap "<" ">"}
+myPP = xmobarPP{ppCurrent = xmobarColor "#00ffff" "" . wrap "<" ">"}
 
 -- Key binding to toggle the gap for the bar.
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+toggleStrutsKey XConfig{XMonad.modMask = modMask} = (modMask, xK_b)
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -307,38 +304,38 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
 -- No need to modify this.
 --
 defaults =
-  def
-    { -- simple stuff
-      terminal = myTerminal,
-      focusFollowsMouse = myFocusFollowsMouse,
-      clickJustFocuses = myClickJustFocuses,
-      borderWidth = myBorderWidth,
-      modMask = myModMask,
-      workspaces = myWorkspaces,
-      normalBorderColor = myNormalBorderColor,
-      focusedBorderColor = myFocusedBorderColor,
-      -- key bindings
-      keys = refocusLastKeys <+> myKeys,
-      mouseBindings = myMouseBindings,
-      -- hooks, layouts
-      manageHook = myManageHook,
-      startupHook = myStartupHook,
-      handleEventHook = refocusLastWhen myPred <+> myEventHook,
-      logHook = refocusLastLogHook <+> myLogHook,
-      layoutHook = refocusLastLayoutHook $ myLayout
-    }
+    def
+        { -- simple stuff
+          terminal = myTerminal
+        , focusFollowsMouse = myFocusFollowsMouse
+        , clickJustFocuses = myClickJustFocuses
+        , borderWidth = myBorderWidth
+        , modMask = myModMask
+        , workspaces = myWorkspaces
+        , normalBorderColor = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
+        , -- key bindings
+          keys = refocusLastKeys <+> myKeys
+        , mouseBindings = myMouseBindings
+        , -- hooks, layouts
+          manageHook = myManageHook
+        , startupHook = myStartupHook
+        , handleEventHook = refocusLastWhen myPred <+> myEventHook
+        , logHook = refocusLastLogHook <+> myLogHook
+        , layoutHook = refocusLastLayoutHook $ myLayout
+        }
   where
     myPred = refocusingIsActive <||> isFloat
     refocusLastKeys cnf =
-      M.fromList $
-        ((modMask cnf, xK_a), toggleFocus) :
-        ((modMask cnf .|. shiftMask, xK_a), swapWithLast) :
-        ((modMask cnf, xK_b), toggleRefocusing) :
-          [ ( (modMask cnf .|. shiftMask, n),
-              windows =<< shiftRLWhen myPred wksp
-            )
-            | (n, wksp) <- zip [xK_1 .. xK_9] (workspaces cnf)
-          ]
+        M.fromList $
+            ((modMask cnf, xK_a), toggleFocus) :
+            ((modMask cnf .|. shiftMask, xK_a), swapWithLast) :
+            ((modMask cnf, xK_b), toggleRefocusing) :
+                [ ( (modMask cnf .|. shiftMask, n)
+                  , windows =<< shiftRLWhen myPred wksp
+                  )
+                | (n, wksp) <- zip [xK_1 .. xK_9] (workspaces cnf)
+                ]
 
 ------------------------ old stripped down content ----------------------
 

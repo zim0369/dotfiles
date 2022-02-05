@@ -15,25 +15,25 @@ scrolling:
   auto_scroll: false
 font:
   normal:
-    family:  Iosevka Nerd Font
+    family:       AnonymicePowerline Nerd Font
     style: Medium
   bold:
-    family:  Iosevka Nerd Font
+    family:       AnonymicePowerline Nerd Font
     style: Bold
   italic:
-    family:  Iosevka Nerd Font
+    family:       AnonymicePowerline Nerd Font
     style: Italic
   bold_italic:
-    family:  Iosevka Nerd Font
+    family:       AnonymicePowerline Nerd Font
     style: Bold Italic
-  size: 7.5
+  size:  9
   offset:
     x: 0
     y: 1
 draw_bold_text_with_bright_colors: true
 window.opacity: 1
-# shell:
-#   program: ADD YOUR SHELL
+shell:
+  program: /usr/bin/fish
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: P, mods: Alt, action: Paste }
@@ -69,5 +69,8 @@ key_bindings:
       action: ScrollToBottom,
       mode: ~Alt
     }
+
+ 
+ 
 import:
 - /home/zim/.config/alacritty/gelacritty.yml

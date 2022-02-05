@@ -41,8 +41,8 @@ rsf (layer-toggle rshift)
 
 (deflayer qwerty                             ;; The default layer that'd be read when you launch kmonad
   lmet      f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       \(      \)      lmet   6       7        8        bspc    lmet   M-S-o    =      prnt
-  @vi       q        w       e       r       t      brup    y        u        i       o      p        '      \
+  `         1        2       \(      \)      lmet   6       7        8        bspc    M-C-o  M-O      =      prnt
+  @vi       q        w       e       r       t      A-sft   y        u        i       o      p        '      \
   @lsf      a        s       d       f       g      C-alt   h        j        k       l      @rsf     S-ret
   @lct      z        x       c       v       b      b       n        m        @num    @cp    ralt     up
   C-sft     lalt     lmet                    spc            @sym     C-sft    left    down   right
@@ -68,7 +68,7 @@ rsf (layer-toggle rshift)
 
 (deflayer control
   esc       f1       f2      f3      f4      f5     f6      f7       f8       f9      f10    f11      f12    prnt    ins    del
-  `         1        2       C--     C-+     5      6       7        8        bspc    0      -        =      C-prnt
+  `         1        2       C--     C-+     5      6       7        8        del     0      -        =      C-prnt
   C-tab     C-q      C-w     C-e     C-r     C-t    _       C-y      C-u      C-i     C-o    C-p      C-'    C-\
   lctl      C-a      C-s     C-d     C-f     C-g    _       C-h      C-j      C-k     C-l    C-;      C-ret
   lalt      C-z      C-x     C-c     C-v     C-b    C-b     C-n      C-m      C-,     C-.    ralt     _

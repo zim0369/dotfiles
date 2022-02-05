@@ -16,7 +16,7 @@ case $bars in
   3)  bar='● ● ● ○ ○' ;;
   4)  bar='● ● ● ● ○' ;;
   5)  bar='● ● ● ● ●' ;;
-  *)  bar='⚠' ;;
+  *)  bar='!' ;;
 esac
 
 echo $essid $bar
